@@ -34,7 +34,7 @@
 	<!-- end #menu -->
 	<div id="logo">
 		<h1><a href="#">Intranet</a></h1>
-		<p>Internal Network services.</p>
+		<p>Internal Network services. | <a href="<?php echo $logoutPage ?>" style="color:blue;">Logout</a></p>
 	</div>
 	<!-- end #logo -->
 </div>
@@ -43,7 +43,6 @@
 <div id="page">
 	<div id="content">
 	<h2>Contents stays here!</h2>
-	<h3><?php echo $url_dashboard . "    " . $url_profile ?></h3>
 <!--
 		<div class="post">
 			<h2 class="title">Welcome to our website </h2>
