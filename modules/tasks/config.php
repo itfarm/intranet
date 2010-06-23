@@ -1,15 +1,25 @@
 <?php
-	$DOC_ROOT = "/intranet/modules/tasks/";
-	$current_page=1;
 	$root_dir="/intranet/modules/tasks/";
-		
+	
+	//	Database Server Configurations
+	$db_host="localhost";
+	$db_user="root";
+	$db_password="root";
+	$db_name="taskdata";
+	
+	//	Page URLs
+	$verificationPage= $root_dir . "verification.php";
+	$loginPage= $root_dir . "index.php";
+	$homePage= $root_dir . "main.php?page=dashboard";
+
+	// Re-used page contents functions
 	function submenu($current) {
 		//	Submenu URLs and their names
-		$url[0][0] = "dashboard";	$url[0][1] = $root_dir . "index.php?page=dashboard";
-		$url[1][0] = "profile"; 	$url[1][1] = $root_dir . "index.php?page=profile";
-		$url[2][0] = "settings";	$url[2][1] = $root_dir . "index.php?page=settings";
-		$url[3][0] = "admin";		$url[3][1] = $root_dir . "index.php?page=admin";
-		$url[4][0] = "history";		$url[4][1] = $root_dir . "index.php?page=history";
+		$url[0][0] = "dashboard";	$url[0][1] = $root_dir . "main.php?page=dashboard";
+		$url[1][0] = "profile"; 	$url[1][1] = $root_dir . "main.php?page=profile";
+		$url[2][0] = "settings";	$url[2][1] = $root_dir . "main.php?page=settings";
+		$url[3][0] = "admin";		$url[3][1] = $root_dir . "main.php?page=admin";
+		$url[4][0] = "history";		$url[4][1] = $root_dir . "main.php?page=history";
 
 		echo '	<div id="submenu">
 					<ul>';
@@ -137,4 +147,5 @@
 			';
 		};
 	};
+	
 ?>
