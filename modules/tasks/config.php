@@ -1,88 +1,32 @@
 <?php
 	$DOC_ROOT = "/intranet/modules/tasks/";
-	$url["dashboard"] = $DOC_ROOT . "/intranet/modules/tasks/index.php?page=dashboard";
-	$url["profile"] = $DOC_ROOT . "modules/tasks/index.php?page=profile";
-	$url["admin"] = $DOC_ROOT . "modules/tasks/index.php?page=admin";
-	$url["settings"] = $DOC_ROOT . "modules/tasks/index.php?page=settings";
+	$current_page=1;
+	$root_dir="/intranet/modules/tasks/";
+		
 	function submenu($current) {
-		if( $current == "dashboard" ) {
-			echo '
-				<div id="submenu">
-					<ul>
-						<li><a href="/intranet/modules/tasks/index.php?page=dashboard" class="current">Dashboard</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=profile">Profile</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=settings">Settings</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=admin">Admin</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=history">Login History</a></li>
-					</ul>
-				</div>
-			';
-		}
-		elseif( $current == "profile" ) {
-			echo '
-				<div id="submenu">
-					<ul>
-						<li><a href="/intranet/modules/tasks/index.php?page=dashboard">Dashboard</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=profile" class="current">Profile</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=settings">Settings</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=admin">Admin</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=history">Login History</a></li>
-					</ul>
-				</div>
-			';
-		}
-		elseif( $current == "settings" ) {
-			echo '
-				<div id="submenu">
-					<ul>
-						<li><a href="/intranet/modules/tasks/index.php?page=dashboard">Dashboard</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=profile">Profile</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=settings" class="current">Settings</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=admin">Admin</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=history">Login History</a></li>
-					</ul>
-				</div>
-			';
-		}
-		elseif ( $current == "admin" ) {
-			echo '
-				<div id="submenu">
-					<ul>
-						<li><a href="/intranet/modules/tasks/index.php?page=dashboard">Dashboard</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=profile">Profile</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=settings">Settings</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=admin" class="current">Admin</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=history">Login History</a></li>
-					</ul>
-				</div>
-			';
-		}
-		elseif ( $current == "history" ) {
-			echo '
-				<div id="submenu">
-					<ul>
-						<li><a href="/intranet/modules/tasks/index.php?page=dashboard">Dashboard</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=profile">Profile</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=settings">Settings</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=admin">Admin</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=history" class="current">Login History</a></li>
-					</ul>
-				</div>
-			';
-		}
-		else {
-			echo '
-				<div id="submenu">
-					<ul>
-						<li><a href="/intranet/modules/tasks/index.php?page=dashboard" class="current">Dashboard</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=profile">Profile</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=settings">Settings</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=admin">Admin</a></li>
-						<li><a href="/intranet/modules/tasks/index.php?page=history">Login History</a></li>
-					</ul>
-				</div>
-			';
-		}
+		//	Submenu URLs and their names
+		$url[0][0] = "dashboard";	$url[0][1] = $root_dir . "index.php?page=dashboard";
+		$url[1][0] = "profile"; 	$url[1][1] = $root_dir . "index.php?page=profile";
+		$url[2][0] = "settings";	$url[2][1] = $root_dir . "index.php?page=settings";
+		$url[3][0] = "admin";		$url[3][1] = $root_dir . "index.php?page=admin";
+		$url[4][0] = "history";		$url[4][1] = $root_dir . "index.php?page=history";
+
+		echo '	<div id="submenu">
+					<ul>';
+					// Generate submenu links
+					for($incr = 0; $incr <5; $incr++ ) {
+						// Mark the current class
+						if( $current == $url[$incr][0] ) {
+							$class = "current";
+						}
+						else {
+							$class = "";
+						}
+						// Display the submenu links
+						echo '<li><a href="' . $url[$incr][1] . '" class="' .$class . '">' . $url[$incr][0] . '</a></li>';
+					};
+		echo '		</ul>
+				</div>';
 	};
 	function sidebar($tag) {
 		if( $tag == "dashboard") {
