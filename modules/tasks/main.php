@@ -1,6 +1,13 @@
 <?php
 	include('config.php');
 	$page_tag = $_GET['page'];
+	session_start();
+	if(!isset($_SESSION['username']))
+	{
+		header("location:$loginPage?");
+	}
+	else {
+		// Start of session
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -78,3 +85,8 @@
 <!-- end #footer -->
 </body>
 </html>
+
+<?php 
+	}
+	// End of session
+?>
