@@ -148,6 +148,8 @@
 			';
 		};
 	};
+
+	// Database related functions
 	function db_connection($db_host,$db_user,$db_password) {
 		$dbcnx = mysql_connect($db_host,$db_user,$db_password);
 		if (!$dbcnx)
@@ -170,4 +172,30 @@
 		}
 	}
 
+	function get_userid($username,$password) {
+		global $db_host, $db_user, $db_password,$db_name;
+		$dbcnx = db_connection($db_host,$db_user,$db_password);
+		$db_select = db_select($db_name,$dbcnx);
+		$userid_string = "SELECT * FROM authuser WHERE uname = '$username' AND passwd = MD5('$password')";
+		$query_userid = mysql_query($userid_string) or die( mysql_error() );
+		if($query_userid) $row = mysql_fetch_row($query_userid);
+		return $row[0];
+	};
+	
+	
+	function get_task_list($username,$password,$relationship) {
+		global $db_host, $db_user, $db_password,$db_name;
+		if($relationship == "ever_created_by_user") {
+			$userid = get_userid($username,$password);
+			$tasks_ever_created_by_user_string = "SELECT tbl_tasks.task_id FROM tbl_tasks
+								WHERE tbl_tasks.created_by='".$userid."'
+								AND task_closure_classification_id is null
+								OR task_closure_classification_id <> 'Voi'";
+								
+			$dbcnx = db_connection($db_host,$db_user,$db_password);
+			$db_select = db_select($db_name,$dbcnx);
+			$query_tasks_ever_created_by_user = mysql_query($tasks_ever_created_by_user_string) or die( mysql_error() );
+			return $query_tasks_ever_created_by_user;
+		}
+	}
 ?>
