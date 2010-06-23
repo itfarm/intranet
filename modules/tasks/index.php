@@ -36,6 +36,7 @@
 <div id="page">
 	<div id="content">
 	<h2>Contents stays here!</h2>
+	<h3><?php echo $url_dashboard . "    " . $url_profile ?></h3>
 <!--
 		<div class="post">
 			<h2 class="title">Welcome to our website </h2>
