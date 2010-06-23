@@ -147,5 +147,26 @@
 			';
 		};
 	};
-	
+	function db_connection($db_host,$db_user,$db_password) {
+		$dbcnx = mysql_connect($db_host,$db_user,$db_password);
+		if (!$dbcnx)
+		{
+			$error = "<p>Database Server not found ".mysql_error()."</p>";
+			exit($error);
+		}
+		else {
+			return $dbcnx;
+		}
+	};
+	function db_select($db_name,$dbcnx) {
+		$db_select = mysql_select_db($db_name,$dbcnx);
+		if( !$db_select ) {
+			$error="<p>Database not found ".mysql_error()."</p>";
+			exit($error);
+		}
+		else {
+			return $db_select;
+		}
+	}
+
 ?>
