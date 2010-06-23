@@ -15,8 +15,8 @@
 	$db_select = db_select($db_name,$dbcnx);
 
 	if( empty($username) || empty($password) ) {
-		$error = "Empty username or password";
-		Header("location:$loginPage?error=$error");
+		$message = "Empty username or password";
+		Header("location:$loginPage?message=$message");
 	}
 	else {
 		$query_string = "SELECT * FROM authuser WHERE uname = '$username' AND passwd = MD5('$password')";
@@ -31,8 +31,8 @@
 		}
 		else
 		{
-			$error = "ACCESS DEINIED!<br/>Invalid Username or password";
-			Header("location:$loginPage?error=$error");
+			$message = "ACCESS DEINIED!<br/>Invalid Username or password";
+			Header("location:$loginPage?message=$message");
 		}
 	}
 
