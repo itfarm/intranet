@@ -10,7 +10,6 @@
 	
 	// security
 	//	auth_checkgroup_and_exit('Admin');
-	echo "it gets here";
 	
 	// include the header
 	global $szSection, $szSubSection, $szTitle, $additionalStyleSheet,$szHeaderPath,$szFooterPath;
@@ -20,48 +19,45 @@
 	$szSubSection = 'Task';
 	$szSubSubSection = 'View Task';
 
-	//include($szHeaderPath);
-	?>
-	<?php
-$openclosestatus = $_POST['openclosestatus'];
-$taskrelationship = $_POST['taskrelationship'];
+	$openclosestatus = $_POST['openclosestatus'];
+	$taskrelationship = $_POST['taskrelationship'];
 
-// default values
-if ($openclosestatus == "") {
-	$openclosestatus = "open";
-}
+	// default values
+	if ($openclosestatus == "") {
+		$openclosestatus = "open";
+	}
 
-if ($taskrelationship == "") {
-	$taskrelationship = "all";
-}
+	if ($taskrelationship == "") {
+		$taskrelationship = "all";
+	}
 
-switch ($openclosestatus) {
-	case "open":
-		$condition_open_close = "date_closed is null";
-		break;
-	case "closed":
-		$condition_open_close = "date_closed is not null";
-		break;
-	case "all":
-		$condition_open_close = "1=1";
-		break;
-}
+	switch ($openclosestatus) {
+		case "open":
+			$condition_open_close = "date_closed is null";
+			break;
+		case "closed":
+			$condition_open_close = "date_closed is not null";
+			break;
+		case "all":
+			$condition_open_close = "1=1";
+			break;
+	}
 
-switch ($taskrelationship) {
-	case "all":
-		$condition_relationship = "1=1";
-		break;
-	case "assignedto":
-		$condition_relationship = "currently_assigned_to_user or currently_assigned_to_user_as_group_leader or currently_assigned_to_user_as_group_member";
-		break;
-	case "assignedby":
-		$condition_relationship = "ever_assigned_by_user";
-		break;
-	case "created":
-		$condition_relationship = "ever_created_by_user";
-		break;
+	switch ($taskrelationship) {
+		case "all":
+			$condition_relationship = "1=1";
+			break;
+		case "assignedto":
+			$condition_relationship = "currently_assigned_to_user or currently_assigned_to_user_as_group_leader or currently_assigned_to_user_as_group_member";
+			break;
+		case "assignedby":
+			$condition_relationship = "ever_assigned_by_user";
+			break;
+		case "created":
+			$condition_relationship = "ever_created_by_user";
+			break;
 
-}
+	}
 
 
 $qry_task_SQL = "SELECT tbl_tasks.*, 
@@ -88,74 +84,55 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 										(
 											(
 												(
-													tbl_tasks LEFT JOIN tbl_setup_task_classifications ON tbl_tasks.task_classification_id = tbl_setup_task_classifications.task_classification_id
+													tbl_tasks LEFT JOIN tbl_setup_task_classifications ON
+													tbl_tasks.task_classification_id = tbl_setup_task_classifications.task_classification_id
 												)
-												LEFT JOIN tbl_setup_workload_classifications ON tbl_tasks.workload_classification_id = tbl_setup_workload_classifications.workload_classification_id
+												LEFT JOIN tbl_setup_workload_classifications ON
+												tbl_tasks.workload_classification_id = tbl_setup_workload_classifications.workload_classification_id
 											)
-											LEFT JOIN tbl_setup_priority_classifications ON tbl_tasks.priority_classification_id = tbl_setup_priority_classifications.priority_classification_id
+											LEFT JOIN tbl_setup_priority_classifications ON
+											tbl_tasks.priority_classification_id = tbl_setup_priority_classifications.priority_classification_id
 										)
-										LEFT JOIN tbl_setup_task_closure_classifications ON tbl_tasks.task_closure_classification_id = tbl_setup_task_closure_classifications.task_closure_classification_id
+										LEFT JOIN tbl_setup_task_closure_classifications ON
+										tbl_tasks.task_closure_classification_id = tbl_setup_task_closure_classifications.task_closure_classification_id
 									)
-									LEFT JOIN tbl_setup_task_outcome_classifications ON tbl_tasks.task_outcome_classification_id = tbl_setup_task_outcome_classifications.task_outcome_classification_id
+									LEFT JOIN tbl_setup_task_outcome_classifications ON
+									tbl_tasks.task_outcome_classification_id = tbl_setup_task_outcome_classifications.task_outcome_classification_id
 								)
 							ON authuser.id = tbl_tasks.created_by
 						)
-						INNER JOIN (".$qry_related_to_user_relationship_SQL.") as qry_related_to_user_relationship ON tbl_tasks.task_id = qry_related_to_user_relationship.task_id
+						INNER JOIN (".$qry_related_to_user_relationship_SQL.") as qry_related_to_user_relationship ON
+						tbl_tasks.task_id = qry_related_to_user_relationship.task_id
 					WHERE ".$condition_open_close." AND ".$condition_relationship." 
-					ORDER BY currently_assigned_to_user desc, currently_assigned_to_user_as_group_leader desc, currently_assigned_to_user_as_group_member, priority_classification_id, deadline";
+					ORDER BY currently_assigned_to_user desc, currently_assigned_to_user_as_group_leader desc,
+					currently_assigned_to_user_as_group_member, priority_classification_id, deadline";
 
-// echo $qry_related_to_user_relationship_SQL;
-//echo $qry_task_SQL;
 ?>
 
 	
-	<table width=100%>
-	<COL>
-	<COL width = 224>
-	<tr>
-	<td>
-		<form name="filter_form" method="POST" action="<?php echo $root_dir ?>viewtasks.php">
-		<table>		
-			<tr><td>Open/Closed:</td><td><select name="openclosestatus" size=1 class="vform"  >
-								<option value='open' <?php if ($openclosestatus=='open') {echo 'selected="selected"';}?> >Open tasks only</option>
-								<option value='closed' <?php if ($openclosestatus=='closed') {echo 'selected="selected"';}?>>Closed tasks only</option>
-								<option value='all' <?php if ($openclosestatus=='all') {echo 'selected="selected"';}?>>Open and closed tasks</option>
-					</select>
-					</td></tr>
-			<tr><td>Your relationship to task:</td><td><select name="taskrelationship" size=1 class="vform"  >
-								<option value='all' <?php if ($taskrelationship=='open') {echo 'selected="selected"';}?>>All tasks related to you</option>";
-								<option value='assignedto' <?php if ($taskrelationship=='assignedto') {echo 'selected="selected"';}?>>Tasks now assigned TO you</option>";
-								<option value='assignedby' <?php if ($taskrelationship=='assignedby') {echo 'selected="selected"';}?>>Tasks ever assigned BY you</option>";
-								<option value='created' <?php if ($taskrelationship=='created') {echo 'selected="selected"';}?>>Tasks created by you</option>";
-					</select>
-					</td></tr>		
-			<tr><td colspan=2 style="text-align:centre">
-	
-				<input type="submit" value="Filter" class="button" />
+
+<form name="filter_form" method="POST" action="<?php echo $homePage ?>">
+	<table>		
+		<tr><td>Open/Closed:</td><td><select name="openclosestatus" size=1 class="vform"  >
+							<option value='open' <?php if ($openclosestatus=='open') {echo 'selected="selected"';}?> >Open tasks only</option>
+							<option value='closed' <?php if ($openclosestatus=='closed') {echo 'selected="selected"';}?>>Closed tasks only</option>
+							<option value='all' <?php if ($openclosestatus=='all') {echo 'selected="selected"';}?>>Open and closed tasks</option>
+				</select>
 				</td></tr>
-		</table>
+		<tr><td>Your relationship to task:</td><td><select name="taskrelationship" size=1 class="vform"  >
+							<option value='all' <?php if ($taskrelationship=='open') {echo 'selected="selected"';}?>>All tasks related to you</option>";
+							<option value='assignedto' <?php if ($taskrelationship=='assignedto') {echo 'selected="selected"';}?>>Tasks now assigned TO you</option>";
+							<option value='assignedby' <?php if ($taskrelationship=='assignedby') {echo 'selected="selected"';}?>>Tasks ever assigned BY you</option>";
+							<option value='created' <?php if ($taskrelationship=='created') {echo 'selected="selected"';}?>>Tasks created by you</option>";
+				</select>
+				</td></tr>		
+		<tr><td colspan=2 style="text-align:centre">
 
-		</form>	
+			<input type="submit" value="Filter" class="button" />
+			</td></tr>
+	</table>
+</form>	
 
-	</td>
-	<td>
-<!--
-	<table class="smallneat" width=100%>
-	<tr><th>Legend</th></tr>
-	
-	<tr><td class="ever_created_by_userL">Created by you</td></tr>
-	<tr><td class="ever_assigned_by_userL">Assigned by you</td></tr>
-	<tr><td class="ever_referred_to_userL">Referred to you</td></tr>
-	<tr><td class="ever_referred_to_user_as_group_leaderL">Referred to you as group leader</td></tr>
-	<tr><td class="ever_referred_to_user_as_group_memberL">Referred to you as group member</td></tr>
-	<tr><td class="currently_assigned_to_userL">Now assigned to you</td></tr>
-	<tr><td class="currently_assigned_to_user_as_group_leaderL">Now assigned to you as group leader</td></tr>
-	<tr><td class="currently_assigned_to_user_as_group_memberL">Now assigned to you as group member</td></tr>
-	</table>
--->
-	</td>
-	</tr>
-	</table>
 		
 	<table class="sorted" style="font-size:90%">
 			<COL><COL><COL><COL><COL><COL><COL><COL>
@@ -211,8 +188,6 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 		}	
 		
 		While ($qry_task_row = mysql_fetch_array($qry_task_result)) {
-			//$i++;
-		//class="d'.($i & 1).'"			
 			// Temp:To be implemented later.
 			//echo '<tr onClick="document.location.href=\'../admin/index.php?task_id='.$qry_task_row['task_id'].'&page=process_task\'" >';
 			?>
