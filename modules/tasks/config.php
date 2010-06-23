@@ -11,6 +11,7 @@
 	$verificationPage= $root_dir . "verification.php";
 	$loginPage= $root_dir . "index.php";
 	$homePage= $root_dir . "main.php?page=dashboard";
+	$logoutPage= $root_dir . "logout.php";
 
 	// Re-used page contents functions
 	function submenu($current) {
@@ -151,8 +152,8 @@
 		$dbcnx = mysql_connect($db_host,$db_user,$db_password);
 		if (!$dbcnx)
 		{
-			$error = "<p>Database Server not found ".mysql_error()."</p>";
-			exit($error);
+			$message = "<p>Database Server not found ".mysql_error()."</p>";
+			exit($message);
 		}
 		else {
 			return $dbcnx;
@@ -161,8 +162,8 @@
 	function db_select($db_name,$dbcnx) {
 		$db_select = mysql_select_db($db_name,$dbcnx);
 		if( !$db_select ) {
-			$error="<p>Database not found ".mysql_error()."</p>";
-			exit($error);
+			$message="<p>Database not found ".mysql_error()."</p>";
+			exit($message);
 		}
 		else {
 			return $db_select;
