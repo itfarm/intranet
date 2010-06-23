@@ -1,6 +1,7 @@
 <?php
 	include('config.php');
-	$page_tag = $_GET['page'];
+	$page = $_GET['page'];
+	$tag =  $_GET['tag'];
 	session_start();
 	if(!isset($_SESSION['username']))
 	{
@@ -39,10 +40,10 @@
 	<!-- end #logo -->
 </div>
 <!-- end #header -->
-<?php submenu($page_tag) ?>
+<?php submenu($page) ?>
 <div id="page">
 	<div id="content">
-	<?php include_once('viewtasks.php') ?>
+	<?php contents($page,$tag); ?>
 <!--
 		<div class="post">
 			<h2 class="title">Welcome to our website </h2>
@@ -73,7 +74,7 @@
 -->
 	</div>
 	<!-- end #content -->
-	<?php sidebar($page_tag) ?>
+	<?php sidebar($page) ?>
 	<!-- end #sidebar -->
 	<div style="clear: both;">&nbsp;</div>
 </div>
