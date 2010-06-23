@@ -39,7 +39,25 @@
 		echo '		</ul>
 				</div>';
 	};
+
+	function contents($page,$tag) {
+		global $db_host, $db_user, $db_password, $db_name;
+		$dbcnx = db_connection($db_host,$db_user,$db_password);
+		$db_select = db_select($db_name,$dbcnx);
+		if( $page =="dashboard" ) {
+			if( $tag == "viewtasks" || empty($tag) ) {
+				include_once($root_dir . "viewtasks.php");
+			}
+			elseif( $tag == "createtask" ) {
+				include_once($root_dir . "createtask.php");
+			}
+			elseif( $tag == "viewdocs" ) {
+				include_once($root_dir . "viewdocuments.php");
+			};
+		};
+	}
 	function sidebar($tag) {
+		global $homePage;
 		if( $tag == "dashboard") {
 			echo '
 				<div id="sidebar">
@@ -47,14 +65,14 @@
 						<li>
 							<h2>Tasks</h2>
 							<ul>
-								<li><a href="">View Tasks</a></li>
-								<li><a href="">Create Tasks</a></li>
+								<li><a href="'. $homePage .'&tag=viewtasks">View Tasks</a></li>
+								<li><a href="'. $homePage .'&tag=createtask">Create Tasks</a></li>
 							</ul>
 						</li>
 						<li>
 							<h2>Documents</h2>
 							<ul>
-								<li><a href="">View Documents</a></li>
+								<li><a href="'. $homePage. '&tag=viewdocs">View Documents</a></li>
 								<li><a href="">Upload Documents</a></li>
 							</ul>
 						</li>
@@ -182,7 +200,6 @@
 		return $row[0];
 	};
 	
-	
 	function get_task_list($username,$password,$relationship) {
 		global $db_host, $db_user, $db_password,$db_name;
 		if($relationship == "ever_created_by_user") {
@@ -198,4 +215,5 @@
 			return $query_tasks_ever_created_by_user;
 		}
 	}
+
 ?>
