@@ -42,7 +42,7 @@
 <?php submenu($page_tag) ?>
 <div id="page">
 	<div id="content">
-	<h2>Contents stays here!</h2>
+	<?php include_once('viewtasks.php') ?>
 <!--
 		<div class="post">
 			<h2 class="title">Welcome to our website </h2>
