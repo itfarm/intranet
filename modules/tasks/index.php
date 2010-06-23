@@ -20,6 +20,13 @@
 -->
 <?php
 	include('config.php');
+	session_start();
+	if( isset($_SESSION['username']) )
+	{
+		header("location:$homePage");
+	}
+	else {
+		
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -33,7 +40,7 @@
 
 <body>
 	<form action="<?php echo $verificationPage ?>" method="post" class="form">
-		<h5><?php echo $_GET['error'] ?></h5>
+		<h5><?php echo $_GET['message'] ?></h5>
 		<fieldset>
 			<legend>Login Form</legend>
 			<p><label for="username">Username</label> <input name="username" id="input" type="text"></p>
@@ -43,3 +50,8 @@
 	</form>
 </body>
 </html>
+
+<?php
+	}
+	// End of session
+?>
