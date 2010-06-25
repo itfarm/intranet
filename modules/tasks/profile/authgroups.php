@@ -1,7 +1,7 @@
 <?
 
 	# initialise globals
-	include_once('../config.php');
+	@include_once('../config.php');
 	
 	# include the header
 	global $szSection, $szSubSection, $szTitle, $additionalStyleSheet;
@@ -14,11 +14,11 @@
 
 
 <?
-	include_once ('auth.php');
+	@include_once ('auth.php');
 	$group = new pmo_auth();
 	
-	$connection = mysql_connect($dbhost, $dbusername, $dbpass);
-	$SelectedDB = mysql_select_db($dbname);
+	$dbcnx = db_connection($db_host,$db_user,$db_password);
+	$SelectedDB = db_select($db_name,$dbcnx);
 	
 
 ?>

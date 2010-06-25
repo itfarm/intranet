@@ -2,7 +2,7 @@
 	# initialise globals
 	# @Generate top menu do deprecated if no effect
 	#include('config.inc.php');
-	include_once('../config.php');
+	@include_once('../config.php');
 	
 	# include the header
 	global $szSection, $szSubSection, $szTitle, $additionalStyleSheet;
@@ -10,12 +10,12 @@
 	$szTitle = 'User Manager';
 	$szSubSection = 'User Manager';
 	echo $root_dir;
-	include_once ('auth.php');
+	@include_once ('auth.php');
 	
 	$user = new pmo_auth();
 	
-	$connection = mysql_connect($dbhost, $dbusername, $dbpass);
-	$SelectedDB = mysql_select_db($dbname);
+	$dbcnx = db_connection($db_host,$db_user,$db_password);
+	$SelectedDB = db_select($db_name,$dbcnx);
 
 ?>
 <?
