@@ -21,7 +21,7 @@
 		$url[1][0] = "profile"; 	$url[1][1] = $root_dir . "main.php?page=profile";
 		$url[2][0] = "settings";	$url[2][1] = $root_dir . "main.php?page=settings";
 		$url[3][0] = "admin";		$url[3][1] = $root_dir . "main.php?page=admin";
-		$url[4][0] = "history";		$url[4][1] = $root_dir . "main.php?page=history";
+		$url[4][0] = "audit trail";		$url[4][1] = $root_dir . "main.php?page=history";
 
 		echo '	<div id="submenu">
 					<ul>';
@@ -83,6 +83,9 @@
 			}
 			elseif( $tag == "autobiography" ) {
 				include_once($profilePage . "profile/autobiography.php");
+			}
+			elseif( $tag == "location" ) {
+				include_once($profilePage . "profile/location.php");
 			};
 		};
 	}
@@ -135,7 +138,7 @@
 							<ul>
 								<li><a href="'. $profilePage .'&tag=changepassword">Change password</a></li>
 								<li><a href="'. $profilePage .'&tag=autobiography">Autobiography</a></li>
-								<li><a href="">Current Location</a></li>
+								<li><a href="'. $profilePage .'&tag=location">Current Location</a></li>
 							</ul>
 						</li>
 					</ul>
