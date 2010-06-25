@@ -10,7 +10,8 @@
 	//	Page URLs
 	$verificationPage= $root_dir . "verification.php";
 	$loginPage= $root_dir . "index.php";
-	$homePage= $root_dir . "main.php?page=dashboard";
+	$dashboardPage= $root_dir . "main.php?page=dashboard";
+	$profilePage = $root_dir . "main.php?page=profile";
 	$logoutPage= $root_dir . "logout.php";
 
 	// Re-used page contents functions
@@ -44,7 +45,7 @@
 		global $db_host, $db_user, $db_password, $db_name;
 		$dbcnx = db_connection($db_host,$db_user,$db_password);
 		$db_select = db_select($db_name,$dbcnx);
-		if( $page =="dashboard" ) {
+		if( $page =="dashboard" || empty($page) ) {
 			if( $tag == "viewtasks" || empty($tag) ) {
 				include_once($root_dir . "dashboard/viewtasks.php");
 			}
@@ -69,49 +70,54 @@
 			elseif( $tag == "viewroles" ) {
 				include_once( $root_dir . "dashboard/viewroles.php");
 			};
+		}
+		elseif( $page="profile" ) {
+			if( $tag == "manageusers" ) {
+				include_once($profilePage . "profile/authusers.php");
+			};
 		};
 	}
-	function sidebar($tag) {
-		global $homePage;
-		if( $tag == "dashboard") {
+	function sidebar($page) {
+		global $dashboardPage, $profilePage;
+		if( $page == "dashboard" || empty($page)) {
 			echo '
 				<div id="sidebar">
 					<ul>
 						<li>
 							<h2>Tasks</h2>
 							<ul>
-								<li><a href="'. $homePage .'&tag=viewtasks">View Tasks</a></li>
-								<li><a href="'. $homePage .'&tag=createtask">Create Tasks</a></li>
+								<li><a href="'. $dashboardPage .'&tag=viewtasks">View Tasks</a></li>
+								<li><a href="'. $dashboardPage .'&tag=createtask">Create Tasks</a></li>
 							</ul>
 						</li>
 						<li>
 							<h2>Documents</h2>
 							<ul>
-								<li><a href="'. $homePage. '&tag=viewdocs">View Documents</a></li>
-								<li><a href="'. $homePage .'&tag=uploaddocs">Upload Documents</a></li>
+								<li><a href="'. $dashboardPage. '&tag=viewdocs">View Documents</a></li>
+								<li><a href="'. $dashboardPage .'&tag=uploaddocs">Upload Documents</a></li>
 							</ul>
 						</li>
 						<li>
 							<h2>Staffs</h2>
 							<ul>
-								<li><a href="'. $homePage .'&tag=viewstaffs">View Staffs</a></li>
-								<li><a href="'. $homePage .'&tag=viewteams">View Teams</a></li>
-								<li><a href="'. $homePage .'&tag=viewgroups">View Groups</a></li>
-								<li><a href="'. $homePage .'&tag=viewroles">Roles in groups</a></li>
+								<li><a href="'. $dashboardPage .'&tag=viewstaffs">View Staffs</a></li>
+								<li><a href="'. $dashboardPage .'&tag=viewteams">View Teams</a></li>
+								<li><a href="'. $dashboardPage .'&tag=viewgroups">View Groups</a></li>
+								<li><a href="'. $dashboardPage .'&tag=viewroles">Roles in groups</a></li>
 							</ul>
 						</li>
 					</ul>
 				</div>
 			';
 		}
-		elseif( $tag == "profile") {
+		elseif( $page == "profile") {
 			echo '
 				<div id="sidebar">
 					<ul>
 						<li>
 							<h2>Manage</h2>
 							<ul>
-								<li><a href="">User Profiles</a></li>
+								<li><a href="'. $profilePage .'&tag=manageusers">User Profiles</a></li>
 								<li><a href="">Groups</a></li>
 							</ul>
 						</li>
@@ -127,7 +133,7 @@
 				</div>
 			';
 		}
-		elseif( $tag == "admin" ) {
+		elseif( $page == "admin" ) {
 			echo '
 				<div id="sidebar">
 						<ul>
@@ -142,7 +148,7 @@
 				</div>
 				';
 		}
-		elseif( $tag == "settings") {
+		elseif( $page == "settings") {
 			echo '
 				<div id="sidebar">
 						<ul>
