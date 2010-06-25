@@ -1,11 +1,11 @@
 <?php
-	include('config.php');
+	@include('config.php');
 	$page = $_GET['page'];
 	$tag =  $_GET['tag'];
-	session_start();
+	@session_start();
 	if(!isset($_SESSION['username']))
 	{
-		header("location:$loginPage?");
+		@header("location:$loginPage?");
 	}
 	else {
 		// Start of session

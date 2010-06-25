@@ -1,11 +1,11 @@
 <?php 
-	include_once('../config.php');
+	@include_once('../config.php');
 	# include the header
 	global $szSection, $szSubSection, $szTitle, $szRootPath, $intDisplayLanguage;
 	$szSection = 'Personal Tools';
 	$szSubSection = 'Change Password';
 	$szTitle = 'Change Password';
-	include('auth.php');
+	@include('auth.php');
 	
 	$user = new pmo_auth();
 	

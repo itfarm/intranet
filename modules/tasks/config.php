@@ -72,7 +72,7 @@
 			};
 		}
 		elseif( $page="profile" ) {
-			if( $tag == "manageusers" ) {
+			if( $tag == "manageusers" || empty($tag) ) {
 				include_once($profilePage . "profile/authusers.php");
 			}
 			elseif( $tag == "managegroups" ) {
@@ -122,7 +122,7 @@
 				</div>
 			';
 		}
-		elseif( $page == "profile") {
+		elseif( $page == "profile" ) {
 			echo '
 				<div id="sidebar">
 					<ul>

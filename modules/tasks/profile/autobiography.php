@@ -1,5 +1,5 @@
 <?php 
-	include_once('../config.php');
+	@include_once('../config.php');
 	$dbcnx = db_connection($db_host,$db_user,$db_password) or die( mysql_error() );
 	$db_select = db_select($db_name,$dbcnx) or die( mysql_error() );
 	$id= $_SESSION['id'];

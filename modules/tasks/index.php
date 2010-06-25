@@ -19,11 +19,11 @@
         MA 02110-1301, USA.
 -->
 <?php
-	include('config.php');
-	session_start();
+	@include('config.php');
+	@session_start();
 	if( isset($_SESSION['username']) )
 	{
-		header("location:$dashboardPage");
+		@header("location:$dashboardPage");
 	}
 	else {
 		
