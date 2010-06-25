@@ -46,13 +46,22 @@
 		$db_select = db_select($db_name,$dbcnx);
 		if( $page =="dashboard" ) {
 			if( $tag == "viewtasks" || empty($tag) ) {
-				include_once($root_dir . "viewtasks.php");
+				include_once($root_dir . "dashboard/viewtasks.php");
 			}
 			elseif( $tag == "createtask" ) {
-				include_once($root_dir . "createtask.php");
+				include_once($root_dir . "dashboard/createtask.php");
 			}
 			elseif( $tag == "viewdocs" ) {
-				include_once($root_dir . "viewdocuments.php");
+				include_once($root_dir . "dashboard/viewdocuments.php");
+			}
+			elseif( $tag == "uploaddocs" ) {
+				include_once($root_dir . "dashboard/uploaddocuments.php");
+			}
+			elseif( $tag == "viewstaffs" ) {
+				include_once($root_dir . "dashboard/viewstaffs.php");
+			}
+			elseif( $tag == "viewteams" ) {
+				include_once($root_dir . "dashboard/viewteams.php");
 			};
 		};
 	}
@@ -73,13 +82,14 @@
 							<h2>Documents</h2>
 							<ul>
 								<li><a href="'. $homePage. '&tag=viewdocs">View Documents</a></li>
-								<li><a href="">Upload Documents</a></li>
+								<li><a href="'. $homePage .'&tag=uploaddocs">Upload Documents</a></li>
 							</ul>
 						</li>
 						<li>
 							<h2>Staffs</h2>
 							<ul>
-								<li><a href="">View Staffs</a></li>
+								<li><a href="'. $homePage .'&tag=viewstaffs">View Staffs</a></li>
+								<li><a href="'. $homePage .'&tag=viewteams">View Teams</a></li>
 								<li><a href="">View Groups</a></li>
 								<li><a href="">Roles in groups</a></li>
 							</ul>
