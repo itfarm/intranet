@@ -77,6 +77,9 @@
 			}
 			elseif( $tag == "managegroups" ) {
 				include_once($profilePage . "profile/authgroups.php");
+			}
+			elseif( $tag == "changepassword" ) {
+				include_once($profilePage . "profile/changepassword.php");
 			};
 		};
 	}
@@ -127,7 +130,7 @@
 						<li>
 							<h2>Personal</h2>
 							<ul>
-								<li><a href="">Change password</a></li>
+								<li><a href="'. $profilePage .'&tag=changepassword">Change password</a></li>
 								<li><a href="">Autobiography</a></li>
 								<li><a href="">Current Location</a></li>
 							</ul>
