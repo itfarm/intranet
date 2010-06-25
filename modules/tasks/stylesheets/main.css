@@ -98,6 +98,7 @@ hr {
 	height: 40px;
 	margin: 40px 0 0 0;
 	background: #17B2FF;
+	-moz-border-radius:8px 8px 0px 0px;
 }
 
 #menu ul {
@@ -110,12 +111,14 @@ hr {
 #menu li {
 	float: left;
 	margin-right: 1px;
+	-moz-border-radius:8px 8px 0px 0px;
 }
 
 #menu a {
 	display: block;
 	width: auto;
 	padding: 10px 15px 14px 15px;
+	-moz-border-radius:8px 8px 0px 0px;
 }
 
 #menu a:hover {
@@ -172,7 +175,7 @@ hr {
 	margin: 0px auto;
 	background: url(images/img03.jpg) repeat-y left top;
 	background-color:#ffffff;
-	-moz-border-radius:5px 5px 5px 5px;
+	-moz-border-radius:0px 0px 5px 5px;
 }
 
 /* Content */
