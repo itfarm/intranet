@@ -15,21 +15,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Intranet System for ITIDO</title>
+<title>Intranet System for IT PHARM</title>
 <link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/main.css" media="screen" />
 </head>
 <body>
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current"><a href="#">Events</a></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">Gallery</a></li>
-			<li><a href="#">Projects</a></li>
-			<li><a href="#">Training</a></li>
-			<li><a href="#">Remainders</a></li>
-			<li><a href="#">Polls</a></li>
-			<li><a href="#">Chat</a></li>
+			<li class="current"><a href="">Tasks</a></li>
+			<li><a href="">Events</a></li>
+			<li><a href="">News</a></li>
+			<li><a href="">Gallery</a></li>
+			<li><a href="">Projects</a></li>
+			<li><a href="">Training</a></li>
+			<li><a href="">Remainders</a></li>
+			<li><a href="">Polls</a></li>
+			<li><a href="">Chat</a></li>
 		</ul>
 	</div>
 	<!-- end #menu -->
@@ -80,7 +81,7 @@
 </div>
 <!-- end #page -->
 <div id="footer">
-	<p>Copyright &copy; 2010. All Rights Reserved. Design by John Francis Mukulu.</p>
+	<p>Copyright &copy; 2010. All Rights Reserved. Design by IT PHARM.</p>
 </div>
 <!-- end #footer -->
 </body>
