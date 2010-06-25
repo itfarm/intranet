@@ -65,6 +65,9 @@
 			}
 			elseif( $tag == "viewgroups" ) {
 				include_once( $root_dir . "dashboard/viewgroups.php");
+			}
+			elseif( $tag == "viewroles" ) {
+				include_once( $root_dir . "dashboard/viewroles.php");
 			};
 		};
 	}
@@ -94,7 +97,7 @@
 								<li><a href="'. $homePage .'&tag=viewstaffs">View Staffs</a></li>
 								<li><a href="'. $homePage .'&tag=viewteams">View Teams</a></li>
 								<li><a href="'. $homePage .'&tag=viewgroups">View Groups</a></li>
-								<li><a href="">Roles in groups</a></li>
+								<li><a href="'. $homePage .'&tag=viewroles">Roles in groups</a></li>
 							</ul>
 						</li>
 					</ul>
