@@ -207,3 +207,5 @@ $qry_group_members_active_SQL = "SELECT qry_users_active.*, qry_groups_active.*,
 $qry_team_SQL = "SELECT teamname, teamlead, status FROM authteam";
 
 $qry_groups_SQL = "SELECT group_name, group_status FROM tbl_groups";
+
+$qry_roles_in_groups_SQL ="SELECT role_in_group_type FROM tbl_list_role_in_group_type";
