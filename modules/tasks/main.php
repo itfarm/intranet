@@ -36,7 +36,7 @@
 	<!-- end #menu -->
 	<div id="logo">
 		<h1><a href="#">Intranet</a></h1>
-		<p>Internal Network services. | <a href="<?php echo $logoutPage ?>" style="color:blue;">Logout</a></p>
+		<p>Prime Minister's office.| <?php echo $_SESSION['username'] ?> | <a href="<?php echo $logoutPage ?>" style="color:blue;">Logout</a></p>
 	</div>
 	<!-- end #logo -->
 </div>
