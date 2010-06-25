@@ -80,6 +80,9 @@
 			}
 			elseif( $tag == "changepassword" ) {
 				include_once($profilePage . "profile/changepassword.php");
+			}
+			elseif( $tag == "autobiography" ) {
+				include_once($profilePage . "profile/autobiography.php");
 			};
 		};
 	}
@@ -131,7 +134,7 @@
 							<h2>Personal</h2>
 							<ul>
 								<li><a href="'. $profilePage .'&tag=changepassword">Change password</a></li>
-								<li><a href="">Autobiography</a></li>
+								<li><a href="'. $profilePage .'&tag=autobiography">Autobiography</a></li>
 								<li><a href="">Current Location</a></li>
 							</ul>
 						</li>
