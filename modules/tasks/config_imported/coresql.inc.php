@@ -204,5 +204,4 @@ $qry_users_with_groups_active_list_SQL  = "SELECT qry_users_with_groups_active.i
 $qry_group_members_active_SQL = "SELECT qry_users_active.*, qry_groups_active.*, tbl_group_membership.role_in_group_type, tbl_group_membership.role_in_group_description  
 									FROM ((".$qry_users_active_SQL.") as qry_users_active inner JOIN tbl_group_membership ON qry_users_active.id = tbl_group_membership.member_id) inner JOIN (".$qry_groups_active_SQL.") as qry_groups_active ON tbl_group_membership.group_id = qry_groups_active.group_id";
 
-
-
+$qry_team_SQL = "SELECT teamname, teamlead, status FROM authteam";
