@@ -74,6 +74,9 @@
 		elseif( $page="profile" ) {
 			if( $tag == "manageusers" ) {
 				include_once($profilePage . "profile/authusers.php");
+			}
+			elseif( $tag == "managegroups" ) {
+				include_once($profilePage . "profile/authgroups.php");
 			};
 		};
 	}
@@ -118,7 +121,7 @@
 							<h2>Manage</h2>
 							<ul>
 								<li><a href="'. $profilePage .'&tag=manageusers">User Profiles</a></li>
-								<li><a href="">Groups</a></li>
+								<li><a href="'. $profilePage.'&tag=managegroups">Groups</a></li>
 							</ul>
 						</li>
 						<li>
