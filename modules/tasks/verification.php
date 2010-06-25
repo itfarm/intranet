@@ -27,7 +27,7 @@
 			$row = mysql_fetch_array($query_verification);
 			session_start();
 			$_SESSION['username']  = $username;
-			Header("location:$homePage");
+			Header("location:$dashboardPage");
 		}
 		else
 		{
