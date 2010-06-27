@@ -42,6 +42,7 @@
 	};
 
 	function contents($page,$tag) {
+		global $profilePage, $root_dir;
 		global $db_host, $db_user, $db_password, $db_name;
 		$dbcnx = db_connection($db_host,$db_user,$db_password);
 		$db_select = db_select($db_name,$dbcnx);
@@ -73,19 +74,19 @@
 		}
 		elseif( $page="profile" ) {
 			if( $tag == "manageusers" || empty($tag) ) {
-				include_once($profilePage . "profile/authusers.php");
+				include_once("profile/authusers.php");
 			}
 			elseif( $tag == "managegroups" ) {
-				include_once($profilePage . "profile/authgroups.php");
+				include_once("profile/authgroups.php");
 			}
 			elseif( $tag == "changepassword" ) {
-				include_once($profilePage . "profile/changepassword.php");
+				include_once("profile/changepassword.php");
 			}
 			elseif( $tag == "autobiography" ) {
-				include_once($profilePage . "profile/autobiography.php");
+				include_once("profile/autobiography.php");
 			}
 			elseif( $tag == "location" ) {
-				include_once($profilePage . "profile/location.php");
+				include_once("profile/location.php");
 			};
 		};
 	}
