@@ -24,7 +24,6 @@
 		$DocumentDay=$_POST['DocumentDay'];
 		$DocumentMonth=$_POST['DocumentMonth'];	
 		$DocumentYear=$_POST['DocumentYear'];
-
 		$HasError = False;
 
 		// if any of the date fields filled out
@@ -79,7 +78,6 @@
 			
 			if (!move_uploaded_file($_FILES['upfile']['tmp_name'], $upload_path_and_file_name)) {
 				echo "File upload problem";
-				exit;
 			}
 			
 			// insert stuff
@@ -106,7 +104,7 @@
 											".$primary_author_id.",  
 											".$document_status.", 
 											".$document_viewable_by_id.", 
-											'".$_SESSION['user_id']."', 
+											'".$_SESSION['id']."', 
 											'".date("Y-m-d H:i:s")."', 
 											".$document_file_name.")"; 	
 			$InsertQueryRan = mysql_query($InsertSQL);
@@ -125,11 +123,11 @@
 			}
 			
 			if ($MainQuerySuccessful ) {
-				echo "<P>Document successfully uploaded</P>";
-				include 'viewdocuments.php';
-				exit;
+				$message="Document Successfully uploaded";
+				Header("location:$dashboardPage?message=$message");
 			} else {
-				echo "<P>Error uploading document</P>";
+				$message="Error in uploading document";
+				Header("location:$dashboardPage?message=$message");
 				// will continue to form section
 			}
 			
@@ -137,7 +135,7 @@
 	}
 ?>
 
-		<form enctype="multipart/form-data" action='<?php echo $_SERVER['PHP_SELF'].'?page='.$page.'&command=upload_document' ?>' method='POST' name='uploaddocumentform' >
+		<form enctype="multipart/form-data" action='<?php echo $_SERVER['PHP_SELF'] ?>?page=dashboard&tag=uploaddocs' method='POST' name='uploaddocumentform' >
 			<table align=center width="100%">
 				<tr><td>Document description:</td><td><textarea cols='50' rows='2' name='document_description' class="vform"></textarea></td></tr>
 				<tr><td>Document keywords:</td><td><textarea cols='50' rows='2' name='document_keywords' class="vform"></textarea></td></tr>
@@ -197,7 +195,10 @@
 									</select>
 									</td></tr>	
 				<tr><td>Browse for file:</td><td><input type="file" name="upfile" class="vform"></td></tr>					
-				<tr><td colspan=2><input type='submit' value='Create' class="button" /></td></tr>
+				<tr><td colspan=2>
+					<input type='hidden' name="upload_document" value='command' />
+					<input type='submit' value='Create' class="button" />
+				</td></tr>
 			</table>
 		</form>
 		
