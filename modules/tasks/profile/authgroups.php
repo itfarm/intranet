@@ -163,7 +163,7 @@ $listusers = mysql_query("
 <h4>Manage groups that are available in the system</h4>
 
 <table border="0" cellspacing="0" cellpadding="0" align="left" width=100%>
-<form name="AddTeam" method="Post" action="<?php echo $profilePage ?>&page=managegroups">
+<form name="AddTeam" method="Post" action="<?php echo $profilePage ?>&tag=managegroups">
 <input type="hidden" name="id" value="<?= $id?>">
   <tr valign="top"> 
     <td width=50%> 
@@ -192,7 +192,7 @@ $listusers = mysql_query("
 			
 				<tr class="adminRow<?=$i?>">
 			        <td class="smalltext">
-				        <a href="<?php echo $profilePage ?>&page=managegroups&act=Edit&id=<?=$row["id"]?>&teamname=<?=$row["teamname"]?>&teamlead=<?=$row["teamlead"]?>&status=<?=$row["status"]?>">
+				        <a href="<?php echo $profilePage ?>&tag=managegroups&act=Edit&id=<?=$row["id"]?>&teamname=<?=$row["teamname"]?>&teamlead=<?=$row["teamlead"]?>&status=<?=$row["status"]?>">
 						<?=$row["teamname"];?>
 						</a>
 					</td>
@@ -280,7 +280,7 @@ $listusers = mysql_query("
           </tr>
         </table><br>
 		
-		<table width="100%" border="0" cellspacing="1" cellpadding="4" align="center" class="adminTable">
+		<table width="100%" border="1" cellspacing="1" cellpadding="4" align="center" class="adminTable">
           <tr> 
             <td class="adminHeader">Group Members</td>
 			<td class="adminHeader" align=center>Privileges</td>
@@ -288,6 +288,7 @@ $listusers = mysql_query("
 		      
 		<?
 		  	// DISPLAY MEMBERS
+		  	echo mysql_num_rows($listusers);
 			if (mysql_num_rows($listusers)){
 				mysql_data_seek($listusers,0);
 			
@@ -303,58 +304,7 @@ $listusers = mysql_query("
 			  	while ($row) {
 					
 					$byteLength = 8;
-					$szBinPriv = str_pad(decbin($row['intPrivileges']), $byteLength, '0', STR_PAD_LEFT);
-					
-					/*
-					$memberlist = $row["uname"];
-					
-					$array = mysql_query("
-								SELECT *
-								FROM authuserteam_mapping
-								WHERE id = '".$row['id']."'
-							");
-							
-					$priv = mysql_fetch_array($array, MYSQL_ASSOC);
-					
-					$dav = decbin($priv['priv']);
-					
-					if(!isset($dav[2]))
-					{
-						$dav[2] = $dav[1];
-						$dav[1] = $dav[0];
-						$dav[0] = 0;
-					}
-					
-					$arr = strtok($dav, "");
-
-					$newtext = wordwrap($dav, 1, " ", 1);
-					$arr = explode(" ", $newtext);
-					*/
-					
-					/*
-					for($i = 0; $i < count($arr); $i++)
-					{
-						echo $arr[$i].'<br>';
-
-						//if($arr[$i]) $b = 'checked';
-					}
-					*/
-					
-					//echo $row['userID'].'<br>';
-					
-					/*
-						if($priv['priv'] 	 == 2) 	{	$b = 'checked'; $e = ''; 		$d = '';		}
-						elseif($priv['priv'] == 6) 	{	$b = 'checked'; $e = 'checked'; $d = '';		}
-						elseif($priv['priv'] == 7) 	{	$b = 'checked'; $e = 'checked'; $d = 'checked';	}
-					*/
-					
-					/*
-					echo '<pre>';
-					print_r($arr);
-					echo '</pre>';
-					*/
-					
-					if($i==1){$i=2;}else{$i=1;}
+					$szBinPriv = str_pad(decbin($row['intPrivileges']), $byteLength, '0', STR_PAD_LEFT);					if($i==1){$i=2;}else{$i=1;}
 		?>
 					 
 					<tr valign="middle" class="adminRow<?=$i?>">
