@@ -7,11 +7,12 @@
 	@include_once('config_imported/functions.inc.php');
 	// initialize host and database
     @include_once('config_imported/settings.inc.php');
-    
+    $search_string = $_POST['search_string'];
 ?>
 
-<form name="filter_form" method="Get" action="<?php echo $homePage ?>">
-	<input type="text" name="page" value="view_users" style="display:none" />	
+<form name="filter_form" method="POST" action="<?php echo $homePage ?>">
+	<input type="text" name="page" value="dashboard" style="display:none" />
+	<input type="text" name="tag" value="viewgroups" style="display:none" />
 	<input type="text" name="search_string"  value="<?php echo $search_string?>" class="vform"/>
 	<input type="submit" value="Filter" class="button" />
 </form>	
@@ -25,6 +26,9 @@
 	</thead>
 	<thead>
 		<?php
+			$qry_groups_SQL = $qry_groups_SQL . " WHERE group_name Like '%".$search_string."%' 
+						OR group_status Like '%".$search_string."%' 
+						";
 			$group_query = mysql_query( $qry_groups_SQL );
 			for( $incr = 0; $incr< mysql_num_rows($group_query); $incr++) {
 				$row = mysql_fetch_array( $group_query );
