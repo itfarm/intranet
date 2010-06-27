@@ -211,3 +211,4 @@ $qry_groups_SQL = "SELECT group_name, group_status FROM tbl_groups";
 $qry_roles_in_groups_SQL ="SELECT role_in_group_type FROM tbl_list_role_in_group_type";
 
 $qry_autobiography_SQL = "SELECT uname, name, surname, email, mobile, department FROM authuser";
+?>
