@@ -39,7 +39,8 @@ $qry_user_SQL = "SELECT authuser.*, qry_users_with_groups_active_list.group_memb
 	
 
 	<form name="filter_form" method="Get" action="<?php echo $homePage ?>">
-		<input type="text" name="page" value="view_users" style="display:none" />	
+		<input type="text" name="page" value="dashboard" style="display:none" />
+		<input type="text" name="tag" value="viewstaffs" style="display:none" />	
 		<input type="text" name="search_string"  value="<?php echo $search_string?>" class="vform"/>
 		<input type="submit" value="Filter" class="button" />
 	</form>	
@@ -66,8 +67,7 @@ $qry_user_SQL = "SELECT authuser.*, qry_users_with_groups_active_list.group_memb
 
 		
 		if (mysql_num_rows($qry_user_result) == 0) {
-			echo "</tbody></table><P  class='centered'>No staff meet the filter criteria</P>";
-			exit;	
+			echo "</tbody></table><P  class='centered'>No staff meet the filter criteria</P>";	
 		}	
 		While ($qry_user_row = mysql_fetch_array($qry_user_result)) {
 			if ($qry_user_row['email'] <> '') {
