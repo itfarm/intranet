@@ -9,7 +9,6 @@
 	$szSection = 'Users & Groups';
 	$szTitle = 'User Manager';
 	$szSubSection = 'User Manager';
-	echo $root_dir;
 	@include_once ('auth.php');
 	
 	$user = new pmo_auth();
@@ -308,14 +307,16 @@ if ($action == "Add New") {
     <td width=50%> 
 
 	  	
-		<table class="adminTable" width="100%" border="0" cellspacing="1" cellpadding="4" align="center">
-        <tr> 
-          <td class="adminHeader vsmalltext" align="center">Username</td>
-		  <td class="adminHeader vsmalltext" align="center">Status</td>
-		  <td class="adminHeader vsmalltext" align="center">Last Login</td>
-		  <td class="adminHeader vsmalltext" align="center">Count</td>
-        </tr>
-
+		<table class="adminTable" width="100%" border="1" cellspacing="1" cellpadding="4" align="left">
+		<thead>
+			<tr> 
+			  <th class="adminHeader vsmalltext" align="left">Username</td>
+			  <th class="adminHeader vsmalltext" align="left">Status</td>
+			  <th class="adminHeader vsmalltext" align="left">Last Login</td>
+			  <th class="adminHeader vsmalltext" align="left">Count</td>
+			</tr>
+        </thead>
+        <tbody>
 		<?
 			// Fetch rows from AuthUser table and display ALL users
 			
@@ -328,7 +329,7 @@ if ($action == "Add New") {
 				?>
 				<tr class="adminRow<?=$i?>">
 		        	<td class="smalltext">
-						<a href="<?php echo $profilePage ?>"&tag=manageusers&act=Edit&id=<?=$row['id']?>"><?=$row['name']?>&nbsp;<?=$row['surname']?></a>
+						<a href="<?php echo $profilePage ?>&tag=manageusers&act=Edit&id=<?=$row['id']?>"><?=$row['name']?>&nbsp;<?=$row['surname']?></a>
 		       		</td>
 		        	<td class="smalltext" align="center">
 						<?=$row['status']?>
@@ -346,10 +347,9 @@ if ($action == "Add New") {
 			}
 		?>
      	<tr><td colspan=4 align=right><input type="submit" name="action" value="Add New" class="button"></td></tr>
-	  
+	  </tbody>
 	  </table>
 	  
-      <br>
       </td>
 	<td width=15>&nbsp;</td>
     <td> 
