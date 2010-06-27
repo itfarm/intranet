@@ -1,4 +1,5 @@
-<?php 
+<?php
+	$current_user_id = $_SESSION['id'];
 	@include_once('config.php');
 	@include_once('config_imported/connect.inc.php');
 	@include_once('config_imported/coresql.inc.php');
@@ -8,9 +9,27 @@
 	// initialize host and database
     @include_once('config_imported/settings.inc.php');
 	
+	function get_task_classification($task_classification_id) {
+		$task_classification_string="SELECT task_classification FROM tbl_setup_task_classifications WHERE task_classification_id = '" . $task_classification_id ."'";
+		$task_classification_query = mysql_query($task_classification_string);
+		$task_classification = mysql_fetch_array($task_classification_query) or die( mysql_error() );
+		return $task_classification['task_classification'];
+	};
+	function get_workload_classification($workload_classification_id) {
+		$workload_classification_string="SELECT workload_classification FROM tbl_setup_workload_classifications WHERE workload_classification_id = '" . $workload_classification_id ."'";
+		$workload_classification_query = mysql_query($workload_classification_string);
+		$workload_classification = mysql_fetch_array($workload_classification_query) or die( mysql_error() );
+		return $workload_classification['workload_classification'];
+	};
+	function get_priority_classification($priority_classification_id) {
+		$priority_classification_string="SELECT priority_classification FROM tbl_setup_priority_classifications WHERE priority_classification_id = '" . $priority_classification_id ."'";
+		$priority_classification_query = mysql_query($priority_classification_string);
+		$priority_classification = mysql_fetch_array($priority_classification_query) or die( mysql_error() );
+		return $priority_classification['priority_classification'];
+	};
+
 	// security
 	//	auth_checkgroup_and_exit('Admin');
-	
 	// include the header
 	global $szSection, $szSubSection, $szTitle, $additionalStyleSheet,$szHeaderPath,$szFooterPath;
 
@@ -59,7 +78,6 @@
 
 	}
 
-
 $qry_task_SQL = "SELECT tbl_tasks.*, 
 						ever_created_by_user, 
 						ever_assigned_by_user, 
@@ -106,7 +124,8 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 					WHERE ".$condition_open_close." AND ".$condition_relationship." 
 					ORDER BY currently_assigned_to_user desc, currently_assigned_to_user_as_group_leader desc,
 					currently_assigned_to_user_as_group_member, priority_classification_id, deadline";
-
+					
+	echo "<p>". $_GET['message'] . "</p>";
 ?>
 
 	
@@ -132,8 +151,7 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 			</td></tr>
 	</table>
 </form>	
-
-		
+	
 	<table class="sorted" style="font-size:90%">
 			<COL><COL><COL><COL><COL><COL><COL><COL>
 			<?php
@@ -161,16 +179,7 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 				<th id="closuredate">Date closed</th>
 				<?php
 				}
-			?>
-			<th id="ever_created_by_user" class="ever_created_by_user1"> </th>	
-			<th id="ever_assigned_by_user" class="ever_assigned_by_user1"> </th>
-			<th id="ever_referred_to_user" class="ever_referred_to_user1"> </th>
-			<th id="ever_referred_to_user_as_group_leader" class="ever_referred_to_user_as_group_leader1"> </th>
-			<th id="ever_referred_to_user_as_group_member" class="ever_referred_to_user_as_group_member1"> </th>
-			<th id="currently_assigned_to_user" class="currently_assigned_to_user1"> </th>
-			<th id="currently_assigned_to_user_as_group_leader" class="currently_assigned_to_user_as_group_leader1"> </th>
-			<th id="currently_assigned_to_user_as_group_member" class="currently_assigned_to_user_as_group_member1"> </th>
-			
+			?>	
 	</tr>
 	</thead>
 	<tbody>
@@ -179,83 +188,32 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 
 	if (!$qry_task_result) {
 			exit('<p>Error performing task query: '.mysql_error().'</p>');
-	} else {
-		//$i = 0;
+	}
+	else {
 		
 		if (mysql_num_rows($qry_task_result) == 0) {
 			echo "<P  class='centered'>No tasks meet the filter criteria</P>";
 			//exit;	
-		}	
-		
-		While ($qry_task_row = mysql_fetch_array($qry_task_result)) {
-			// Temp:To be implemented later.
-			//echo '<tr onClick="document.location.href=\'../admin/index.php?task_id='.$qry_task_row['task_id'].'&page=process_task\'" >';
-			?>
-
-			<td axis="string" headers="desc">
-				<?php echo $qry_task_row['task_description'] ?></td>
-			<td axis="string" headers="classification">
-				<?php echo $qry_task_row['task_classification'] ?></td>
-			<td axis="string" headers="workload" 
-				title="<?php echo $qry_task_row['workload_classification_id'] ?>">
-				<?php echo $qry_task_row['workload_classification'] ?></td>
-			<td axis="string" headers="priority" 
-				title="<?php echo $qry_task_row['priority_classification_id'] ?>">
-				<?php echo $qry_task_row['priority_classification'] ?></td>			
-			<td axis="date" headers="deadline" 
-				title="<?php echo NullToLateDate(substr($qry_task_row['deadline'],0,10)) ?>">
-				<?php echo $qry_task_row['deadline_formatted'] ?></td>
-			<td axis="date" headers="datecreated" 
-				title="<?php echo NullToEarlyDate(substr($qry_task_row['date_created'],0,10)) ?>">
-				<?php echo $qry_task_row['date_created_formatted'] ?></td>
-			<td axis="string" headers="currentlyassignedto">
-				<?php echo currently_assigned_to($qry_task_row['task_id'], "name") ?></td>
-			<td axis="number" headers="percentcompleted" style="text-align:right" 
-				title="<?php echo $qry_task_row['percent_completed'] ?>">
-				<?php echo $qry_task_row['percent_completed'] ?>%</td>
-	
-			<?php
-				if ($openclosestatus <> "open") {
-				?>
-					<td axis="string" headers="closure">
-						<?php echo $qry_task_row['task_closure_classification'] ?></td>
-					<td axis="date" headers="closuredate" title="
-						<?php echo NullToEarlyDate(substr($qry_task_row['date_closed'],0,10)) ?>">
-						<?php echo $qry_task_row['date_closed_formatted'] ?></td>
-				<?php
-				}
-			?>
-				
-			<td headers="ever_created_by_user" 
-				class="ever_created_by_user<?php echo $qry_task_row['ever_created_by_user'] ?>"
-				title="-<?php echo $qry_task_row['ever_created_by_user'] ?>"> <?php echo $qry_task_row['ever_created_by_user'] ?> </td>
-			<td headers="ever_assigned_by_user" 
-				class="ever_assigned_by_user<?php echo $qry_task_row['ever_assigned_by_user'] ?>"
-				title="-<?php echo $qry_task_row['ever_assigned_by_user'] ?>"> </td>
-			<td headers="ever_referred_to_user" 
-				class="ever_referred_to_user<?php echo $qry_task_row['ever_referred_to_user'] ?>"
-				title="-<?php echo $qry_task_row['ever_referred_to_user'] ?>"> </td>
-			<td headers="ever_referred_to_user_as_group_leader" 
-				class="ever_referred_to_user_as_group_leader<?php echo $qry_task_row['ever_referred_to_user_as_group_leader'] ?>"
-				title="-<?php echo $qry_task_row['ever_referred_to_user_as_group_leader'] ?>"> </td>
-			<td headers="ever_referred_to_user_as_group_member" 
-				class="ever_referred_to_user_as_group_member<?php echo $qry_task_row['ever_referred_to_user_as_group_member'] ?>"
-				title="-<?php echo $qry_task_row['ever_referred_to_user_as_group_member'] ?>"> </td>
-			<td headers="currently_assigned_to_user" 
-				class="currently_assigned_to_user<?php echo $qry_task_row['currently_assigned_to_user'] ?>"
-				title="-<?php echo $qry_task_row['currently_assigned_to_user'] ?>"> </td>
-			<td headers="currently_assigned_to_user_as_group_leader" 
-				class="currently_assigned_to_user_as_group_leader<?php echo $qry_task_row['currently_assigned_to_user_as_group_leader'] ?>"
-				title="-<?php echo $qry_task_row['currently_assigned_to_user_as_group_leader'] ?>"> </td>
-			<td headers="currently_assigned_to_user_as_group_member" 
-				class="currently_assigned_to_user_as_group_member<?php echo $qry_task_row['currently_assigned_to_user_as_group_member'] ?>"
-				title="-<?php echo $qry_task_row['currently_assigned_to_user_as_group_member'] ?>"> </td>
-			
-			</tr>
-
-			
-			<?php
 		}
+		else {
+			for( $incr=0; $incr< mysql_num_rows($qry_task_result); $incr++) {
+				$row = mysql_fetch_array($qry_task_result);
+				echo "<tr>";
+					echo "<td>". $row['task_description'] ."</td>";
+					echo "<td>". get_task_classification( $row['task_classification_id'] ) . "</td>";
+					echo "<td>". get_workload_classification( $row['workload_classification_id'] ) ."</td>";
+					echo "<td>". get_priority_classification( $row['priority_classification_id'] ) ."</td>";
+					echo "<td>". $row['deadline'] ."</td>";
+					echo "<td>". $row['created_by'] ."</td>";
+					echo "<td>". $row['date_created'] ."</td>";
+					echo "<td>". $row['percent_completed'] ."</td>";
+					if( $openclosestatus <> "open" ) {
+						echo "<td>". $row['task_closure_classification'] . "<br/>";
+						echo "<td>". $row['date_closed_formatted'] . "<br/>";
+					};
+				echo "</tr>";
+			};
+		};
 	}
 ?>
 </tbody>
