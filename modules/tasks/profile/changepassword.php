@@ -15,9 +15,9 @@
 	
 
 ?>
-<form name="changepwd" method="post" action="changepwd.php">
-<input type="hidden" name="id" value="<?=$_SESSION['userInfo']['id']?>">
-<input type="hidden" name="username" value="<?=$_SESSION['userInfo']['uname']?>">
+<form name="changepwd" method="post" action="<?php echo $profilePage ?>&tag=changepassword">
+<input type="hidden" name="id" value="<?=$_SESSION['id']?>">
+<input type="hidden" name="username" value="<?=$_SESSION['username']?>">
 <table class="adminTable" width="100%" border="0" cellspacing="1" cellpadding="4" align="center">
         <tr> 
           <td colspan="2" class="adminHeader">Change Password</td>
@@ -33,7 +33,7 @@
   
   <tr valign="middle"> 
           <td class="adminRow1 smalltext" valign=top>Username</td>
-          <td class="adminRow1 smalltext header3"><?=$_SESSION['userInfo']['uname']?><br></td>
+          <td class="adminRow1 smalltext header3"><?=$_SESSION['username']?><br></td>
         </tr>
 
   
