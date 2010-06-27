@@ -38,8 +38,9 @@ $qry_document_SQL = "SELECT tbl_documents.*, authuser.name, authuser.surname, tb
 ?>
 	
 
-	<form name="filter_form" method="Get" action="index.php">
-		<input type="text" name="page" value="view_documents" style="display:none" />	
+	<form name="filter_form" method="Get" action="<?php echo $dashboardPage?>">
+		<input type="text" name="page" value="dashboard" style="display:none" />
+		<input type="text" name="tag" value="viewdocs" style="display:none" />
 		<input type="text" name="search_string" value="<?php echo $search_string?>" class="vform" />
 		<input type="submit" value="Filter" class="button"/>
 	</form>	
@@ -47,18 +48,18 @@ $qry_document_SQL = "SELECT tbl_documents.*, authuser.name, authuser.surname, tb
 	<table class="sorted" style="font-size:90%">
 	<thead>
 	<tr>
-			<th id="desc">Document description</th>
-			<th id="keywords">Keywords</th>
-			<th id="file">File</th>
-			<th id="documentdate">Date</th>
-			<th id="classification">Classification</th>
-			<th id="subjectareas">Subject areas</th>
-			<th id="author">Primary author</th>
-			<th id="uploadedby">Uploaded by</th>
-			<th id="dateuploaded">Date uploaded</th>
-			<th id="status">Status</th>
-			<th id="viewableby">Viewable by</th>		
-			<th id="extension">File type</th>
+			<th>Document description</th>
+			<th>Keywords</th>
+			<th>File</th>
+			<th>Date</th>
+			<th>Classification</th>
+			<th>Subject areas</th>
+			<th>Primary author</th>
+			<th>Uploaded by</th>
+			<th>Date uploaded</th>
+			<th>Status</th>
+			<th>Viewable by</th>		
+			<th>File type</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -76,6 +77,7 @@ $qry_document_SQL = "SELECT tbl_documents.*, authuser.name, authuser.surname, tb
 		}	
 		//echo $uploaddirrel;
 		//echo $uploaddir;
+
 		While ($qry_document_row = mysql_fetch_array($qry_document_result)) {
 			//$i++;
 		//class="d'.($i & 1).'"			
