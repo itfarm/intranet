@@ -73,60 +73,56 @@ $qry_document_SQL = "SELECT tbl_documents.*, authuser.name, authuser.surname, tb
 		
 		if (mysql_num_rows($qry_document_result) == 0) {
 			echo "</tbody></table><P  class='centered'>No documents meet the filter criteria</P>";
-			exit;	
-		}	
-		//echo $uploaddirrel;
-		//echo $uploaddir;
-
-		While ($qry_document_row = mysql_fetch_array($qry_document_result)) {
-			//$i++;
-		//class="d'.($i & 1).'"			
-			$filename = $qry_document_row['document_file_name'];
-			$extension =  substr($filename,strrpos($filename,"."));
-		
+		}
+		else {
+			While ($qry_document_row = mysql_fetch_array($qry_document_result)) {
+				//$i++;
+			//class="d'.($i & 1).'"			
+				$filename = $qry_document_row['document_file_name'];
+				$extension =  substr($filename,strrpos($filename,"."));
 			
-			echo '<tr onClick="window.location=\''.$uploaddirrel.$filename.'\'">';
-			?>
+				
+				echo '<tr onClick="window.location=\''.$uploaddirrel.$filename.'\'">';
+				?>
 
-			<td axis="string" headers="desc">
-				<?php echo $qry_document_row['document_description'] ?></td>
-			<td axis="string" headers="keywords">
-				<?php echo $qry_document_row['document_keywords'] ?></td>
-			<td axis="string" headers="file">
-				<?php echo $qry_document_row['file_desc'] ?></td>
-			<td axis="date" headers="documentdate" 
-				title="<?php echo NullToLateDate(substr($qry_document_row['document_date'],0,10)) ?>">
-				<?php echo $qry_document_row['document_date_formatted'] ?></td>
-			<td axis="string" headers="classification">
-				<?php echo $qry_document_row['document_classification'] ?></td>
-			<td axis="string" headers="subjectareas">
-				<?php echo $qry_document_row['subject_area_list'] ?></td>		
-			<td axis="string" headers="author"> 
-				<?php echo $qry_document_row['user_group_entity_description'] ?></td>			
-			<td axis="string" headers="uploadedby">
-				<?php echo $qry_document_row['uploaded_by_desc'] ?></td>
-			<td axis="date" headers="dateuploaded" 
-				title="<?php echo substr($qry_task_row['date_uploaded'],0,10) ?>">
-				<?php echo $qry_document_row['date_uploaded_formatted'] ?></td>
-			<td axis="string" headers="status">
-				<?php echo $qry_document_row['document_status'] ?></td>
-			<td axis="string" headers="viewableby">
-				<?php echo $qry_document_row['document_viewable_by'] ?></td>
-			<td axis="string" headers="extension">
-				<?php if($extension==".pdf"){ ?>
-				           <img border="0" src="<?php $szRootURL?>/images/icons/pdf.gif" width="30" height="30">
-				<?php }elseif($extension==".doc"){?>
-				           <img border="0" src="<?php $szRootURL?>/images/icons/doc.gif" width="30" height="30">
-				<?php }elseif($extension==".ppt"){?>
-				           <img border="0" src="<?php $szRootURL?>/images/icons/ppt.gif" width="30" height="30">
-				<?php }elseif($extension==".xls"){?>
-				           <img border="0" src="<?php $szRootURL?>/images/icons/xls.gif" width="30" height="30">
-				<?php }?>
-				</td>
-			</tr>
-
-			
-			<?php
+				<td axis="string" headers="desc">
+					<?php echo $qry_document_row['document_description'] ?></td>
+				<td axis="string" headers="keywords">
+					<?php echo $qry_document_row['document_keywords'] ?></td>
+				<td axis="string" headers="file">
+					<?php echo $qry_document_row['file_desc'] ?></td>
+				<td axis="date" headers="documentdate" 
+					title="<?php echo NullToLateDate(substr($qry_document_row['document_date'],0,10)) ?>">
+					<?php echo $qry_document_row['document_date_formatted'] ?></td>
+				<td axis="string" headers="classification">
+					<?php echo $qry_document_row['document_classification'] ?></td>
+				<td axis="string" headers="subjectareas">
+					<?php echo $qry_document_row['subject_area_list'] ?></td>		
+				<td axis="string" headers="author"> 
+					<?php echo $qry_document_row['user_group_entity_description'] ?></td>			
+				<td axis="string" headers="uploadedby">
+					<?php echo $qry_document_row['uploaded_by_desc'] ?></td>
+				<td axis="date" headers="dateuploaded" 
+					title="<?php echo substr($qry_task_row['date_uploaded'],0,10) ?>">
+					<?php echo $qry_document_row['date_uploaded_formatted'] ?></td>
+				<td axis="string" headers="status">
+					<?php echo $qry_document_row['document_status'] ?></td>
+				<td axis="string" headers="viewableby">
+					<?php echo $qry_document_row['document_viewable_by'] ?></td>
+				<td axis="string" headers="extension">
+					<?php if($extension==".pdf"){ ?>
+							   <img border="0" src="<?php $szRootURL?>/images/icons/pdf.gif" width="30" height="30">
+					<?php }elseif($extension==".doc"){?>
+							   <img border="0" src="<?php $szRootURL?>/images/icons/doc.gif" width="30" height="30">
+					<?php }elseif($extension==".ppt"){?>
+							   <img border="0" src="<?php $szRootURL?>/images/icons/ppt.gif" width="30" height="30">
+					<?php }elseif($extension==".xls"){?>
+							   <img border="0" src="<?php $szRootURL?>/images/icons/xls.gif" width="30" height="30">
+					<?php }?>
+					</td>
+				</tr>
+				<?php
+			}
 		}
 	}
 ?>
