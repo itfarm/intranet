@@ -71,7 +71,7 @@
 		if (!$HasError) {
 
 			$InsertSQL = "INSERT INTO tbl_tasks (task_id, task_description, task_classification_id, workload_classification_id, priority_classification_id, deadline, assignee_can_close, created_by, date_created, percent_completed) "; 		
-			$InsertSQL = $InsertSQL." VALUES (".$task_id.", ".$task_description.", ".$task_classification_id.",  ".$workload_classification_id.",  ".$priority_classification_id.", ".$deadline.", ".$assignee_can_close.", '".$_SESSION['user_id']."', '".date("Y-m-d H:i:s")."', 0)"; 
+			$InsertSQL = $InsertSQL." VALUES (".$task_id.", ".$task_description.", ".$task_classification_id.",  ".$workload_classification_id.",  ".$priority_classification_id.", ".$deadline.", ".$assignee_can_close.", '".$_SESSION['id']."', '".date("Y-m-d H:i:s")."', 0)"; 
 
 			//echo $InsertSQL;
 			
@@ -82,16 +82,18 @@
 			//echo mysql_affected_rows();
 			
 			if ($InsertQueryRan and mysql_affected_rows() == 1 ) {
-				echo "<P>Task successfully created</P>";
-				include 'processtask.php';
-				exit;
+				//include 'processtask.php';
+				$message="Task Successfully created";
+				Header("location:$dashboardPage?message=$message");
 			} else {
-				echo "<P>Error creating task</P>";
+				$message="Error in creating the task";
+				Header("location:$dashboardPage?message=$message");
 				// will continue to form section
 			}
 			
 		}
 	}
+	else {
 ?>
 
 		<form action='<?php echo $_SERVER['PHP_SELF'].'?page='.$page.'&tag=createtask' ?>' method='POST' name='createtaskform' >
@@ -141,7 +143,11 @@
 										 ?>
 									</select>
 									</td></tr>	
-				<tr><td colspan=2><input type='submit' value='Create' class="button" /></td></tr>
+				<tr>
+				<td colspan=2>
+				<input type="hidden" name="command" value="create_task"/>
+				<input type='submit' value='Create' class="button" />
+				</td></tr>
 			</table>
 		</form>
 		
@@ -150,4 +156,6 @@
 		frmvalidator.addValidation("task_description","req","Please enter a task description");
 		</script>
 
-
+<?php
+}
+?>
