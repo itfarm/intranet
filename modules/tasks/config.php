@@ -48,28 +48,28 @@
 		$db_select = db_select($db_name,$dbcnx);
 		if( $page =="dashboard" || empty($page) ) {
 			if( $tag == "viewtasks" || empty($tag) ) {
-				include_once($root_dir . "dashboard/viewtasks.php");
+				include_once("dashboard/viewtasks.php");
 			}
 			elseif( $tag == "createtask" ) {
-				include_once($root_dir . "dashboard/createtask.php");
+				include_once("dashboard/createtask.php");
 			}
 			elseif( $tag == "viewdocs" ) {
-				include_once($root_dir . "dashboard/viewdocuments.php");
+				include_once("dashboard/viewdocuments.php");
 			}
 			elseif( $tag == "uploaddocs" ) {
-				include_once($root_dir . "dashboard/uploaddocuments.php");
+				include_once("dashboard/uploaddocuments.php");
 			}
 			elseif( $tag == "viewstaffs" ) {
-				include_once($root_dir . "dashboard/viewstaffs.php");
+				include_once("dashboard/viewstaffs.php");
 			}
 			elseif( $tag == "viewteams" ) {
-				include_once($root_dir . "dashboard/viewteams.php");
+				include_once("dashboard/viewteams.php");
 			}
 			elseif( $tag == "viewgroups" ) {
-				include_once( $root_dir . "dashboard/viewgroups.php");
+				include_once("dashboard/viewgroups.php");
 			}
 			elseif( $tag == "viewroles" ) {
-				include_once( $root_dir . "dashboard/viewroles.php");
+				include_once("dashboard/viewroles.php");
 			};
 		}
 		elseif( $page="profile" ) {
