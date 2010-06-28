@@ -12,6 +12,7 @@
 	$loginPage= $root_dir . "index.php";
 	$dashboardPage= $root_dir . "main.php?page=dashboard";
 	$profilePage = $root_dir . "main.php?page=profile";
+	$settingsPage = $root_dir . "main.php?page=settings";
 	$logoutPage= $root_dir . "logout.php";
 
 	// Re-used page contents functions
@@ -42,10 +43,20 @@
 	};
 
 	function contents($page,$tag) {
-		global $profilePage, $root_dir;
+		global $profilePage,$dashboardPage, $settingsPage, $root_dir;
 		global $db_host, $db_user, $db_password, $db_name;
 		$dbcnx = db_connection($db_host,$db_user,$db_password);
 		$db_select = db_select($db_name,$dbcnx);
+		if( $page =="settings") {
+			if( $tag == "task_classification" || empty($tag) ) {
+				if(empty($tag)) {
+					$tag = "task_classification";
+				}
+				echo $tag;
+				include_once("settings/settings.php");
+			}
+		};
+
 		if( $page =="dashboard" || empty($page) ) {
 			if( $tag == "viewtasks" || empty($tag) ) {
 				include_once("dashboard/viewtasks.php");
@@ -88,10 +99,10 @@
 			elseif( $tag == "location" ) {
 				include_once("profile/location.php");
 			};
-		};
+		}
 	}
 	function sidebar($page) {
-		global $dashboardPage, $profilePage;
+		global $dashboardPage, $profilePage, $settingsPage;
 		if( $page == "dashboard" || empty($page)) {
 			echo '
 				<div id="sidebar">
@@ -168,8 +179,8 @@
 							<li>
 								<h2>Tasks</h2>
 								<ul>
-									<li><a href="">Classes of tasks</a></li>
-									<li><a href="">Priorities of tasks</a></li>
+									<li><a href="'. $settingsPage .'&tag=task_classification">Classes of tasks</a></li>
+									<li><a href="'. $settingsPage .'&tag=priority_classification">Priorities of tasks</a></li>
 									<li><a href="">Workloads ranges</a></li>
 									<li><a href="">Referrals for tasks</a></li>
 								</ul>
@@ -196,7 +207,7 @@
 		else {
 			echo '
 				<div id="sidebar">
-
+					<h2>PAGE NOT FOUND</h2>
 				</div>
 			';
 		};
