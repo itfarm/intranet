@@ -30,13 +30,13 @@
 					for($incr = 0; $incr <5; $incr++ ) {
 						// Mark the current class
 						if( $current == $url[$incr][0] ) {
-							$class = "current_page";
+							$class = "current_page_item";
 						}
 						else {
 							$class = "";
 						}
 						// Display the submenu links
-						echo '<li><a href="' . $url[$incr][1] . '" class="' .$class . '">' . $url[$incr][0] . '</a></li>';
+						echo '<li class="' .$class . '"><a href="' . $url[$incr][1] . '">' . $url[$incr][0] . '</a></li>';
 					};
 		echo '		</ul>
 				</div>';
@@ -105,7 +105,6 @@
 		global $dashboardPage, $profilePage, $settingsPage;
 		if( $page == "dashboard" || empty($page)) {
 			echo '
-				<div id="sidebar-right" class="sidebar">
 					<ul>
 						<li>
 							<h2>Tasks</h2>
@@ -131,12 +130,10 @@
 							</ul>
 						</li>
 					</ul>
-				</div>
 			';
 		}
 		elseif( $page == "profile" ) {
 			echo '
-				<div id="sidebar-right" class="sidebar">
 					<ul>
 						<li>
 							<h2>Manage</h2>
@@ -154,12 +151,10 @@
 							</ul>
 						</li>
 					</ul>
-				</div>
 			';
 		}
 		elseif( $page == "admin" ) {
 			echo '
-				<div id="sidebar-right" class="sidebar">
 						<ul>
 							<li>
 								<h2>Manage</h2>
@@ -169,12 +164,10 @@
 								</ul>
 							</li>
 						</ul>
-				</div>
 				';
 		}
 		elseif( $page == "settings") {
 			echo '
-				<div id="sidebar-right" class="sidebar">
 						<ul>
 							<li>
 								<h2>Tasks</h2>
@@ -201,14 +194,11 @@
 								</ul>
 							</li>
 						</ul>
-				</div>
 			';
 		}
 		else {
 			echo '
-				<div id="sidebar-right" class="sidebar">
 					<h2>PAGE NOT FOUND</h2>
-				</div>
 			';
 		};
 	};
