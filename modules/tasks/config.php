@@ -25,12 +25,12 @@
 		$url[4][0] = "audit trail";		$url[4][1] = $root_dir . "main.php?page=history";
 
 		echo '	<div id="submenu">
-					<ul>';
+					<ul id="main">';
 					// Generate submenu links
 					for($incr = 0; $incr <5; $incr++ ) {
 						// Mark the current class
 						if( $current == $url[$incr][0] ) {
-							$class = "current";
+							$class = "current_page";
 						}
 						else {
 							$class = "";
@@ -53,7 +53,7 @@
 					$tag = "task_classification";
 				}
 				echo $tag;
-				include_once("settings/settings.php");
+				//include_once("settings/settings.php");
 			}
 		};
 
@@ -105,7 +105,7 @@
 		global $dashboardPage, $profilePage, $settingsPage;
 		if( $page == "dashboard" || empty($page)) {
 			echo '
-				<div id="sidebar">
+				<div id="sidebar-right" class="sidebar">
 					<ul>
 						<li>
 							<h2>Tasks</h2>
@@ -136,7 +136,7 @@
 		}
 		elseif( $page == "profile" ) {
 			echo '
-				<div id="sidebar">
+				<div id="sidebar-right" class="sidebar">
 					<ul>
 						<li>
 							<h2>Manage</h2>
@@ -159,7 +159,7 @@
 		}
 		elseif( $page == "admin" ) {
 			echo '
-				<div id="sidebar">
+				<div id="sidebar-right" class="sidebar">
 						<ul>
 							<li>
 								<h2>Manage</h2>
@@ -174,7 +174,7 @@
 		}
 		elseif( $page == "settings") {
 			echo '
-				<div id="sidebar">
+				<div id="sidebar-right" class="sidebar">
 						<ul>
 							<li>
 								<h2>Tasks</h2>
@@ -206,7 +206,7 @@
 		}
 		else {
 			echo '
-				<div id="sidebar">
+				<div id="sidebar-right" class="sidebar">
 					<h2>PAGE NOT FOUND</h2>
 				</div>
 			';
