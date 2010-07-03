@@ -7,7 +7,6 @@
 	@include_once('config_imported/functions.inc.php');
 	// initialize host and database
     @include_once('config_imported/settings.inc.php');
-	
 	# include the header
 	global $szSection, $szSubSection, $szTitle, $additionalStyleSheet,$szHeaderPath,$szFooterPath;
 
@@ -84,16 +83,15 @@
 			if ($InsertQueryRan and mysql_affected_rows() == 1 ) {
 				//include 'processtask.php';
 				$message="Task Successfully created";
-				Header("location:$dashboardPage?message=$message");
+				echo "<p>$message</p>";
 			} else {
 				$message="Error in creating the task";
-				Header("location:$dashboardPage?message=$message");
+				echo "<p>$message</p>";
 				// will continue to form section
 			}
 			
 		}
 	}
-	else {
 ?>
 
 		<form action='<?php echo $_SERVER['PHP_SELF'].'?page='.$page.'&tag=createtask' ?>' method='POST' name='createtaskform' >
@@ -155,7 +153,3 @@
 		var frmvalidator = new Validator("createtaskform");
 		frmvalidator.addValidation("task_description","req","Please enter a task description");
 		</script>
-
-<?php
-}
-?>
