@@ -1,9 +1,15 @@
 <?php
-
+	@include_once('config.php');
+	@include_once('config_imported/connect.inc.php');
+	@include_once('config_imported/coresql.inc.php');
+	@include_once('config_imported/functionsdate.inc.php');
+	@include_once('config_imported/functionsgeneral.inc.php');
+	@include_once('config_imported/functions.inc.php');
+	// initialize host and database
+    @include_once('config_imported/settings.inc.php');
 	//*****************************************************************
 	//Process commands
 	//*****************************************************************
-	
 	$setup = $tag;
 	$table_name = 'tbl_setup_'.$setup.'s';
 	$id_field_name = $setup.'_id';
@@ -37,8 +43,6 @@
 		$id=PrepareStringForInsert($_POST['id']);
 		$description=PrepareStringForInsert($_POST['description']);
 		$status="'Active'";
-		
-		
 		
 		$HasError = False;
 
@@ -107,41 +111,38 @@
 		}
 		
 	} 
+	$status_option = $_POST['status_option'];
 
-		$status_option = $_GET['status_option'];
-
-		// default values
-		if ($status_option == "") {
-			$status_option = "Active";
-									
-		}
+	// default values
+	if ($status_option == "") {
+		$status_option = "Active";
+								
+	}
 ?>
-		<form name="filter_form" method="Get" action="<?php echo $_SERVER['PHP_SELF']?>">
-		<input type="text" name="page" value="<?php echo $page ?>" style="display:none" class="vform"/>
-		<input type="text" name="setup" value="<?php echo $setup ?>" style="display:none" class="vform" />
-		<table>		
-			<tr><td>Status:</td>
-					<td><select name="status_option" size=1 class="vform"  >
-								<?php
-									echo DropDownLookup('tbl_list_group_user_status', 'group_user_status', 'group_user_status', 'Desc', $status_option, false);
-								?>							
-					</select>
-					</td>
-					
-					<?php 
-					if ($extra_filter_option == true) {
-						echo '<td>'.str_replace('_', ' ', $parent_desc_name).':</td>';
-						echo '<td><select name="parent_id" size=1  >';
-						echo DropDownLookupFiltered($parent_table_name, $parent_id_name, $parent_desc_name, "status = 'active'", 'Desc', $parent_id);						
-						echo '</select>';
-						echo '</td>';
-					}
-					?>
-					
-					<td><input type="submit" value="Filter" class="button" /></td>
-			</tr>
-		</table>
 
+		<form name="filter_form" method="post" action="<?php echo $settingsPage?>">
+			<table>		
+				<tr><td>Status:</td>
+						<td><select name="status_option" size=1 class="vform"  >
+									<?php
+										echo DropDownLookup('tbl_list_group_user_status', 'group_user_status', 'group_user_status', 'Desc', $status_option, false);
+									?>							
+						</select>
+						</td>
+						
+						<?php 
+						if ($extra_filter_option == true) {
+							echo '<td>'.str_replace('_', ' ', $parent_desc_name).':</td>';
+							echo '<td><select name="parent_id" size=1  >';
+							echo DropDownLookupFiltered($parent_table_name, $parent_id_name, $parent_desc_name, "status = 'active'", 'Desc', $parent_id);						
+							echo '</select>';
+							echo '</td>';
+						}
+						?>
+						
+						<td><input type="submit" value="Filter" class="button" /></td>
+				</tr>
+			</table>
 		</form>	
 <?php 
 	//*****************************************************************
@@ -165,7 +166,7 @@
 				if (!($extra_filter_option == true && $parent_id == '')) {
 					// no option to  create new classifcation if parent id supposed to be chosen but not chosen
 
-					$action_target = $_SERVER['PHP_SELF'].'?page='.$page.'&setup='.$setup.'&command=create_configuration';
+					$action_target = $settingsPage ."&tag=$setup&command=create_configuration";
 					if ($extra_filter_option == true) { 
 						$action_target = $action_target.'&parent_id='.$parent_id;
 					}
