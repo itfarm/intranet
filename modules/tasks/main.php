@@ -31,7 +31,7 @@ Website: http://bongolinux.webs.com/
 	<div id="header">
 		<div id="logo">
 			<h1><a href=""><span>Intranet</span></a></h1>
-			<p><?php echo $_SESSION['username'] ?> | <a href="<?php echo $logoutPage ?>" style="color:blue;">Logout</a></p>
+			<p><?php echo $_SESSION['username'] ?> | <a href="<?php echo $logoutPage ?>" style="color:yellow;">Logout</a></p>
 		</div>
 		<div id="menu">
 			<ul id="main">
@@ -55,7 +55,9 @@ Website: http://bongolinux.webs.com/
 
 	<!-- start page -->
 	<div id="page">
+
 		<!-- start sidebar-left -->
+<!--
 		<div id="sidebar-left" class="sidebar">
 			<ul>
 				<li>
@@ -153,6 +155,7 @@ Website: http://bongolinux.webs.com/
 			</ul>
 		</div>
 		<!-- end sidebar-left -->
+-->
 		<!-- start content -->
 		<div id="content">
 			<?php contents($page,$tag); ?>
