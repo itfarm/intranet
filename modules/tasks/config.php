@@ -48,13 +48,22 @@
 		$dbcnx = db_connection($db_host,$db_user,$db_password);
 		$db_select = db_select($db_name,$dbcnx);
 		if( $page =="settings") {
-			if( $tag == "task_classification" || empty($tag) ) {
-				if(empty($tag)) {
-					$tag = "task_classification";
-				}
-				echo $tag;
-				//include_once("settings/settings.php");
+			if(empty($tag) || 
+				(	$tag !== "task_classification" &&
+					$tag !="priority_classification" &&
+					 $tag !="workload_classification" && 
+					 $tag !="referral_classification" &&
+					 $tag !="task_closure_classification" &&
+					 $tag !="document_classification" &&
+					 $tag !="file" &&
+					 $tag !="file_type" &&
+					 $tag !="subject_area" &&
+					 $tag !="entity_type"
+				)
+			) {
+				$tag = "task_classification";
 			}
+			include_once("settings/settings.php");
 		};
 
 		if( $page =="dashboard" || empty($page) ) {
@@ -174,23 +183,24 @@
 								<ul>
 									<li><a href="'. $settingsPage .'&tag=task_classification">Classes of tasks</a></li>
 									<li><a href="'. $settingsPage .'&tag=priority_classification">Priorities of tasks</a></li>
-									<li><a href="">Workloads ranges</a></li>
-									<li><a href="">Referrals for tasks</a></li>
+									<li><a href="'. $settingsPage .'&tag=workload_classification">Workloads ranges</a></li>
+									<li><a href="'. $settingsPage .'&tag=referral_classification">Referrals for tasks</a></li>
+									<li><a href="'. $settingsPage .'&tag=task_closure_classification">Closure of tasks</a></li>
 								</ul>
 							</li>
 							<li>
 								<h2>Documents</h2>
 								<ul>
-									<li><a href="">Classes</a></li>
-									<li><a href="">Files</a></li>
-									<li><a href="">Confidence</a></li>
-									<li><a href="">Subject Coverage</a></li>
+									<li><a href="'. $settingsPage .'&tag=document_classification">Classes</a></li>
+									<li><a href="'. $settingsPage .'&tag=file">Files</a></li>
+									<li><a href="'. $settingsPage .'&tag=file_type">Confidence</a></li>
+									<li><a href="'. $settingsPage .'&tag=subject_area">Subject Coverage</a></li>
 								</ul>
 							</li>
 							<li>
 								<h2>Entities</h2>
 								<ul>
-									<li><a href="">Entity Types</a></li>
+									<li><a href="'. $settingsPage .'&tag=entity_type">Entity Types</a></li>
 								</ul>
 							</li>
 						</ul>
