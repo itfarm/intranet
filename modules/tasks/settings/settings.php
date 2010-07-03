@@ -120,7 +120,7 @@
 	}
 ?>
 
-		<form name="filter_form" method="post" action="<?php echo $settingsPage?>">
+		<form name="filter_form" method="post" action="<?php echo $settingsPage . "&tag=$setup"?>">
 			<table>		
 				<tr><td>Status:</td>
 						<td><select name="status_option" size=1 class="vform"  >
@@ -222,7 +222,7 @@
 			</td>			
 			<td>
 					<?php 
-						$action_target = "index.php?page=".$page."&setup=".$setup."&command=change_status&id=".$qry_row[$id_field_name];
+						$action_target = $settingsPage ."&tag=$setup&command=change_status&id=".$qry_row[$id_field_name];
 						if ($extra_filter_option == true) {
 							$action_target = $action_target."&parent_id=".$parent_id;
 						}
