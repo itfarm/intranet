@@ -104,32 +104,27 @@
 	?>	
 	<table align=center class="smallneat">		
 	<tr class="largeleft">
-			<th>Group name</th>
-			<th>Role in group</th>
-			<th>Membership type</th>
-			<th></th>
-			</tr>
+		<th>Group name</th>
+		<th>Role in group</th>
+		<th>Membership type</th>
+	</tr>
 			
-			<tr class="d0">
-			<form action="<?php echo $_SERVER['PHP_SELF'] ?>?page=<?php echo $page ?>&member_id=<?php echo $member_id ?>&command=add_to_group" method='POST' name='addtogroupform' >
+	<tr class="d0">
+		<form action="<?php echo $adminpage . "&tag=editgroupsbyuser" ?>&member_id=<?php echo $member_id ?>&command=add_to_group" method='POST' name='addtogroupform' >
 			<td>
-					<select name="group_id" size=1  class="vform" >
-								<?php
-									echo DropDownLookup('tbl_groups', 'group_id', 'group_name', 'Desc');
-								?>
-					</select>
+				<select name="group_id" size=1  class="vform" >
+					<?php echo DropDownLookup('tbl_groups', 'group_id', 'group_name', 'Desc'); ?>
+				</select>
 			</td>
 			<td><input type="text" name='role_in_group_description' class="vform" /></td>
 			<td>
-					<select name="role_in_group_type" size=1  class="vform" >
-								<?php
-									echo DropDownLookup('tbl_list_role_in_group_type', 'role_in_group_type', 'role_in_group_type');
-								?>
-					</select>
+				<select name="role_in_group_type" size=1  class="vform" >
+					<?php echo DropDownLookup('tbl_list_role_in_group_type', 'role_in_group_type', 'role_in_group_type'); ?>
+				</select>
 			</td>
 			<td><input type='submit' value='Add to group' class="button" /></td>
-			</tr>
-					</form>
+		</form>
+	</tr>
 	<script language="JavaScript" type="text/javascript">
 	var frmvalidator = new Validator("addtogroupform");
 	frmvalidator.addValidation("group_id","req","Please choose a group");
@@ -155,7 +150,6 @@
 			
 		if (mysql_num_rows($qry_group_result) == 0) {
 			echo "<P  class='centered'>This user is not a member of any groups</P>";
-			//exit;	
 		}	
 		While ($qry_group_row = mysql_fetch_array($qry_group_result)) {
 			$i++;
@@ -169,14 +163,14 @@
 				<?php echo $qry_group_row['role_in_group_description'] ?>
 			</td>			
 			<td>
-					<select name="role_in_group_type" size=1  class="vform" onChange="window.location='index.php?page=<?php echo $page ?>&member_id=<?php echo $member_id ?>&command=change_type&group_id=<?php echo $qry_group_row['group_id'] ?>&new_type='+this.value">
+					<select name="role_in_group_type" size=1  class="vform" onChange="window.location='<?php echo $adminpage . "&tag=editgroupsbyuser" ?>&member_id=<?php echo $member_id ?>&command=change_type&group_id=<?php echo $qry_group_row['group_id'] ?>&new_type='+this.value">
 								<?php
 									echo DropDownLookup('tbl_list_role_in_group_type', 'role_in_group_type', 'role_in_group_type', '', $qry_group_row['role_in_group_type'], false);
 								?>
 					</select>
 				</td>
 			<td>
-					<a href="index.php?page=<?php echo $page ?>&member_id=<?php echo $member_id ?>&command=remove_from_group&group_id=<?php echo $qry_group_row['group_id'] ?>">
+					<a href="<?php echo $adminpage . "&tag=editgroupsbyuser" ?>&member_id=<?php echo $member_id ?>&command=remove_from_group&group_id=<?php echo $qry_group_row['group_id'] ?>">
 					Remove
 					</a>
 			</td>		
