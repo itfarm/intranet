@@ -13,6 +13,8 @@
 	$dashboardPage= $root_dir . "main.php?page=dashboard";
 	$profilePage = $root_dir . "main.php?page=profile";
 	$settingsPage = $root_dir . "main.php?page=settings";
+	$audittrailPage = $root_dir ."main.php?page=audittrail";
+	$clearLogPage = $root_dir . "main.php?page=clearlog";
 	$adminpage = $root_dir . "main.php?page=admin";
 	$logoutPage= $root_dir . "logout.php";
 
@@ -23,7 +25,7 @@
 		$url[1][0] = "profile"; 	$url[1][1] = $root_dir . "main.php?page=profile";
 		$url[2][0] = "settings";	$url[2][1] = $root_dir . "main.php?page=settings";
 		$url[3][0] = "admin";		$url[3][1] = $root_dir . "main.php?page=admin";
-		$url[4][0] = "audit trail";		$url[4][1] = $root_dir . "main.php?page=history";
+		$url[4][0] = "audit trail";		$url[4][1] = $root_dir . "main.php?page=audittrail";
 
 		echo '	<div id="submenu">
 					<ul id="main">';
@@ -44,7 +46,7 @@
 	};
 
 	function contents($page,$tag) {
-		global $profilePage,$dashboardPage, $settingsPage, $adminpage, $root_dir;
+		global $profilePage,$dashboardPage, $settingsPage, $adminpage,$audittrailPage,$clearLogPage, $root_dir;
 		global $db_host, $db_user, $db_password, $db_name;
 		$dbcnx = db_connection($db_host,$db_user,$db_password);
 		$db_select = db_select($db_name,$dbcnx);
@@ -112,7 +114,13 @@
 				include_once("dashboard/viewroles.php");
 			};
 		}
-		elseif( $page="profile" ) {
+		if($page == "audittrail") {
+			include("audittrail/audittrail.php");
+		}
+		if($page == "clearlog") {
+			include("audittrail/clearlog.php");
+		};
+		if( $page == "profile" ) {
 			if( $tag == "manageusers" || empty($tag) ) {
 				include_once("profile/authusers.php");
 			}
@@ -131,7 +139,7 @@
 		}
 	}
 	function sidebar($page, $tag) {
-		global $dashboardPage, $profilePage, $settingsPage, $adminpage;
+		global $dashboardPage, $profilePage, $settingsPage,$audittrailPage,$clearLogPage, $adminpage;
 		if( $page == "dashboard" || empty($page)) {
 			echo '
 					<ul>
@@ -227,11 +235,6 @@
 								</ul>
 							</li>
 						</ul>
-			';
-		}
-		else {
-			echo '
-					<h2>PAGE NOT FOUND</h2>
 			';
 		};
 	};
