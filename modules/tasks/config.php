@@ -77,13 +77,13 @@
 				include("admin/editgroupsbyuser.php");
 			}
 			elseif( $tag == "editgroupsbygroup" ) {
-				include("admin/editgroupsbygroup");
+				include("admin/editgroupsbygroup.php");
 			}
 			elseif( $tag == "editassignmentbyassignee") {
 				include("admin/editassignmentbyassignee.php");
 			}
 			elseif( $tag == "editassignmentbyassigner") {
-				include("admin/editassignmentbyassigner");
+				include("admin/editassignmentbyassigner.php");
 			}
 		}
 		if( $page =="dashboard" || empty($page) ) {
@@ -130,7 +130,7 @@
 			};
 		}
 	}
-	function sidebar($page) {
+	function sidebar($page, $tag) {
 		global $dashboardPage, $profilePage, $settingsPage, $adminpage;
 		if( $page == "dashboard" || empty($page)) {
 			echo '
@@ -183,6 +183,8 @@
 			';
 		}
 		elseif( $page == "admin" ) {
+			//	Edit by groups page is too huge.
+			if( $tag !="editgroupsbyuser") {
 			echo '
 						<ul>
 							<li>
@@ -194,6 +196,7 @@
 							</li>
 						</ul>
 				';
+				}
 		}
 		elseif( $page == "settings") {
 			echo '
