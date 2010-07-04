@@ -13,6 +13,7 @@
 	$dashboardPage= $root_dir . "main.php?page=dashboard";
 	$profilePage = $root_dir . "main.php?page=profile";
 	$settingsPage = $root_dir . "main.php?page=settings";
+	$adminpage = $root_dir . "main.php?page=admin";
 	$logoutPage= $root_dir . "logout.php";
 
 	// Re-used page contents functions
@@ -43,7 +44,7 @@
 	};
 
 	function contents($page,$tag) {
-		global $profilePage,$dashboardPage, $settingsPage, $root_dir;
+		global $profilePage,$dashboardPage, $settingsPage, $adminpage, $root_dir;
 		global $db_host, $db_user, $db_password, $db_name;
 		$dbcnx = db_connection($db_host,$db_user,$db_password);
 		$db_select = db_select($db_name,$dbcnx);
@@ -65,7 +66,26 @@
 			}
 			include_once("settings/settings.php");
 		};
-
+		if( $page =="admin" ) {
+			if( $tag == "managemembers" || empty($tag) ) {
+				include("admin/managemembers.php");
+			}
+			elseif( $tag == "managesections") {
+				include("admin/managesections.php");
+			}
+			elseif( $tag == "editgroupsbyuser" ) {
+				include("admin/editgroupsbyuser.php");
+			}
+			elseif( $tag == "editgroupsbygroup" ) {
+				include("admin/editgroupsbygroup");
+			}
+			elseif( $tag == "editassignmentbyassignee") {
+				include("admin/editassignmentbyassignee.php");
+			}
+			elseif( $tag == "editassignmentbyassigner") {
+				include("admin/editassignmentbyassigner");
+			}
+		}
 		if( $page =="dashboard" || empty($page) ) {
 			if( $tag == "viewtasks" || empty($tag) ) {
 				include_once("dashboard/viewtasks.php");
@@ -111,7 +131,7 @@
 		}
 	}
 	function sidebar($page) {
-		global $dashboardPage, $profilePage, $settingsPage;
+		global $dashboardPage, $profilePage, $settingsPage, $adminpage;
 		if( $page == "dashboard" || empty($page)) {
 			echo '
 					<ul>
@@ -168,8 +188,8 @@
 							<li>
 								<h2>Manage</h2>
 								<ul>
-									<li><a href="">Members</a></li>
-									<li><a href="">Section</a></li>
+									<li><a href="'. $adminpage .'&tag=managemembers">Members</a></li>
+									<li><a href="'. $adminpage .'&tag=managesections">Sections</a></li>
 								</ul>
 							</li>
 						</ul>
