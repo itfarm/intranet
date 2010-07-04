@@ -163,7 +163,7 @@ Website: http://bongolinux.webs.com/
 		<!-- end content -->
 		<!-- start sidebar-right -->
 		<div id="sidebar-right" class="sidebar">
-			<?php sidebar($page) ?>
+			<?php sidebar($page,$tag) ?>
 		</div>
 		<!-- end sidebar-right -->
 		<div style="clear: both;">&nbsp;</div>
