@@ -1,5 +1,4 @@
 <?php
-
 	//*****************************************************************
 	//Process commands
 	//*****************************************************************
@@ -124,7 +123,7 @@
 			</tr>
 			
 			<tr class="d0">
-			<form action="<?php echo $_SERVER['PHP_SELF'] ?>?page=<?php echo $page ?>&group_id=<?php echo $group_id ?>&command=add_member" method='POST' name='addmemberform' >
+			<form action="<?php echo $adminpage . "&tag=editgroupsbygroup" ?>&group_id=<?php echo $group_id ?>&command=add_member" method='POST' name='addmemberform' >
 			<td>
 					<select name="member_id" size=1  class="vform" >
 								<?php
@@ -167,7 +166,6 @@
 			
 		if (mysql_num_rows($qry_member_result) == 0) {
 			echo "</table><P  class='centered'>No members in this group</P>";
-			exit;	
 		}	
 		While ($qry_member_row = mysql_fetch_array($qry_member_result)) {
 			$i++;
@@ -181,14 +179,14 @@
 				<?php echo $qry_member_row['role_in_group_description'] ?>
 			</td>			
 			<td>
-					<select name="role_in_group_type" size=1  class="vform" onChange="window.location='index.php?page=<?php echo $page ?>&group_id=<?php echo $group_id ?>&command=change_type&member_id=<?php echo $qry_member_row['user_id'] ?>&new_type='+this.value">
+					<select name="role_in_group_type" size=1  class="vform" onChange="window.location='<?php echo $adminpage . "&tag=editgroupsbygroup" ?>&group_id=<?php echo $group_id ?>&command=change_type&member_id=<?php echo $qry_member_row['user_id'] ?>&new_type='+this.value">
 								<?php
 									echo DropDownLookup('tbl_list_role_in_group_type', 'role_in_group_type', 'role_in_group_type', '', $qry_member_row['role_in_group_type'], false);
 								?>
 					</select>
 				</td>
 			<td>
-					<a href="index.php?page=<?php echo $page ?>&group_id=<?php echo $group_id ?>&command=remove_member&member_id=<?php echo $qry_member_row['user_id'] ?>">
+					<a href="<?php echo $adminpage . "&tag=editgroupsbygroup" ?>&group_id=<?php echo $group_id ?>&command=remove_member&member_id=<?php echo $qry_member_row['user_id'] ?>">
 					Remove
 					</a>
 			</td>		
