@@ -95,6 +95,9 @@
 			elseif( $tag == "createtask" ) {
 				include_once("dashboard/createtask.php");
 			}
+			elseif( $tag == "processtask" ) {
+				include_once("dashboard/processtask.php");
+			}
 			elseif( $tag == "viewdocs" ) {
 				include_once("dashboard/viewdocuments.php");
 			}
