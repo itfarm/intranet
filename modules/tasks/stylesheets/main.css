@@ -230,6 +230,10 @@ img.right {
 	float: left;
 	width: 60%;
 }
+.pointer:hover{
+	color:yellow;
+	cursor:pointer;
+}
 
 .post {
 	padding-bottom: 15px;
