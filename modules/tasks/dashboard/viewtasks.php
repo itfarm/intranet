@@ -13,19 +13,25 @@
 		$task_classification_string="SELECT task_classification FROM tbl_setup_task_classifications WHERE task_classification_id = '" . $task_classification_id ."'";
 		$task_classification_query = mysql_query($task_classification_string);
 		$task_classification = mysql_fetch_array($task_classification_query) or die( mysql_error() );
-		return $task_classification['task_classification'];
+		$result = $task_classification['task_classification'];
+		if( !empty($result) ) return $result;
+		else return "nothing";
 	};
 	function get_workload_classification($workload_classification_id) {
 		$workload_classification_string="SELECT workload_classification FROM tbl_setup_workload_classifications WHERE workload_classification_id = '" . $workload_classification_id ."'";
 		$workload_classification_query = mysql_query($workload_classification_string);
 		$workload_classification = mysql_fetch_array($workload_classification_query) or die( mysql_error() );
-		return $workload_classification['workload_classification'];
+		$result = $workload_classification['workload_classification'];
+		if( !empty($result) ) return $result;
+		else return "nothing";
 	};
 	function get_priority_classification($priority_classification_id) {
 		$priority_classification_string="SELECT priority_classification FROM tbl_setup_priority_classifications WHERE priority_classification_id = '" . $priority_classification_id ."'";
 		$priority_classification_query = mysql_query($priority_classification_string);
 		$priority_classification = mysql_fetch_array($priority_classification_query) or die( mysql_error() );
-		return $priority_classification['priority_classification'];
+		$result = $priority_classification['priority_classification'];
+		if( !empty($result) ) return $result;
+		else return "nothing";
 	};
 
 	// security
@@ -150,18 +156,8 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 			<input type="submit" value="Filter" class="button" />
 			</td></tr>
 	</table>
-</form>	
-	
+</form>
 	<table class="sorted" style="font-size:90%">
-			<COL><COL><COL><COL><COL><COL><COL><COL>
-			<?php
-				if ($openclosestatus <> "open") {
-				?>
-					<COL><COL>
-				<?php
-				}
-			?>
-			<COL width=12><COL width=12><COL width=12><COL width=12><COL width=12><COL width=12><COL width=12><COL width=12>
 	<thead>
 	<tr>
 			<th id="desc">Task description</th>
@@ -173,11 +169,9 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 			<th id="currentlyassignedto">Currently assigned to</th>
 			<th id="percentcompleted">% done</th>
 			<?php
-				if ($openclosestatus <> "open") {
-				?>
-				<th id="closure">Task closure</th>
-				<th id="closuredate">Date closed</th>
-				<?php
+				if ($openclosestatus != "open") {
+					echo '	<th id="closure">Task closure</th>';
+					echo '	<th id="closuredate">Date closed</th>';
 				}
 			?>	
 	</tr>
@@ -185,7 +179,6 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 	<tbody>
 	<?php
 	$qry_task_result = mysql_query($qry_task_SQL);
-
 	if (!$qry_task_result) {
 			exit('<p>Error performing task query: '.mysql_error().'</p>');
 	}
@@ -193,12 +186,11 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 		
 		if (mysql_num_rows($qry_task_result) == 0) {
 			echo "<P  class='centered'>No tasks meet the filter criteria</P>";
-			//exit;	
 		}
 		else {
 			for( $incr=0; $incr< mysql_num_rows($qry_task_result); $incr++) {
 				$row = mysql_fetch_array($qry_task_result);
-				echo "<tr>";
+				echo '<tr class="pointer" onClick="document.location.href=\''.$dashboardPage .'&tag=processtask&task_id='.$row['task_id'].'\'">';
 					echo "<td>". $row['task_description'] ."</td>";
 					echo "<td>". get_task_classification( $row['task_classification_id'] ) . "</td>";
 					echo "<td>". get_workload_classification( $row['workload_classification_id'] ) ."</td>";
@@ -206,10 +198,10 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 					echo "<td>". $row['deadline'] ."</td>";
 					echo "<td>". $row['created_by'] ."</td>";
 					echo "<td>". $row['date_created'] ."</td>";
-					echo "<td>". $row['percent_completed'] ."</td>";
-					if( $openclosestatus <> "open" ) {
-						echo "<td>". $row['task_closure_classification'] . "<br/>";
-						echo "<td>". $row['date_closed_formatted'] . "<br/>";
+					echo "<td>". $row['percent_completed'] ."%</td>";
+					if( $openclosestatus != "open" ) {
+						echo "<td>". $row['task_closure_classification'] . "</td>";
+						echo "<td>". $row['date_closed_formatted'] . "</td>";
 					};
 				echo "</tr>";
 			};
@@ -218,8 +210,3 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 ?>
 </tbody>
 </table>
-	
-<?php 
-	// include the footer
-	//include($szFooterPath);
-?>
