@@ -1,0 +1,611 @@
+
+/*
+Designs by IT Farm
+Author: John Francis Mukulu <john.f.mukulu@gmail.com>
+*/
+
+body {
+	margin: 0px;
+	padding: 0;
+	background: #7F765E;
+	text-align: justify;
+	font-family:  Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #3D3726;
+}
+
+h1, h2, h3 {
+	margin-top: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	font-size: 1.6em;
+	font-weight: normal;
+}
+
+h2 {
+	font-size: 1.6em;
+}
+
+h3 {
+	font-size: 1em;
+}
+
+ul {
+}
+
+a {
+	text-decoration: none;
+	color: #2F2A1D;
+}
+
+a:hover {
+	border-bottom: none;
+}
+
+a img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+img.right {
+	float: right;
+	margin: 0 0 0 20px;
+}
+
+#header {
+	width: 90%;
+	margin: 0 auto;
+	height: 115px;
+	background: url(../images/img01.jpg) repeat-x left top;
+}
+
+/* Header */
+
+#logo {
+	float: right;
+	width: 24%;
+	padding: 10px 0px 0px 30px;
+}
+
+#logo h1, #logo p {
+	float: left;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+}
+
+#logo span {
+	color: #FFFFFF;
+}
+
+#logo h1 {
+	margin: 0px;
+	padding: 0px;
+	letter-spacing: -2px;
+	font-size: 36px;
+}
+
+#logo p {
+	letter-spacing: -1px;
+	margin: 0px;
+	padding: 18px 0px 0px 10px;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+#logo a {
+	border: none;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Menu */
+
+#menu {
+	float: left;
+	width: 72%;
+	height: 40px;
+}
+
+#menu ul {
+	float: left;
+	margin: 0px 0px 0px 5px;
+	padding: 70px 0px 0px 0px;
+	list-style: none;
+}
+
+#menu li {
+	float: left;
+	display: inline;
+}
+
+#menu a {
+	display: block;
+	height: 30px;
+	margin: 0px 1px 0px 0px;
+	padding: 15px 10px 0px 10px;
+	background: url(../images/img03.jpg) repeat-x left top;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #BFB28D;
+}
+
+#menu a:hover {
+	color: #FFFFFF;
+}
+
+#menu .current_page_item a {
+	color: #FFFFFF;
+}
+
+/* Wrapper */
+
+#wrapper {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Submenu */
+
+#submenu {
+	width: 90%;
+	margin: 0 auto;
+	padding: 5px 0;
+	height: 30px;
+	background: url(../images/img04.jpg) repeat-x left top;
+}
+
+#submenu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#submenu li {
+	display: inline;
+}
+
+#submenu a {
+	display: block;
+	float: left;
+	margin: 0 3px 0 0;
+	padding: 6px 15px 10px 20px;
+	border-right: 1px #000000 solid;
+	text-decoration: none;
+	text-transform: lowercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color: #BFB28D;
+}
+
+#submenu a:hover {
+	margin: 0 3px 0 0;
+	color: #FFFFFF;
+}
+
+#submenu .current_page_item a{
+	margin: 0 3px 0 0;
+	font-weight:bold;
+	font-size:15px;
+	color: #FFFFFF;
+}
+
+/* Wrapper */
+
+#wrapper {
+}
+
+/* Page */
+
+#page {
+	width: 90%;
+	margin: 0 auto;
+	padding: 20px 0 0 0;
+	background: #110E0F;
+}
+
+#page-bg {
+}
+
+/* Latest Post */
+
+#latest-post {
+	padding: 20px;
+	border: 1px solid #E7E7E7;
+}
+
+/* Content */
+
+#content {
+	float: left;
+	width: 60%;
+}
+
+.post {
+	padding-bottom: 15px;
+	line-height: 200%;
+}
+
+.post h1 {
+	font-weight: normal;
+}
+
+.title {
+	margin: 0;
+	padding: 10px 0 0 20px;
+	font-weight: normal;
+}
+
+.title a {
+	border-bottom: none;
+	color: #FFFFFF;
+}
+
+.title a:hover {
+	border-bottom: 1px dotted #000000;
+}
+
+.byline {
+	border-bottom: 2px solid #000000;
+	margin: -10px 20px 20px 20px;
+}
+
+.tag {
+	padding: 0 15px;
+}
+
+.entry {
+	padding: 0 20px;
+}
+
+.links {
+	padding: 4px 20px;
+	text-align: left;
+	font-weight: bold;
+	background: #000000;
+}
+
+.links a {
+	border: none;
+}
+
+.links a:hover {
+}
+
+/* Sidebars */
+
+#sidebar-right {
+	float: right;
+}
+
+#sidebar-left {
+	float: left;
+}
+
+.sidebar {
+	float: left;
+	width: 20%;
+	padding: 0;
+	font-size: 12px;
+}
+
+.sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sidebar li {
+	padding: 0 0 20px 0;
+}
+
+.sidebar li ul {
+	background: #110E0F;
+}
+.sidebar li ul a:hover {
+	color: #BFB28D;
+	background:#110E00;
+}
+.current a {
+	background:#ffffff;
+	color: #BFB28D;
+}
+.sidebar li li {
+	margin: 0 10px 0 10px;
+	padding: 8px 0px;
+	border-bottom: 1px #423525 dashed;
+}
+
+
+.sidebar li h2 {
+	margin: 0 0 0 0;
+	padding: 10px 15px;
+	background: #000000;
+	font-size: 13px;
+	color: #AF9371;
+}
+
+.sidebar a {
+	color: #FFFFFF;
+}
+.sidebar a:hover {
+	color: #BFB28D;
+}
+/* Search */
+
+#searchform {
+	margin: 0;
+	padding: 0 0 0 0;
+}
+
+#searchform br {
+	display: none;
+}
+
+#searchform h2 {
+}
+
+#search-input {
+	margin: 10px 0px 0 5px;
+	padding: 2px 2px;
+	height: 18px;
+	border: 1px solid #423525;
+	background: #000000;
+	font-size: 10px;
+	color: #CCCCCC;
+}
+
+#search-button {
+	margin: 0 0 0 5px;
+	padding: 2px 2px;
+	height: 25px;
+	background: #000000;
+	border: 1px solid #423525;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #CCCCCC;
+}
+/* Calendar */
+
+#calendar_wrap {
+	padding: 0 15px;
+	text-align: center;
+}
+
+#calendar_wrap table {
+	width: 100%;
+}
+
+#calendar_wrap th {
+}
+
+#calendar_wrap td {
+}
+
+#calendar_wrap tfoot td {
+	border: none;
+}
+
+#calendar_wrap tfoot td#prev {
+	text-align: left;
+	font-weight: bold;
+	border: none;
+}
+
+#calendar_wrap tfoot td#prev a {
+	border: none;
+}
+
+#calendar_wrap tfoot td#next {
+	text-align: right;
+	font-weight: bold;
+	border: none;
+}
+
+#calendar_wrap tfoot td#next a {
+	border: none;
+}
+
+/* Footer */
+
+#footer-wrapper {
+	width: 100%;
+	height: 100px;
+}
+
+#footer {
+	width: 90%;
+	height: 100px;
+	margin: 0 auto;
+	padding: 0px;
+	background: url(../images/img02.jpg) repeat-x left top;
+}
+
+#footer p {
+	margin: 0;
+	padding: 30px 0 0 0;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #B8AB86;
+}
+
+#footer a {
+	color: #B8AB86;
+}
+
+#footer .link {
+}
+
+#footer .copyright {
+}
+
+/* Last Modified 24-12-2009 by Menuka Walpitagamage */
+
+/*
+body{
+	width:640px;
+	margin:0 auto;
+	text-align:center;
+	border:0px solid #666font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding-top:100px;
+*/
+}
+#content{
+	padding:5px 0;
+	min-width: 450px;
+	max-width:500px;
+}
+#innerholder{
+	margin:10px auto;
+	width:90%;
+}
+#innerholder h3 span{
+	background:url(../../images/logo.jpg) no-repeat;
+	height:50px;
+	display:block;
+}
+#innerholder .a {
+	padding:4px;
+}
+#innerholder .a, #innerholder .a .sb-inner {
+	padding:30px;
+	height:200px;
+}
+#loginbutton{
+	background:#999;
+	color:#fff;
+	cursor:pointer;
+	padding:5px 10px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:4px;
+	width:150px;
+}
+input{
+	border: none;
+	background: #fff;
+	width: 250px;
+	font-family:arial, helvetica;
+	font-size:18px;
+	font-weight:bold;
+}
+.roundedfield{
+	background:  url(../../images/rounded.gif) no-repeat left top;
+	height:50px;
+	padding: 4px;
+	text-align:left;
+}
+#label {
+	padding-bottom:5px;
+	text-align:left;
+}
+
+
+/*	Login Form CSS	*/
+/*
+form{
+	margin:0;
+	padding:0;
+}
+fieldset{
+	margin:1em 0;
+	border:none;
+	border-top:1px solid #ccc;
+}
+legend{
+	margin:1em 0;
+	padding:0 .5em;
+	color:#036;
+	background:transparent;
+	font-size:1.3em;
+	font-weight:bold;
+}
+label{
+	float:left;
+	width:100px;
+	padding:0 1em;
+	text-align:right;
+}
+fieldset div{
+	margin-bottom:.5em;
+	padding:0;
+	display:block;
+}
+fieldset div input,fieldset div textarea{
+	width:150px;
+	border-top:1px solid #555;
+	border-left:1px solid #555;
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+	padding:1px;
+	color:#333;
+}
+fieldset div select{
+	padding:1px;
+}
+div.fm-multi div{
+	margin:5px 0;
+}
+div.fm-multi input{
+	width:1em;
+}
+div.fm-multi label{
+	display:block;
+	width:200px;
+	padding-left:5em;
+	text-align:left;
+}
+#fm-submit{
+	clear:both;
+	padding-top:1em;
+	text-align:center;
+}
+#fm-submit input{
+	border:1px solid #333;
+	padding:2px 1em;
+	background:#555;
+	color:#fff;
+	font-size:100%;
+}
+input:focus,textarea:focus{
+	background:#efefef;
+	color:#000;
+}
+fieldset div.fm-req{
+	font-weight:bold;
+}
+fieldset div.fm-req label:before{
+	content:"* ";
+}
+
+body{
+	padding:0;
+	margin:20px;
+	color:#333;
+	background:#fff;
+	font:12px arial,verdana,sans-serif;
+	text-align:center;
+}
+
+#container{margin:0 auto;
+	padding:1em;
+	width:350px;
+	text-align:left;
+}
+p#fm-intro{
+	margin:0;
+}
+*/
