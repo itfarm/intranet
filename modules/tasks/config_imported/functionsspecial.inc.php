@@ -1,8 +1,5 @@
 <?php
-
-require_once 'connect.inc.php';
-
-
+@include_once('connect.inc.php');
 function currently_assigned_to ($task_id, $return_option) {
 
 	if (domain("dcount","assignment_id","tbl_assignments","task_id = ".$task_id) == 0) {
