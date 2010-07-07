@@ -1,15 +1,9 @@
 <?php
+	@include_once('../../cfg/config.php');
 	$root_dir="/intranet/modules/tasks/";
-	
-	//	Database Server Configurations
-	$db_host="localhost";
-	$db_user="root";
-	$db_password="root";
-	$db_name="taskdata";
-	
+
 	//	Page URLs
 	$verificationPage= $root_dir . "verification.php";
-	$loginPage= $root_dir . "index.php";
 	$dashboardPage= $root_dir . "main.php?page=dashboard";
 	$profilePage = $root_dir . "main.php?page=profile";
 	$settingsPage = $root_dir . "main.php?page=settings";
@@ -242,28 +236,6 @@
 		};
 	};
 
-	// Database related functions
-	function db_connection($db_host,$db_user,$db_password) {
-		$dbcnx = mysql_connect($db_host,$db_user,$db_password);
-		if (!$dbcnx)
-		{
-			$message = "<p>Database Server not found ".mysql_error()."</p>";
-			exit($message);
-		}
-		else {
-			return $dbcnx;
-		}
-	};
-	function db_select($db_name,$dbcnx) {
-		$db_select = mysql_select_db($db_name,$dbcnx);
-		if( !$db_select ) {
-			$message="<p>Database not found ".mysql_error()."</p>";
-			exit($message);
-		}
-		else {
-			return $db_select;
-		}
-	}
 
 	function get_userid($username,$password) {
 		global $db_host, $db_user, $db_password,$db_name;
