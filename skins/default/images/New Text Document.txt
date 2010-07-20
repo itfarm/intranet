@@ -1,0 +1,19 @@
+<table align="right" width="200" cellpadding="0" cellspacing="5" border="0">
+<!--Language Bar-->
+<tr>
+  <td align="right" valign="top" class="dateTime"><?=$LBDate.'&nbsp;:&nbsp;'.date('dS M Y')?></td>
+  </tr>
+<tr>
+  <td align="right" valign="top" class="dateTime"><a href="#"><img src="<?=$root_path?>skins/default/images/email.jpg" border="0"></a></td>
+</tr>
+<tr>
+   <td align="right" valign="top" class="dateTime"><?=$LBLanguage.'&nbsp;:&nbsp;'?>
+     <select name="langCode" id="langCode" onChange="showPage(this.value)"class="select">
+       <option value=""></option>
+       <?php while ($arrLangRow = $christDB->f_GetRecord($resultAll)) { ?>
+       <option value="<?=$arrLangRow['langCode']?>"><?=$arrLangRow['langCaption']?></option>
+       <?php } ?>
+       </select>   </td>
+   </tr>
+<!--end lang bar-->
+</table>

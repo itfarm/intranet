@@ -1,0 +1,150 @@
+.bluetabs{
+	display: block;
+	float: left;
+	
+}
+
+.bluetabs ul{
+	padding: 0px 0px 0px 0px;
+	font: normal normal normal 11px/normal 'trebuchet ms',helvetica,sans-serif; /*list-style-type:none;*/
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	display: block;
+	float: left;
+}
+
+.bluetabs li{
+	display: block;
+	float: left;
+	
+	text-decoration: none;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	}
+
+.bluetabs li a{
+	/*THEME CHANGE HERE*/
+	display: block;
+	float: left;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.bluetabs li a:visited{
+	display: block;
+	float: left;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	color: #ffffff;
+}
+
+.bluetabs li a:hover{
+	display: block;
+	float: left;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	font: normal normal normal 11px/normal 'trebuchet ms',helvetica,sans-serif; /*list-style-type:none;*/
+	text-decoration: underline;
+}
+
+.bluetabs li.selected{
+	display: block;
+	float: left;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	
+}
+
+.bluetabs li.selected a{
+	/*border-bottom-color:white;*/
+	display: block;
+	float: left;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	
+}
+
+.bluetabs li.selected a:hover{
+	/*text-decoration:none;*/
+	display: block;
+	float: left;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	
+}
+
+/* ######### Style for Drop Down Menu ######### */
+.dropmenudiv_b{
+	position: absolute;
+	top: 0; /*THEME CHANGE HERE*/
+	font: normal 10px Verdana;
+	line-height: 18px;
+	z-index: 100;
+	background-color: 153E72;
+	width: 150px;
+	visibility: hidden;
+/*	border-left: 1px solid #d8d8d8;*/
+/*	border-right: 1px solid #d8d8d8;*/
+/*	border-bottom: 1px solid #d8d8d8;*/
+}
+
+.dropmenudiv_b a{
+	width: auto;
+	display: block;
+	text-indent: 5px;
+	/*border: 0 solid #d8d8d8;*/ /*THEME CHANGE HERE*/
+	border-bottom-width: 1px;
+	padding: 2px 0;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+* html .dropmenudiv_b a{
+	/*IE only hack*/
+	width: 100%;
+}
+
+.dropmenudiv_b a:hover{
+	/*THEME CHANGE HERE*/
+	background-color:7E96B2;
+	text-decoration: underline;
+	color: #ffffff;
+}
+
+a {
+	color: #ffffff;
+	font: normal normal normal 11px/normal 'trebuchet ms',helvetica,sans-serif; /*list-style-type:none;*/
+}
+
+a :active{
+	color: #ffffff;
+	font: normal normal normal 11px/normal 'trebuchet ms',helvetica,sans-serif; /*list-style-type:none;*/
+}
+
+a :visited{
+	color: #ffffff;
+	font: normal normal normal 11px/normal 'trebuchet ms',helvetica,sans-serif; /*list-style-type:none;*/
+	text-decoration: none;
+}
+
+a :hover{
+	color: #ffffff;
+	text-decoration: underline;
+	font: normal normal normal 11px/normal 'trebuchet ms',helvetica,sans-serif; /*list-style-type:none;*/
+}

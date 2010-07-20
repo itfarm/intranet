@@ -1,0 +1,49 @@
+<?
+/*
+##################################################################################
+#Christ CMS is the content management system for managing ministries,churches
+#Author:Jacob Kwizera Mtalitinya
+#
+##################################################################################
+*/
+require_once('root.php');
+$skinFolder='default';
+$page="rules";
+require_once($root_path.'skins/'.$skinFolder.'/head.php');
+$LBSection=$LBConsultancy;
+$crumbs[0]['name'] = $LBHome;
+$crumbs[0]['url'] = $root_path.'index.php';
+$crumbs[1]['name'] = $LBPrayer;
+$crumbs[1]['url'] = $root_path.'modules/pages/prayer/index.php?menuid='.$menuid;
+?>
+
+<div id="content">
+	<?=$LBBreadScrumb.'&nbsp;:&nbsp;'?>
+    <?php 
+	     $cnum = count($crumbs);
+		 for($i = 0; $i < $cnum; $i++)
+		 {
+		 	echo '&nbsp>><a href="'.$crumbs[$i]['url'].'">'.$crumbs[$i]['name'].'</a>';
+		 }
+				   
+	?> 
+</div>
+
+<div id="content"><?=$LBPageTitle.$LBSection?></div>
+
+<div id="content">
+
+<?  
+    $sqlgetp=$christCMS->get_page_display("SM17","en");
+	$resultp = $christDB->f_ExecuteSql($sqlgetp);
+	$recordcount = $christDB->f_GetSelectedRows();
+	$arrPage = $christDB->f_GetRecord($resultp);
+	if (!empty($arrPage['pageContent']))
+		echo $arrPage['pageContent'];
+	else
+		echo  $LBcontNotFound;
+?>
+</div>
+<?php
+require_once($root_path.'skins/'.$skinFolder.'/tail.php');
+?>
