@@ -9,6 +9,7 @@
 	}
 	else {
 		// Start of session
+		$current_module = "Tasks";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -41,17 +42,7 @@ Website: http://bongolinux.webs.com/
 			<p><?php echo $_SESSION['username'] ?> | <a href="<?php echo $logoutPage ?>" style="color:yellow;">Logout</a></p>
 		</div>
 		<div id="menu">
-			<ul id="main">
-				<li class="current_page"><a href="">Tasks</a></li>
-				<li><a href="">Events</a></li>
-				<li><a href="">News</a></li>
-				<li><a href="">Gallery</a></li>
-				<li><a href="">Projects</a></li>
-				<li><a href="">Remainders</a></li>
-				<li><a href="">Training</a></li>
-				<li><a href="">Chat</a></li>
-				<li><a href="">Polls</a></li>
-			</ul>
+			<?php main_menu($current_module) ?>
 		</div>
 	</div>
 	<!-- end header -->
