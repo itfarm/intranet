@@ -11,7 +11,7 @@ body {
 	text-align: justify;
 	font-family:  Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 11px;
-	color: #3D3726;
+	color: #ffffff;
 }
 
 h1, h2, h3 {
@@ -37,7 +37,7 @@ ul {
 
 a {
 	text-decoration: none;
-	color: #2F2A1D;
+	color: #BFB28D;
 }
 
 a:hover {
@@ -62,7 +62,7 @@ img.right {
 	width: 90%;
 	margin: 0 auto;
 	height: 115px;
-	background: url(../images/img01.jpg) repeat-x left top;
+	background: url(/intranet/modules/tasks/images/img01.jpg) repeat-x left top;
 }
 
 /* Header */
@@ -130,7 +130,7 @@ img.right {
 	height: 30px;
 	margin: 0px 1px 0px 0px;
 	padding: 15px 10px 0px 10px;
-	background: url(../images/img03.jpg) repeat-x left top;
+	background: url(/intranet/modules/tasks/images/img03.jpg) repeat-x left top;
 	text-decoration: none;
 	text-transform: uppercase;
 	font-family: Arial, Helvetica, sans-serif;
@@ -143,7 +143,7 @@ img.right {
 	color: #FFFFFF;
 }
 
-#menu .current_page_item a {
+#menu .current_page a {
 	color: #FFFFFF;
 }
 
@@ -162,7 +162,7 @@ img.right {
 	margin: 0 auto;
 	padding: 5px 0;
 	height: 30px;
-	background: url(../images/img04.jpg) repeat-x left top;
+	background: url(/intranet/modules/tasks/images/img04.jpg) repeat-x left top;
 }
 
 #submenu ul {
@@ -229,6 +229,10 @@ img.right {
 #content {
 	float: left;
 	width: 60%;
+}
+.pointer:hover{
+	color:yellow;
+	cursor:pointer;
 }
 
 .post {
@@ -430,7 +434,7 @@ img.right {
 	height: 100px;
 	margin: 0 auto;
 	padding: 0px;
-	background: url(../images/img02.jpg) repeat-x left top;
+	background: url(/intranet/modules/tasks/images/img02.jpg) repeat-x left top;
 }
 
 #footer p {
@@ -452,160 +456,3 @@ img.right {
 
 #footer .copyright {
 }
-
-/* Last Modified 24-12-2009 by Menuka Walpitagamage */
-
-/*
-body{
-	width:640px;
-	margin:0 auto;
-	text-align:center;
-	border:0px solid #666font-family: Verdana, Arial, Helvetica, sans-serif;
-	padding-top:100px;
-*/
-}
-#content{
-	padding:5px 0;
-	min-width: 450px;
-	max-width:500px;
-}
-#innerholder{
-	margin:10px auto;
-	width:90%;
-}
-#innerholder h3 span{
-	background:url(../../images/logo.jpg) no-repeat;
-	height:50px;
-	display:block;
-}
-#innerholder .a {
-	padding:4px;
-}
-#innerholder .a, #innerholder .a .sb-inner {
-	padding:30px;
-	height:200px;
-}
-#loginbutton{
-	background:#999;
-	color:#fff;
-	cursor:pointer;
-	padding:5px 10px;
-	-moz-border-radius:6px;
-	-webkit-border-radius:4px;
-	width:150px;
-}
-input{
-	border: none;
-	background: #fff;
-	width: 250px;
-	font-family:arial, helvetica;
-	font-size:18px;
-	font-weight:bold;
-}
-.roundedfield{
-	background:  url(../../images/rounded.gif) no-repeat left top;
-	height:50px;
-	padding: 4px;
-	text-align:left;
-}
-#label {
-	padding-bottom:5px;
-	text-align:left;
-}
-
-
-/*	Login Form CSS	*/
-/*
-form{
-	margin:0;
-	padding:0;
-}
-fieldset{
-	margin:1em 0;
-	border:none;
-	border-top:1px solid #ccc;
-}
-legend{
-	margin:1em 0;
-	padding:0 .5em;
-	color:#036;
-	background:transparent;
-	font-size:1.3em;
-	font-weight:bold;
-}
-label{
-	float:left;
-	width:100px;
-	padding:0 1em;
-	text-align:right;
-}
-fieldset div{
-	margin-bottom:.5em;
-	padding:0;
-	display:block;
-}
-fieldset div input,fieldset div textarea{
-	width:150px;
-	border-top:1px solid #555;
-	border-left:1px solid #555;
-	border-bottom:1px solid #ccc;
-	border-right:1px solid #ccc;
-	padding:1px;
-	color:#333;
-}
-fieldset div select{
-	padding:1px;
-}
-div.fm-multi div{
-	margin:5px 0;
-}
-div.fm-multi input{
-	width:1em;
-}
-div.fm-multi label{
-	display:block;
-	width:200px;
-	padding-left:5em;
-	text-align:left;
-}
-#fm-submit{
-	clear:both;
-	padding-top:1em;
-	text-align:center;
-}
-#fm-submit input{
-	border:1px solid #333;
-	padding:2px 1em;
-	background:#555;
-	color:#fff;
-	font-size:100%;
-}
-input:focus,textarea:focus{
-	background:#efefef;
-	color:#000;
-}
-fieldset div.fm-req{
-	font-weight:bold;
-}
-fieldset div.fm-req label:before{
-	content:"* ";
-}
-
-body{
-	padding:0;
-	margin:20px;
-	color:#333;
-	background:#fff;
-	font:12px arial,verdana,sans-serif;
-	text-align:center;
-}
-
-#container{margin:0 auto;
-	padding:1em;
-	width:350px;
-	text-align:left;
-}
-p#fm-intro{
-	margin:0;
-}
-*/
