@@ -21,7 +21,7 @@ Website: http://bongolinux.webs.com/
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>PMO New Intranet system</title>
+<title>PMO Intranet system</title>
 <meta name="keywords" content="" />
 <meta name="Adhesive" content="" />
 <link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/main.css" media="screen" />

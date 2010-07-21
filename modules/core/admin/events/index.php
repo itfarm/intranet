@@ -9,6 +9,7 @@
 require_once('root.php');
 $page="index";
 $adminMain="Events";
+$current_module = "Events";
 require_once($root_path.'modules/core/admin/skin/head.php');
 $LBSection=$LBEventsAdmin;
 $crumbs[0]['name'] = $LBAdminHome;

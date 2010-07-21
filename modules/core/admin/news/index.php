@@ -9,6 +9,7 @@
 require_once('root.php');
 $page="index";
 $adminMain="Pages";
+$current_module = "News";
 require_once($root_path.'modules/core/admin/skin/head.php');
 $LBSection=$LBNewsAdmin;
 $crumbs[0]['name'] = $LBAdminHome;

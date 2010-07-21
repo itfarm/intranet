@@ -2,6 +2,7 @@
 require_once('root.php');
 $skinFolder='default';
 $page="index";
+$current_module = "Gallery";
 require_once($root_path.'modules/core/admin/skin/head.php');
 $LBSection=$LBAlbum;
 $crumbs[0]['name'] = $LBHome;

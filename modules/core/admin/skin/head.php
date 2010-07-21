@@ -8,6 +8,7 @@ session_start();
 ##################################################################################
 */
 //language selector script
+@include($root_path .'cfg/config.php');
 require_once($root_path.'modules/core/security/usercheck.php');
 require_once($root_path.'js/lang_ajax.php');
 //load important scripts
@@ -26,32 +27,7 @@ $recordcountAll = $christDB->f_GetSelectedRows();
 $LBLanguage="Language";
 $LBDate="Date";
 $menuid=$_GET['menuid'];
-?>
-<span id="pageWindow">
-<!-- form for language setup-->
-<form name="language" method="post">
-<input type="Hidden" name="menuid" id="menuid" value="<?=$menuid?>" >
-<table align="center" width="80%" cellpadding="2" cellspacing="2" border="0"class="tailTable">
-<!--Language Bar-->
-<tr>
-   <td align="left"><?=$LBDate.'&nbsp;:&nbsp;'.date('dS M Y')?></td>
-   <td align="right"width="25%"><?=$LBLanguage.'&nbsp;:&nbsp;'?>
-   <select name="langCode" id="langCode" onchange="showPage(this.value)" class="select">
-   <option value=""></option>
-   <?php while ($arrLangRow = $christDB->f_GetRecord($resultAll)) { ?>
-    <option value="<?=$arrLangRow['langCode']?>"><?=$arrLangRow['langCaption']?></option>
-   <?php } ?>
-   </select>
-   </td>
 
-</tr>
-<!--end lang bar-->
-</table>
-</form>
-<!--end form setup language-->
-
-
-<?
 //fetching default language 
 //var_dump($_GET);
 //var_dump($arrLangRow2 = $christDB->f_GetRecord($resultAll2));
@@ -74,7 +50,10 @@ $userID=$_SESSION['userID'];
 <html>
 <head>
 	<title><?=$LBSiteTitle?></title>
+	<!--
 	<link href="<?=$root_path.$cfgAdminStyleFilePath?>" rel="stylesheet" type="text/css" />
+	-->
+	<link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/main.css" media="screen" />
      <script  src="<?=$root_path?>js/dtpicker.js"  language="JavaScript"></script>
 	 <script  src="<?=$root_path?>js/dtlib.js"  language="JavaScript"></script>
 	 <script language="javascript" type="text/javascript" src="<?=$root_path?>modules/core/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
@@ -82,63 +61,76 @@ $userID=$_SESSION['userID'];
 </head>
 
 <body>
-<table align="center" width="90%" cellpadding="2" cellspacing="2" border="0">
-<!--Background Logo
-<tr>
-   <td colspan="3" align="center">Background Logo</td>
-</tr>
-<!--End Background Logo-->
-</table>
-<table align="center" width="80%" cellpadding="2" cellspacing="2" border="0"class="contentTable">
-<!-- page content area-->
-<tr>
-    <td colspan="2" valign="top" >
-	<div align="right">
-	<?=$LBLoginAs?>:&nbsp;&nbsp;<?=$_SESSION['userName']?>
-	<a href="<?=$root_path?>modules/core/security/changepasswd.php"><?=$LBChangePasswd?></a>
-	&nbsp;|&nbsp;
-	<a href="<?=$root_path?>modules/core/security/quit.php"><?=$LBLogout?></a>
+<div id="wrapper">
+	<!-- start header -->
+	<div id="header">
+		<div id="logo">
+			<h1><a href=""><span>Intranet</span></a></h1>
+			<p><?php echo $_SESSION['username'] ?> | <a href="<?php echo $logoutPage ?>" style="color:yellow;">Logout</a></p>
+		</div>
+		<div id="menu">
+			<?php main_menu($current_module) ?>
+		</div>
 	</div>
-    <table width="100%" cellpadding="2" cellpadding="2" border="0">
-	<tr>
-	<?
-	if($adminMain!='Home'){
-	?>
-	<!--for sub menu if exist-->
-	<td width="15%" valign="top" >
-	
-	<div class="sectionLabel"><?=$LBAdminMenu?></div>
-		<table  cellpadding="2" cellspacing="2" border="0" >
-			<br>
-					<?php 
-					//fetching all language sub menu
-					//var_dump($_GET);
-					$sqlSMenu=$christCMS->get_admin_sub_menu($langCode,$menuid);
-					$resultSMenu = $christDB->f_ExecuteSql($sqlSMenu);
-					$recordcountSMenu = $christDB->f_GetSelectedRows();
-					while ($arrSMenu = $christDB->f_GetRecord($resultSMenu)) { 
-					?>   
-					     <tr>   
-							 <td valign="top">
-							                 <!--<div class="Nav">-->
-							                  <img  src="<?=$root_path.'images/icons/'.$arrSMenu['image']?>" width="16" height="16" border="0">
-							                  <a  href="<?=$root_path.$arrSMenu['url']?>?menuid=<?=$menuid?>&submenuid=<?=$arrSMenu['id']?>"><?=$arrSMenu['submenu']?></a>
-											  <!--</div>-->
-							</td>
-						 </tr>
+	<!-- end header -->
+
+	<!-- start page -->
+		<div id="page">
+			<!-- start content -->
+			
+			<div id="content">
+				<table align="center" width="80%" cellpadding="2" cellspacing="2" border="0"class="contentTable">
+				<!-- page content area-->
+				<tr>
+					<td colspan="2" valign="top" >
+				<!--
+					<div align="right">
+					<?=$LBLoginAs?>:&nbsp;&nbsp;<?=$_SESSION['userName']?>
+					<a href="<?=$root_path?>modules/core/security/changepasswd.php"><?=$LBChangePasswd?></a>
+					&nbsp;|&nbsp;
+					<a href="<?=$root_path?>modules/core/security/quit.php"><?=$LBLogout?></a>
+					</div>
+				-->
+					<table width="100%" cellpadding="2" cellpadding="2" border="0">
+					<tr>
+					<?
+					if($adminMain!='Home'){
+					?>
+					<!--for sub menu if exist-->
+					<td width="15%" valign="top" >
+					
+					<div class="sectionLabel"><?=$LBAdminMenu?></div>
+						<table  cellpadding="2" cellspacing="2" border="0" >
+							<br>
+									<?php 
+									//fetching all language sub menu
+									//var_dump($_GET);
+									$sqlSMenu=$christCMS->get_admin_sub_menu($langCode,$menuid);
+									$resultSMenu = $christDB->f_ExecuteSql($sqlSMenu);
+									$recordcountSMenu = $christDB->f_GetSelectedRows();
+									while ($arrSMenu = $christDB->f_GetRecord($resultSMenu)) { 
+									?>   
+										 <tr>   
+											 <td valign="top">
+															 <!--<div class="Nav">-->
+															  <img  src="<?=$root_path.'images/icons/'.$arrSMenu['image']?>" width="16" height="16" border="0">
+															  <a  href="<?=$root_path.$arrSMenu['url']?>?menuid=<?=$menuid?>&submenuid=<?=$arrSMenu['id']?>"><?=$arrSMenu['submenu']?></a>
+															  <!--</div>-->
+											</td>
+										 </tr>
+									<?
+									}
+									?>
+					
+						</table>
+					</td>
+					<!--sub menu end here-->
 					<?
 					}
 					?>
-	
-		</table>
-	</td>
-	<!--sub menu end here-->
-	<?
-	}
-	?>
-	<!-- for content-->
-	<td width="80%" >
-	
-	
-   
- 
+					<!-- for content-->
+					<td width="80%" >
+					
+					
+				   
+				 
