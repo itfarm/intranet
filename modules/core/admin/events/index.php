@@ -13,7 +13,7 @@ $current_module = "Events";
 require_once($root_path.'modules/core/admin/skin/head.php');
 $LBSection=$LBEventsAdmin;
 $crumbs[0]['name'] = $LBAdminHome;
-$crumbs[0]['url'] = $root_path.'modules/core/admin/index.php';
+$crumbs[0]['url'] = $home_url;
 $crumbs[1]['name'] = $LBEventsAdmin;
 $crumbs[1]['url'] = $root_path.'modules/core/admin/events/index.php?menuid='.$menuid;
 ?>
@@ -42,7 +42,12 @@ $crumbs[1]['url'] = $root_path.'modules/core/admin/events/index.php?menuid='.$me
 <div>&nbsp;</div>
 <div>  
 	 <table   border="0" align="center" width="70%" cellpadding="2" cellspacing="1" >
-	    <tr class="table_tr"><td width="2%"><?=$LBcontNo?></td><td><?=$LBcontTitle?></td><td colspan="3" align="center" width="10%"><?=$LBcontAction?></td></tr>
+	    <tr class="table_tr">
+			<td width="2%"><?=$LBcontNo?></td>
+			<td><?=$LBcontTitle?></td>
+			<td colspan="3" align="center" width="10%"><?=$LBcontAction?>
+			</td>
+		</tr>
 			   <?php 
 			   //fetching all events
 				$sql=$christCMS->get_event_items($categoryID,$langCode,$archive,$status,$limitEvent);
@@ -50,9 +55,7 @@ $crumbs[1]['url'] = $root_path.'modules/core/admin/events/index.php?menuid='.$me
 				$recordcount = $christDB->f_GetSelectedRows();
 				$i=1;
 			    while ($arrEvents = $christDB->f_GetRecord($result)) { 
-			   ?>
-			   
-			           <? if(($i%2)==0){?>
+					if(($i%2)==0){?>
 							   <tr class="sectionLabel">
 					             <td valign="top" ><?=$i?></td>
 								 <td valign="top" ><?=$arrEvents['eventTitle']?></td>

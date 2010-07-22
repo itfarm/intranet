@@ -4,7 +4,7 @@ $page="delete_photo";
 require_once($root_path.'modules/core/admin/skin/head.php');
 $LBSection=$LBAlbum;
 $crumbs[0]['name'] = $LBHome;
-$crumbs[0]['url'] = $root_path.'modules/core/admin/index.php';
+$crumbs[0]['url'] = $home_url;
 $crumbs[1]['name'] = $LBAlbum;
 $crumbs[1]['url'] = $root_path.'modules/core/gallery/index.php?menuid='.$menuid;
 	// include Generic News Module

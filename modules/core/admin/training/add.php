@@ -12,7 +12,7 @@ $adminMain="Events";
 require_once($root_path.'modules/core/admin/skin/head.php');
 $LBSection=$LBTrainingAdmin;
 $crumbs[0]['name'] = $LBAdminHome;
-$crumbs[0]['url'] = $root_path.'modules/core/cpanel/index.php';
+$crumbs[0]['url'] =$home_url;
 $crumbs[1]['name'] = $LBTrainingAdmin;
 $crumbs[1]['url'] = $root_path.'modules/core/admin/training/index.php?menuid='.$menuid;
     

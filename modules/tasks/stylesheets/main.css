@@ -456,3 +456,162 @@ img.right {
 
 #footer .copyright {
 }
+
+/* Styles from ChristCMS */
+.select{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.dateTime{
+	color : Black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+}
+.caption{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : x-small;
+	
+}
+.box_tb{
+	border-style: double double double;
+	border : thick double #A9A9A9;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : x-small;
+}
+.bodyTable{
+	border: 1px solid #556d43;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+.titleTable{
+	border: 1px solid #556d43;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+}
+.contentTable {
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	border: 1px solid #556d43;
+}
+.line{
+	border-top: 1px groove #999999;
+}
+.sectionLabel{
+	border: 1px solid #999999;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	
+}
+.centerLabel{
+	border: 1px solid #999999;
+}
+.table_tr td{
+	border: 1px solid #999999;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+.table_tr2 td{
+	font-size: 14px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+.tailTable{
+	border: 1px solid #556d43;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	color: #556d43;
+}
+.homeNav a{
+	border: 1px solid #fafeb7;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	margin-bottom: 2px;
+	color: #FFFFFF;
+	text-decoration: none;
+	width: 200px;
+	display: block;
+}
+.homeNav a:hover{
+	border: 1px solid #556d43;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	margin-bottom: 2px;
+	color: #556d43;
+	text-decoration: none;
+	width: 200px;
+	display: block;
+	font-weight: bold;
+	
+}
+.Nav a{
+	border: 1px solid #fafeb7;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	margin-bottom: 2px;
+	color: #FFFFFF;
+	text-decoration: none;
+	width: 75px;
+    display: block;
+	font-size: 100%;
+	text-align: center;
+}
+.Nav a:hover{
+	border: 1px solid #556d43;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	margin-bottom: 2px;
+	color: #556d43;
+	text-decoration: none;
+	width: 75px;
+	display: block;
+	font-size: 100%;
+	text-align: center;
+	font-weight: bold;
+}
+.footer{
+	border : none;
+	font-family: arial, Helvetica, sans-serif;
+	font-size: xx-small;
+}
+.content{
+	font-family: arial, Helvetica, sans-serif;
+	font-size: smaller;
+}
+.button{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight : bold;
+	color: #aa0000;
+	cursor: pointer;
+	border: #555555 1px solid;
+	
+}
+.table_hd{
+	font: bold;
+	font-family: arial, Helvetica, sans-serif;
+	font-size: medium;
+}

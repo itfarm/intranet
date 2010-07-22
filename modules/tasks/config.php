@@ -3,14 +3,12 @@
 	$root_dir="/intranet/modules/tasks/";
 
 	//	Page URLs
-	$verificationPage= $root_dir . "verification.php";
 	$dashboardPage= $root_dir . "main.php?page=dashboard";
 	$profilePage = $root_dir . "main.php?page=profile";
 	$settingsPage = $root_dir . "main.php?page=settings";
 	$audittrailPage = $root_dir ."main.php?page=audittrail";
 	$clearLogPage = $root_dir . "main.php?page=clearlog";
 	$adminpage = $root_dir . "main.php?page=admin";
-	$logoutPage= $root_dir . "logout.php";
 
 	// Re-used page contents functions
 	function submenu($current) {

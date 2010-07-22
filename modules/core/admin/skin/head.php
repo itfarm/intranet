@@ -1,5 +1,9 @@
 <?
-session_start();
+@session_start();
+	if(!isset($_SESSION['username']))
+	{
+		@header("location:$loginPage?");
+	}
  /*
 ##################################################################################
 #Christ CMS is the content management system for managing ministries,churches
@@ -9,7 +13,7 @@ session_start();
 */
 //language selector script
 @include($root_path .'cfg/config.php');
-require_once($root_path.'modules/core/security/usercheck.php');
+// require_once($root_path.'modules/core/security/usercheck.php');
 require_once($root_path.'js/lang_ajax.php');
 //load important scripts
 require_once($root_path.'cfg/config_db.php');
@@ -43,6 +47,17 @@ $langPath=$root_path.$cfgLanguagePath.$langCode.$cfgLanguageFile;
 //including language file
 require_once($langPath);
 $userID=$_SESSION['userID'];
+
+// Generating home url for events, news, gallery, projects, training
+// and FAQ pages	
+for($incr = 0; $incr <10; $incr++ ) {
+	// Mark the current class
+	if( $current_module == $main_url[$incr][0] ) {
+		$home_url = $main_url[$incr][1];
+		break;
+	}
+}
+		
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -76,21 +91,10 @@ $userID=$_SESSION['userID'];
 
 	<!-- start page -->
 		<div id="page">
-			<!-- start content -->
-			
-			<div id="content">
-				<table align="center" width="80%" cellpadding="2" cellspacing="2" border="0"class="contentTable">
+				<table align="center" width="100%" cellpadding="2" cellspacing="2" border="0"class="contentTable">
 				<!-- page content area-->
 				<tr>
 					<td colspan="2" valign="top" >
-				<!--
-					<div align="right">
-					<?=$LBLoginAs?>:&nbsp;&nbsp;<?=$_SESSION['userName']?>
-					<a href="<?=$root_path?>modules/core/security/changepasswd.php"><?=$LBChangePasswd?></a>
-					&nbsp;|&nbsp;
-					<a href="<?=$root_path?>modules/core/security/quit.php"><?=$LBLogout?></a>
-					</div>
-				-->
 					<table width="100%" cellpadding="2" cellpadding="2" border="0">
 					<tr>
 					<?

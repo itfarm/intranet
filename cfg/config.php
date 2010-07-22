@@ -36,6 +36,7 @@
 	//	Page URLs
 	$verificationPage= $root_dir . "cfg/verification.php";
 	$loginPage= $root_dir . "index.php";
+	$logoutPage= $root_dir . "cfg/logout.php";
 	$dashboardPage= $tasksModule . "main.php?page=dashboard";
 	$eventsPage = $root_dir . "modules/core/admin/events/index.php?menuid=MM3";
 	$newsPage = $root_dir . "modules/core/admin/news/index.php?menuid=MM12";
@@ -43,21 +44,23 @@
 	$projectPage = $root_dir . "modules/core/admin/projects/index.php?menuid=MM19";
 	$trainingPage = $root_dir . "modules/core/admin/training/index.php?menuid=MM11";
 	$faqPage = $root_dir ."modules/core/admin/faq/index.php?menuid=MM15";
+	
+	//	Submenu URLs and their names
+	$main_url[0][0] = "Tasks";	$main_url[0][1] = $dashboardPage;
+	$main_url[1][0] = "Events"; 	$main_url[1][1] = $eventsPage;
+	$main_url[2][0] = "News";	$main_url[2][1] = $newsPage;
+	$main_url[3][0] = "Gallery";		$main_url[3][1] = $galleryPage;
+	$main_url[4][0] = "Projects";		$main_url[4][1] = $projectPage;
+	$main_url[5][0] = "Training";		$main_url[5][1] = $trainingPage;
+	$main_url[6][0] = "Remainders";		$main_url[6][1] = $root_dir . "";
+	$main_url[7][0] = "Chat";			$main_url[7][1] = $root_dir . "";
+	$main_url[8][0] = "Polls";			$main_url[8][1] = $root_dir . "";
+	$main_url[9][0] = "FAQ";			$main_url[9][1] = $faqPage;
 
 	function main_menu($current_module) {
 		global 	$tasksModule, $dashboardPage, $eventsModule, $eventsPage;
 		global  $newsPage, $galleryPage, $projectPage, $trainingPage, $faqPage;
-		//	Submenu URLs and their names
-		$main_url[0][0] = "Tasks";	$main_url[0][1] = $dashboardPage;
-		$main_url[1][0] = "Events"; 	$main_url[1][1] = $eventsPage;
-		$main_url[2][0] = "News";	$main_url[2][1] = $newsPage;
-		$main_url[3][0] = "Gallery";		$main_url[3][1] = $galleryPage;
-		$main_url[4][0] = "Projects";		$main_url[4][1] = $projectPage;
-		$main_url[5][0] = "Training";		$main_url[5][1] = $trainingPage;
-		$main_url[6][0] = "Remainders";		$main_url[6][1] = $root_dir . "";
-		$main_url[7][0] = "Chat";			$main_url[7][1] = $root_dir . "";
-		$main_url[8][0] = "Polls";			$main_url[8][1] = $root_dir . "";
-		$main_url[9][0] = "FAQ";			$main_url[9][1] = $faqPage;
+		global $main_url;
 		
 		echo '	<ul id="main">';
 					// Generate submenu links

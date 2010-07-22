@@ -12,7 +12,7 @@ $adminMain="News";
 require_once($root_path.'modules/core/admin/skin/head.php');
 $LBSection=$LBNewsAdmin;
 $crumbs[0]['name'] = $LBAdminHome;
-$crumbs[0]['url'] = $root_path.'modules/core/admin/index.php';
+$crumbs[0]['url'] = $home_url;
 $crumbs[1]['name'] = $LBNewsAdmin;
 $crumbs[1]['url'] = $root_path.'modules/core/admin/projects/index.php?menuid='.$menuid;
     

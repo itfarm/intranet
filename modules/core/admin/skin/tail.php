@@ -4,12 +4,10 @@
 				</table>
 			</td>
 			</tr>
-			<tr><td>&laquo;&laquo;<a href="<?=$root_path?>/modules/core/admin/index.php"><?=$LBBack?></a></td></tr>
+			<tr><td>&laquo;&laquo;<a href="<?=$home_url?>"><?=$LBBack?></a></td></tr>
 			<!--end page content area-->
 
 			</table>
-		</div>
-		<!-- end content -->
 		
 		<div style="clear: both;">&nbsp;</div>
 			</div>
