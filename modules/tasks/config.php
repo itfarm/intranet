@@ -116,8 +116,8 @@
 			include("audittrail/clearlog.php");
 		};
 		if( $page == "profile" ) {
-			if( $tag == "manageusers" || empty($tag) ) {
-				include_once("profile/authusers.php");
+			if( $tag == "autobiography" || empty($tag) ) {
+				include_once("profile/autobiography.php");
 			}
 			elseif( $tag == "managegroups" ) {
 				include_once("profile/authgroups.php");
@@ -125,8 +125,8 @@
 			elseif( $tag == "changepassword" ) {
 				include_once("profile/changepassword.php");
 			}
-			elseif( $tag == "autobiography" ) {
-				include_once("profile/autobiography.php");
+			if( $tag == "manageusers" ) {
+				include_once("profile/authusers.php");
 			}
 			elseif( $tag == "location" ) {
 				include_once("profile/location.php");
@@ -168,18 +168,18 @@
 			echo '
 					<ul>
 						<li>
+							<h2>Personal</h2>
+							<ul>
+								<li><a href="'. $profilePage .'&tag=autobiography">Autobiography</a></li>
+								<li><a href="'. $profilePage .'&tag=location">Current Location</a></li>
+								<li><a href="'. $profilePage .'&tag=changepassword">Change password</a></li>
+							</ul>
+						</li>
+						<li>
 							<h2>Manage</h2>
 							<ul>
 								<li><a href="'. $profilePage .'&tag=manageusers">User Profiles</a></li>
 								<li><a href="'. $profilePage.'&tag=managegroups">Groups</a></li>
-							</ul>
-						</li>
-						<li>
-							<h2>Personal</h2>
-							<ul>
-								<li><a href="'. $profilePage .'&tag=changepassword">Change password</a></li>
-								<li><a href="'. $profilePage .'&tag=autobiography">Autobiography</a></li>
-								<li><a href="'. $profilePage .'&tag=location">Current Location</a></li>
 							</ul>
 						</li>
 					</ul>
