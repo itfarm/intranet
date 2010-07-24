@@ -334,11 +334,10 @@ img.right {
 }
 
 .sidebar li ul {
-	background: #add8e6;
+	background: #dce2f0;
 }
 .sidebar li ul a:hover {
 	color: #ffffff;
-	background:#add8e6;
 }
 .current a {
 	background:#add8e6;
@@ -354,7 +353,7 @@ img.right {
 .sidebar li h2 {
 	margin: 0 0 0 0;
 	padding: 10px 15px;
-	background: #627fa8;
+	background: #808080;
 	font-size: 13px;
 	color: #ffffff;
 }

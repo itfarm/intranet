@@ -17,16 +17,14 @@
 
 #login table p{
       text-align: right;
-      font-weight:bold;
-      color: #ffffff;
-      font-size: 0.9em;
+      color: #000000;
+      font-size: 1.2em;
 }
 #login .button{
       float: left;
       background-color: #bbbbbb;
       width: 4em;
       border: 1px solid #999;
-      font-weight:bold;
 }
 
 #login .inBox{

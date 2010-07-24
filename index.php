@@ -29,8 +29,8 @@ Website: http://bongolinux.webs.com/
 	<!-- start header -->
 	<div id="header">
 		<div id="logo">
-			<h1><a href=""><span>Intranet</span></a></h1>
-			<p>Prime minister's office</p>
+			<h1><a href=""><span></span></a></h1>
+			<p></p>
 		</div>
 	</div>
 	<!-- end header -->

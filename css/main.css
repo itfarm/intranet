@@ -1,4 +1,4 @@
-
+ 
 /*
 Designs by IT Farm
 Author: John Francis Mukulu <john.f.mukulu@gmail.com>
@@ -7,7 +7,7 @@ Author: John Francis Mukulu <john.f.mukulu@gmail.com>
 body {
 	margin: 0px;
 	padding: 0;
-	background: #7F765E;
+	background: #666666;
 	text-align: justify;
 	font-family:  Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 11px;
@@ -62,7 +62,9 @@ img.right {
 	width: 90%;
 	margin: 0 auto;
 	height: 115px;
-	background: url(../images/img01.jpg) repeat-x left top;
+	background: url(../images/img01.jpg) no-repeat left top;
+	-moz-background-size: 100%;  
+	-webkit-background-size: 100%;
 }
 
 /* Header */
@@ -77,11 +79,11 @@ img.right {
 	float: left;
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #FFFFFF;
+	color: #323232;
 }
 
 #logo span {
-	color: #FFFFFF;
+	color: #323232;
 }
 
 #logo h1 {
@@ -94,9 +96,9 @@ img.right {
 #logo p {
 	letter-spacing: -1px;
 	margin: 0px;
-	padding: 18px 0px 0px 10px;
-	font-size: 15px;
-	color: #FFFFFF;
+	padding: 1px 0px 0px 2px;
+	font-size: 18px;
+	color: #323232;
 }
 
 #logo a {
@@ -143,7 +145,7 @@ img.right {
 	color: #FFFFFF;
 }
 
-#menu .current_page_item a {
+#menu .current_page a {
 	color: #FFFFFF;
 }
 
@@ -211,7 +213,7 @@ img.right {
 	width: 90%;
 	margin: 0 auto;
 	padding: 20px 0 0 0;
-	background: #110E0F;
+	background: #f0f0e7;
 }
 
 #page-bg {
@@ -500,7 +502,7 @@ input{
 	width: 250px;
 	font-family:arial, helvetica;
 	font-size:18px;
-	font-weight:bold;
+	
 }
 .roundedfield{
 	background:  url(../../images/rounded.gif) no-repeat left top;
