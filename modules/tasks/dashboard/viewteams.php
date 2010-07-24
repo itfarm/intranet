@@ -17,7 +17,7 @@
 	<input type="text" name="search_string"  value="<?php echo $search_string?>" class="vform"/>
 	<input type="submit" value="Filter" class="button" />
 </form>	
-
+<div class="scrolldown">
 <table style="text-align:left;" width="100%">
 	<thead>
 		<tr>
@@ -44,3 +44,5 @@
 		?>	
 	</thead>
 </table>
+
+</div>

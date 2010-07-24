@@ -113,7 +113,7 @@
 	//*****************************************************************
 	
 ?>
-
+<div class="scrolldown">
 	<table align=center class="smallneat">		
 	<tr class="largeleft"><th>Section name</th>
 			<th>Status</th>
@@ -185,3 +185,4 @@
 	}
 echo '</table>';
 ?>
+</div>

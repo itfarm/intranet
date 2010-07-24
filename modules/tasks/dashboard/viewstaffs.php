@@ -44,8 +44,8 @@ $qry_user_SQL = "SELECT authuser.*, qry_users_with_groups_active_list.group_memb
 		<input type="text" name="search_string"  value="<?php echo $search_string?>" class="vform"/>
 		<input type="submit" value="Filter" class="button" />
 	</form>	
-
-	<table class="sorted" style="font-size:90%">
+<div class="scrolldown">
+	<table style="font-size:90%">
 	<thead>
 	<tr>
 			<th id="firstname">First name</th>
@@ -100,4 +100,5 @@ $qry_user_SQL = "SELECT authuser.*, qry_users_with_groups_active_list.group_memb
 	}
 ?>
 </tbody>
-</table>
+	</table>
+</div>

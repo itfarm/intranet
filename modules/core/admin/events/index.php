@@ -38,10 +38,9 @@ $crumbs[1]['url'] = $root_path.'modules/core/admin/events/index.php?menuid='.$me
 <div>&nbsp;</div>
 <div><?=$LBPageTitle.'&nbsp;:&nbsp;'.$LBSection?></div>
 <div>&nbsp;</div>
-<div class="line"></div>
 <div>&nbsp;</div>
 <div>  
-	 <table   border="0" align="center" width="70%" cellpadding="2" cellspacing="1" >
+	 <table   border="0" align="center" width="100%" cellpadding="2" cellspacing="1" >
 	    <tr class="table_tr">
 			<td width="2%"><?=$LBcontNo?></td>
 			<td><?=$LBcontTitle?></td>

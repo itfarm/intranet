@@ -161,7 +161,7 @@ $listusers = mysql_query("
 
 
 <h4>Manage groups that are available in the system</h4>
-
+<div class="scrolldown">
 <table border="0" cellspacing="0" cellpadding="0" align="left" width=100%>
 <form name="AddTeam" method="Post" action="<?php echo $profilePage ?>&tag=managegroups">
 <input type="hidden" name="id" value="<?= $id?>">
@@ -339,3 +339,4 @@ $listusers = mysql_query("
   </tr>
  </form>
 </table>
+</div>

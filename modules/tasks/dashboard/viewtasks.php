@@ -157,56 +157,58 @@ $qry_task_SQL = "SELECT tbl_tasks.*,
 			</td></tr>
 	</table>
 </form>
+	<div class="scrolldown">
 	<table class="sorted" style="font-size:90%">
-	<thead>
-	<tr>
-			<th id="desc">Task description</th>
-			<th id="classification">Task classification</th>
-			<th id="workload">Workload</th>
-			<th id="priority">Priority</th>
-			<th id="deadline">Deadline</th>
-			<th id="datecreated">Date created</th>
-			<th id="currentlyassignedto">Currently assigned to</th>
-			<th id="percentcompleted">% done</th>
-			<?php
-				if ($openclosestatus != "open") {
-					echo '	<th id="closure">Task closure</th>';
-					echo '	<th id="closuredate">Date closed</th>';
-				}
-			?>	
-	</tr>
-	</thead>
-	<tbody>
-	<?php
-	$qry_task_result = mysql_query($qry_task_SQL);
-	if (!$qry_task_result) {
-			exit('<p>Error performing task query: '.mysql_error().'</p>');
-	}
-	else {
-		
-		if (mysql_num_rows($qry_task_result) == 0) {
-			echo "<P  class='centered'>No tasks meet the filter criteria</P>";
+		<thead>
+		<tr>
+				<th id="desc">Task description</th>
+				<th id="classification">Task classification</th>
+				<th id="workload">Workload</th>
+				<th id="priority">Priority</th>
+				<th id="deadline">Deadline</th>
+				<th id="datecreated">Date created</th>
+				<th id="currentlyassignedto">Currently assigned to</th>
+				<th id="percentcompleted">% done</th>
+				<?php
+					if ($openclosestatus != "open") {
+						echo '	<th id="closure">Task closure</th>';
+						echo '	<th id="closuredate">Date closed</th>';
+					}
+				?>	
+		</tr>
+		</thead>
+		<tbody>
+		<?php
+		$qry_task_result = mysql_query($qry_task_SQL);
+		if (!$qry_task_result) {
+				exit('<p>Error performing task query: '.mysql_error().'</p>');
 		}
 		else {
-			for( $incr=0; $incr< mysql_num_rows($qry_task_result); $incr++) {
-				$row = mysql_fetch_array($qry_task_result);
-				echo '<tr class="pointer" onClick="document.location.href=\''.$dashboardPage .'&tag=processtask&task_id='.$row['task_id'].'\'">';
-					echo "<td>". $row['task_description'] ."</td>";
-					echo "<td>". get_task_classification( $row['task_classification_id'] ) . "</td>";
-					echo "<td>". get_workload_classification( $row['workload_classification_id'] ) ."</td>";
-					echo "<td>". get_priority_classification( $row['priority_classification_id'] ) ."</td>";
-					echo "<td>". $row['deadline'] ."</td>";
-					echo "<td>". $row['created_by'] ."</td>";
-					echo "<td>". $row['date_created'] ."</td>";
-					echo "<td>". $row['percent_completed'] ."%</td>";
-					if( $openclosestatus != "open" ) {
-						echo "<td>". $row['task_closure_classification'] . "</td>";
-						echo "<td>". $row['date_closed_formatted'] . "</td>";
-					};
-				echo "</tr>";
+			
+			if (mysql_num_rows($qry_task_result) == 0) {
+				echo "<P  class='centered'>No tasks meet the filter criteria</P>";
+			}
+			else {
+				for( $incr=0; $incr< mysql_num_rows($qry_task_result); $incr++) {
+					$row = mysql_fetch_array($qry_task_result);
+					echo '<tr class="pointer" onClick="document.location.href=\''.$dashboardPage .'&tag=processtask&task_id='.$row['task_id'].'\'">';
+						echo "<td>". $row['task_description'] ."</td>";
+						echo "<td>". get_task_classification( $row['task_classification_id'] ) . "</td>";
+						echo "<td>". get_workload_classification( $row['workload_classification_id'] ) ."</td>";
+						echo "<td>". get_priority_classification( $row['priority_classification_id'] ) ."</td>";
+						echo "<td>". $row['deadline'] ."</td>";
+						echo "<td>". $row['created_by'] ."</td>";
+						echo "<td>". $row['date_created'] ."</td>";
+						echo "<td>". $row['percent_completed'] ."%</td>";
+						if( $openclosestatus != "open" ) {
+							echo "<td>". $row['task_closure_classification'] . "</td>";
+							echo "<td>". $row['date_closed_formatted'] . "</td>";
+						};
+					echo "</tr>";
+				};
 			};
-		};
-	}
-?>
-</tbody>
-</table>
+		}
+	?>
+	</tbody>
+	</table>
+	</div>

@@ -104,7 +104,7 @@
 	//*****************************************************************
 	
 ?>
-
+<div class="scrolldown">
 	<table align=center class="smallneat">		
 	<tr class="largeleft">
 			<th>First Name</th>
@@ -195,3 +195,4 @@
 	}
 echo '</table>';
 ?>
+</div>

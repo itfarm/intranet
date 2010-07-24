@@ -259,7 +259,6 @@
 <col width="49%">
 <col width="2%">
 <col width="49%">
-<tr class="backshade"><td> <td><td> </td></td> </td></tr>
 <?php
 
 	$qry_task_SQL = "SELECT tbl_tasks.*, tbl_setup_task_classifications.task_classification, tbl_setup_workload_classifications.workload_classification, tbl_setup_priority_classifications.priority_classification, DATE_FORMAT(Deadline,'%d %M %Y') AS deadline_formatted, authuser.name, authuser.surname, DATE_FORMAT(date_created,'%d %M %Y') AS date_created_formatted, tbl_setup_task_closure_classifications.task_closure_classification, tbl_setup_task_outcome_classifications.task_outcome_classification, DATE_FORMAT(date_closed,'%d %M %Y') AS date_closed_formatted 
@@ -281,33 +280,34 @@
 			$percent_completed = $qry_task_row['percent_completed'];
 			?>
 			
-			<tr><td>
-			<table >
-			<tr class="bold"><td>Task description:</td><td><?php echo $qry_task_row['task_description'] ?></td></tr>
-			<tr><td>Task classification:</td><td><?php echo $qry_task_row['task_classification'] ?></td></tr>
-			<tr><td>Workload:</td><td><?php echo $qry_task_row['workload_classification'] ?></td></tr>
-			<tr><td>Priority:</td><td><?php echo $qry_task_row['priority_classification'] ?></td></tr>
-			<tr><td>Deadline:</td><td><?php echo $qry_task_row['deadline_formatted'] ?></td></tr>
-			<tr><td>Date created:</td><td><?php echo $qry_task_row['date_created_formatted'] ?></td></tr>
-			<tr><td>Created by:</td><td><?php echo $qry_task_row['name'].' '.$qry_task_row['surname'] ?></td></tr>
-			<tr class="bold"><td>Currently assigned to:</td><td><?php echo currently_assigned_to($task_id, "name") ?></td></tr>
-			<tr><td>Percent completed:</td><td><?php echo $qry_task_row['percent_completed'] ?>%</td></tr>
-			<?php
-				if ($TaskOutcomeRelevant == true) {
-			?>
-			<tr><td>Task outcome:</td><td><?php echo $qry_task_row['task_outcome_classification'] ?></td></tr>
-			<?php
-				}
-			?>
-			<tr><td>Task closure:</td><td><?php echo $qry_task_row['task_closure_classification'] ?></td></tr>
-			<tr><td>Date closed:</td><td><?php echo $qry_task_row['date_closed_formatted'] ?></td></tr>
-			</table>
+			<tr>
+				<td>
+				<table >
+					<tr><td class="bold">Task description:</td><td><?php echo $qry_task_row['task_description'] ?></td></tr>
+					<tr><td class="bold">Task classification:</td><td><?php echo $qry_task_row['task_classification'] ?></td></tr>
+					<tr><td class="bold">Workload:</td><td><?php echo $qry_task_row['workload_classification'] ?></td></tr>
+					<tr><td class="bold">Priority:</td><td><?php echo $qry_task_row['priority_classification'] ?></td></tr>
+					<tr><td class="bold">Deadline:</td><td><?php echo $qry_task_row['deadline_formatted'] ?></td></tr>
+					<tr><td class="bold">Date created:</td><td><?php echo $qry_task_row['date_created_formatted'] ?></td></tr>
+					<tr><td class="bold">Created by:</td><td><?php echo $qry_task_row['name'].' '.$qry_task_row['surname'] ?></td></tr>
+					<tr><td class="bold">Currently assigned to:</td><td><?php echo currently_assigned_to($task_id, "name") ?></td></tr>
+					<tr><td class="bold">Percent completed:</td><td><?php echo $qry_task_row['percent_completed'] ?>%</td></tr>
+				<?php if ($TaskOutcomeRelevant == true) {
+?>
+				<tr><td class="bold">Task outcome:</td><td><?php echo $qry_task_row['task_outcome_classification'] ?></td></tr>
+				<?php
+					}
+				?>
+				<tr><td class="bold">Task closure:</td><td><?php echo $qry_task_row['task_closure_classification'] ?></td></tr>
+				<tr><td class="bold">Date closed:</td><td><?php echo $qry_task_row['date_closed_formatted'] ?></td></tr>
+				</table>
 			
-			</td><td></td> <td>
+			</td>
+			<td></td> <td>
 			
 			<table>
 			
-			<tr><td>Assignment history:</td><td>
+			<tr><td class="bold">Assignment history:</td><td>
 			<table class="smallneat">
 			<?php
 			// show the assignments
@@ -330,7 +330,7 @@
 			</table>
 			</td></tr>
 			
-			<tr><td>Referrals:</td><td>
+			<tr><td class="bold">Referrals:</td><td>
 			<table class="smallneat">
 			<?php
 			// show the referrals
@@ -352,7 +352,7 @@
 			</table>
 			</td></tr>
 			
-			<tr><td>External links:</td><td>
+			<tr><td class="bold">External links:</td><td>
 			<table>
 			<?php	
 			// show the linked entities
@@ -375,7 +375,7 @@
 			</td></tr>
 			
 		
-			<tr><td>Document links:</td><td>
+			<tr><td class="bold">Document links:</td><td>
 			<table>
 			<?php
 			// show the linked documents
@@ -399,7 +399,7 @@
 			</table>
 			</td></tr>
 			
-			<tr><td>Notes:</td><td>
+			<tr><td class="bold">Notes:</td><td>
 			<table>
 			<?php
 			// show the notes

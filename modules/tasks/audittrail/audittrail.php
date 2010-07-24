@@ -33,7 +33,7 @@
 		}
 	}
 </script>
-
+<div class="scrolldown">
 <table cellspacing="0" cellpadding="4" border="0" width=100% class="adminTable">
 <tr>
 	<td class="adminHeader">Full Name</td>
@@ -110,6 +110,7 @@
 		}
 			?>
 </table>
+</div>
 <?php 
 	# include the footer
 	include($szFooterPath);

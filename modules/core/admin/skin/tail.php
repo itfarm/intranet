@@ -4,7 +4,6 @@
 				</table>
 			</td>
 			</tr>
-			<tr><td>&laquo;&laquo;<a href="<?=$home_url?>"><?=$LBBack?></a></td></tr>
 			<!--end page content area-->
 
 			</table>

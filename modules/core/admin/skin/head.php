@@ -95,7 +95,7 @@ for($incr = 0; $incr <10; $incr++ ) {
 
 	<!-- start page -->
 		<div id="page">
-				<table align="center" width="100%" cellpadding="2" cellspacing="2" border="0"class="contentTable">
+				<table align="center" width="100%" cellpadding="2" cellspacing="2" border="0">
 				<!-- page content area-->
 				<tr>
 					<td colspan="2" valign="top" >

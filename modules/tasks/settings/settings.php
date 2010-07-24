@@ -150,6 +150,7 @@
 	//*****************************************************************
 	
 ?>
+<div class="scrolldown">
 	<p class="bigleft">Configure <?php echo str_replace('_', ' ', $setup).'s' ?> </p>
 	<table align=center class="smallneat">		
 	<tr class="largeleft">
@@ -240,3 +241,4 @@
 	}
 echo '</table>';
 ?>
+</div>

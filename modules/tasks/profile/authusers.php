@@ -298,15 +298,14 @@ if ($action == "Add New") {
 <h4>Manage users available in the sytstem</h4>
 <script language="JavaScript" src="<?php echo $root_dir ?>javascripts/gen_validatorv2.js"></script>
 
-
+<div class="scrolldown">
 <table border="0" cellspacing="0" cellpadding="0" align="left">
 <form name="AddUser" method="Post" action="<?php echo $profilePage ?>&tag=manageusers">
 <input type="hidden" name="id" value="<?= $id?>">
 <input type="hidden" name="level" value="1">
   <tr valign="top"> 
     <td width=50%> 
-
-	  	
+  	
 		<table class="adminTable" width="100%" border="1" cellspacing="1" cellpadding="4" align="left">
 		<thead>
 			<tr> 
@@ -575,3 +574,4 @@ if ($action == "Add New") {
   
   -->
 </table>
+</div>

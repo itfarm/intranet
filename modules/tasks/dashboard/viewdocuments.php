@@ -44,7 +44,7 @@ $qry_document_SQL = "SELECT tbl_documents.*, authuser.name, authuser.surname, tb
 		<input type="text" name="search_string" value="<?php echo $search_string?>" class="vform" />
 		<input type="submit" value="Filter" class="button"/>
 	</form>	
-
+<div class="scrolldown">
 	<table class="sorted" style="font-size:90%">
 	<thead>
 	<tr>
@@ -127,4 +127,5 @@ $qry_document_SQL = "SELECT tbl_documents.*, authuser.name, authuser.surname, tb
 	}
 ?>
 </tbody>
-</table>
+	</table>
+</div>

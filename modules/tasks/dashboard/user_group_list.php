@@ -12,7 +12,6 @@ $current_user_id = $user_id;
 
 @include_once('../config_imported/coresql.inc.php');
 
-
 $user_group_search_SQL = "SELECT user_group_id, user_group_desc
 								FROM (".$qry_users_groups_active_desc_SQL.") as qry_users_groups_active_desc ";
 $where_assignee_SQL = "";
