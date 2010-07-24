@@ -7,11 +7,11 @@ Author: John Francis Mukulu <john.f.mukulu@gmail.com>
 body {
 	margin: 0px;
 	padding: 0;
-	background: #7F765E;
+	background: #666666;
 	text-align: justify;
 	font-family:  Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 11px;
-	color: #ffffff;
+	color: #3D3726;
 }
 
 h1, h2, h3 {
@@ -37,9 +37,8 @@ ul {
 
 a {
 	text-decoration: none;
-	color: #BFB28D;
+	color: #2F2A1D;
 }
-
 a:hover {
 	border-bottom: none;
 }
@@ -62,7 +61,9 @@ img.right {
 	width: 90%;
 	margin: 0 auto;
 	height: 115px;
-	background: url(/intranet/modules/tasks/images/img01.jpg) repeat-x left top;
+	background: url(/intranet/modules/tasks/images/img01.jpg) no-repeat left top;
+	-moz-background-size: 100%;  
+	-webkit-background-size: 100%;
 }
 
 /* Header */
@@ -77,11 +78,11 @@ img.right {
 	float: left;
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #FFFFFF;
+	color: #323232;
 }
 
 #logo span {
-	color: #FFFFFF;
+	color: #323232;
 }
 
 #logo h1 {
@@ -94,15 +95,33 @@ img.right {
 #logo p {
 	letter-spacing: -1px;
 	margin: 0px;
-	padding: 18px 0px 0px 10px;
-	font-size: 15px;
-	color: #FFFFFF;
+	padding: 1px 0px 0px 2px;
+	font-size: 18px;
+	color: #323232;
 }
 
 #logo a {
 	border: none;
 	text-decoration: none;
 	color: #FFFFFF;
+}
+
+/*-------------Login Session Name-------------*/
+#login-session-name{
+      float: right;
+      top: 0;
+      right: 0;
+      color: #000000;
+      font-size: 1em;
+}
+#login-session-name a{
+      color: blue;
+      font-weight: bold;
+      text-decoration: none;
+}
+
+#login-session-name a:hover{
+      text-decoration: underline;
 }
 
 /* Menu */
@@ -136,7 +155,8 @@ img.right {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	font-weight: bold;
-	color: #BFB28D;
+	color: #323232;
+	-moz-border-radius:0px 3px 0px 0px;
 }
 
 #menu a:hover {
@@ -180,24 +200,24 @@ img.right {
 	float: left;
 	margin: 0 3px 0 0;
 	padding: 6px 15px 10px 20px;
-	border-right: 1px #000000 solid;
+	border-right: 1px #ffffff solid;
 	text-decoration: none;
 	text-transform: lowercase;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 15px;
-	color: #BFB28D;
+	color: #404d72;
 }
 
 #submenu a:hover {
 	margin: 0 3px 0 0;
-	color: #FFFFFF;
+	color: #000000;
 }
 
 #submenu .current_page_item a{
 	margin: 0 3px 0 0;
 	font-weight:bold;
 	font-size:15px;
-	color: #FFFFFF;
+	color: #000000;
 }
 
 /* Wrapper */
@@ -211,7 +231,7 @@ img.right {
 	width: 90%;
 	margin: 0 auto;
 	padding: 20px 0 0 0;
-	background: #110E0F;
+	background: #f0f0e7;
 }
 
 #page-bg {
@@ -231,7 +251,7 @@ img.right {
 	width: 60%;
 }
 .pointer:hover{
-	color:yellow;
+	color:blue;
 	cursor:pointer;
 }
 
@@ -252,7 +272,7 @@ img.right {
 
 .title a {
 	border-bottom: none;
-	color: #FFFFFF;
+	color: #2F2A1D;
 }
 
 .title a:hover {
@@ -276,7 +296,7 @@ img.right {
 	padding: 4px 20px;
 	text-align: left;
 	font-weight: bold;
-	background: #000000;
+	background: #f2d05f;
 }
 
 .links a {
@@ -314,36 +334,36 @@ img.right {
 }
 
 .sidebar li ul {
-	background: #110E0F;
+	background: #add8e6;
 }
 .sidebar li ul a:hover {
-	color: #BFB28D;
-	background:#110E00;
+	color: #ffffff;
+	background:#add8e6;
 }
 .current a {
-	background:#ffffff;
-	color: #BFB28D;
+	background:#add8e6;
+	color: #ffffff;
 }
 .sidebar li li {
-	margin: 0 10px 0 10px;
-	padding: 8px 0px;
-	border-bottom: 1px #423525 dashed;
+	margin: 0 0px 0 0px;
+	padding: 8px 0px 8px 5px;
+	border-bottom: 1px #423525 solid;
 }
 
 
 .sidebar li h2 {
 	margin: 0 0 0 0;
 	padding: 10px 15px;
-	background: #000000;
+	background: #627fa8;
 	font-size: 13px;
-	color: #AF9371;
+	color: #ffffff;
 }
 
 .sidebar a {
-	color: #FFFFFF;
+	color: #000000;
 }
 .sidebar a:hover {
-	color: #BFB28D;
+	color: #ffffff;
 }
 /* Search */
 
@@ -444,11 +464,11 @@ img.right {
 	text-transform: uppercase;
 	font-size: 10px;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #B8AB86;
+	color: #ffffff;
 }
 
 #footer a {
-	color: #B8AB86;
+	color: #ffffff;
 }
 
 #footer .link {
@@ -456,6 +476,8 @@ img.right {
 
 #footer .copyright {
 }
+
+
 
 /* Styles from ChristCMS */
 .select{

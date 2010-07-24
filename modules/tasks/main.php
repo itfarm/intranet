@@ -38,8 +38,12 @@ Website: http://bongolinux.webs.com/
 	<!-- start header -->
 	<div id="header">
 		<div id="logo">
-			<h1><a href=""><span>Intranet</span></a></h1>
-			<p><?php echo $_SESSION['username'] ?> | <a href="<?php echo $logoutPage ?>" style="color:yellow;">Logout</a></p>
+			<h1><a href=""><span></span></a></h1>
+			<div id="login-session-name">   
+				Welcome
+				<strong> <?php echo $_SESSION['username'] ?> </strong> 
+				&nbsp;&nbsp;<a href="<?php echo $logoutPage ?>">Log out</a>
+			</div>
 		</div>
 		<div id="menu">
 			<?php main_menu($current_module) ?>
