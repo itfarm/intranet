@@ -365,6 +365,11 @@ img.right {
 .sidebar a:hover {
 	color: #ffffff;
 }
+
+.adminHeader {
+	font-weight: bold;
+	background: #add8e6;
+}
 /* Search */
 
 #searchform {

@@ -65,7 +65,7 @@
 								$arrUserLogs = utc_get_user_logs(0,'intTimeStamp',$szWhereClause);
 						?>
 								<table cellpadding="4" cellspacing="0" border="0" style="border:1px solid #888888" width="100%">
-									<tr bgcolor="#635b48">
+									<tr bgcolor="#f2d05f">
 										<td class="smalltext">IP Address</td>
 										<td class="smalltext">Document ID</td>
 										<td class="smalltext">Item ID</td>
