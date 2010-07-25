@@ -21,7 +21,7 @@
 			$parent_table_name = 'tbl_setup_task_classifications';
 			$parent_desc_name = 'task_classification';
 	} else if ($setup == 'file') {
-			$extra_filter_option = true;
+			$extra_filter_option = false;
 			$parent_id_name = 'file_type_id';
 			$parent_table_name = 'tbl_setup_file_types';
 			$parent_desc_name = 'file_type';
@@ -92,7 +92,8 @@
 			}
 			
 		}
-	} elseif ($command == "change_status") {
+	}
+	elseif ($command == "change_status") {
 		$new_status = $_GET['new_status'];
 		$id = $_GET['id'];
 		
@@ -158,13 +159,10 @@
 			<th>Description</th>
 			<th>Status</th>
 			</tr>
-			
-
-			
-			<?php
-				//**************Create new configuration
+<?php
+//**************Create new configuration
 				
-				if (!($extra_filter_option == true && $parent_id == '')) {
+if (!($extra_filter_option == true && $parent_id == '')) {
 					// no option to  create new classifcation if parent id supposed to be chosen but not chosen
 
 					$action_target = $settingsPage ."&tag=$setup&command=create_configuration";
@@ -190,14 +188,14 @@
 				}
 	// Display list ***************************
 	
-
+	
 	$qry_SQL = "SELECT ".$table_name.".*
 										FROM ".$table_name."
 										WHERE ".$table_name.".status = '".$status_option."'";
 	if ($extra_filter_option == true) {
 		$qry_SQL = $qry_SQL." AND ".$parent_id_name." = '".$parent_id."'";
 	}
-	
+
 	$qry_SQL = $qry_SQL."ORDER BY ".$description_field_name;
 
 	$qry_result = mysql_query($qry_SQL);
