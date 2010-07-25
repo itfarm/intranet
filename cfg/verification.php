@@ -11,9 +11,10 @@
 	$dbcnx = db_connection($db_host,$db_user,$db_password);
 	//	Select database
 	$db_select = db_select($db_name,$dbcnx);
-	echo "db_host:" . $db_host . "<br/>";
-	echo "db_user:" . $db_user ."<br/>";
-	echo "db_password:" . $db_password . "<br/>";
+	$Auth = new pmo_auth();
+	// Set some session variables
+	$detail = $Auth->authenticate($username, $password);
+
 	if( empty($username) || empty($password) ) {
 		$message = "Empty username or password";
 		Header("location:$loginPage?message=$message");
@@ -28,6 +29,13 @@
 			session_start();
 			$_SESSION['username']  = $username;
 			$_SESSION['id'] = $row['id'];
+			$_SESSION['USERNAME'] = $username;
+			$_SESSION['PASSWORD'] = $password;
+			if ($detail['level'] == 1) {
+				$arrUserLog = array();
+				$arrUserLog['szAction'] = 'User logs in';
+				utc_add_update_user_log($arrUserLog);
+			}
 			Header("location:$dashboardPage");
 		}
 		else

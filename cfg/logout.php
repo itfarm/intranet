@@ -23,6 +23,10 @@
 session_start();
 if( isset($_SESSION['username']) )
 {
+		//add record user_log table
+		$arrUserLog = array();
+		$arrUserLog['szAction'] = 'User logs out';
+		utc_add_update_user_log($arrUserLog);
 		session_destroy();
 		$message="Logged out Successfully!";
 		Header("location:$loginPage?message=$message");

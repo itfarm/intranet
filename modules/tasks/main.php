@@ -55,7 +55,6 @@ Website: http://bongolinux.webs.com/
 	<!-- start page -->
 	<div id="page">
 		<!-- start content -->
-		
 		<div id="content">
 			<div style="clear: both;">&nbsp;</div>
 			<?php contents($page,$tag); ?>

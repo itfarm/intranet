@@ -128,14 +128,14 @@ img.right {
 
 #menu {
 	float: left;
-	width: 72%;
+	width: 90%;
 	height: 40px;
 }
 
 #menu ul {
 	float: left;
 	margin: 0px 0px 0px 5px;
-	padding: 70px 0px 0px 0px;
+	padding: 61px 0px 0px 0px;
 	list-style: none;
 }
 
