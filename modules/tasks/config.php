@@ -81,11 +81,11 @@
 			elseif( $tag == "editgroupsbygroup" ) {
 				include("admin/editgroupsbygroup.php");
 			}
-			elseif( $tag == "editassignmentbyassignee") {
-				include("admin/editassignmentbyassignee.php");
+			elseif( $tag == "editbyassignee") {
+				include("admin/editbyassignee.php");
 			}
-			elseif( $tag == "editassignmentbyassigner") {
-				include("admin/editassignmentbyassigner.php");
+			elseif( $tag == "editbyassigner") {
+				include("admin/editbyassigner.php");
 			}
 		}
 		if( $page =="dashboard" || empty($page) ) {
