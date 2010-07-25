@@ -1,7 +1,8 @@
 <?php
 	@include_once('../../cfg/config.php');
+	$upload_dir=$http_dir . $root_dir . "docs/";
+	$docs_dir=$root_dir ."docs/";
 	$root_dir="/intranet/modules/tasks/";
-
 	//	Page URLs
 	$dashboardPage= $root_dir . "main.php?page=dashboard";
 	$profilePage = $root_dir . "main.php?page=profile";

@@ -1,5 +1,6 @@
 <?php
 	@include_once('config.php');
+	global $upload_dir;
 	@include_once('config_imported/connect.inc.php');
 	@include_once('config_imported/coresql.inc.php');
 	@include_once('config_imported/functionsdate.inc.php');
@@ -9,10 +10,8 @@
     @include_once('config_imported/settings.inc.php');
 
 	//var_dump($_POST);
-	$command=$_GET['command'];
-	
+	$command=$_POST['command'];
 	if ($command == "upload_document") {
-	
 		//	user has already uploaded a document
 		$document_description=PrepareStringForInsert($_POST['document_description']);
 		$document_keywords=PrepareStringForInsert($_POST['document_keywords']);
@@ -33,7 +32,7 @@
 				// if invalid date
 				if (checkdate($DocumentMonth,$DocumentDay,$DocumentYear)==false) {
 					$HasError = True;
-					echo "<P>You have not chosen a valid document date</p>";
+					echo "<p>You have not chosen a valid document date</p>";
 				} else {
 					// valid date
 					$document_date = "'".$DocumentYear."-".$DocumentMonth."-".$DocumentDay."'";
@@ -54,10 +53,6 @@
 		}
 		$document_id = $maximum_used_id + 1;
 		
-
-
-		
-		
 		
 		if  ($_POST['document_description'] == "") {
 			echo "<p>You cannot leave the document description blank</p>";
@@ -74,8 +69,8 @@
 			// upload file stuff
 			
 			$upload_file_name = 'doc_'.sprintf("%07s", $document_id).'_'.basename($_FILES['upfile']['name']);
-			$upload_path_and_file_name = $uploaddir.$upload_file_name;
-			
+			$upload_path_and_file_name = $upload_dir . $upload_file_name;
+			echo "<p>Upfile:". $_FILES['upfile']['tmp_name'] . "Uploadpath:" . $upload_path_and_file_name ."</p>";
 			if (!move_uploaded_file($_FILES['upfile']['tmp_name'], $upload_path_and_file_name)) {
 				echo "File upload problem";
 			}
@@ -124,10 +119,10 @@
 			
 			if ($MainQuerySuccessful ) {
 				$message="Document Successfully uploaded";
-				Header("location:$dashboardPage?message=$message");
+				echo "<p>" .$message. "</p>";
 			} else {
 				$message="Error in uploading document";
-				Header("location:$dashboardPage?message=$message");
+				echo "<p>" .$message. "</p>";
 				// will continue to form section
 			}
 			
@@ -135,7 +130,7 @@
 	}
 ?>
 
-		<form enctype="multipart/form-data" action='<?php echo $_SERVER['PHP_SELF'] ?>?page=dashboard&tag=uploaddocs' method='POST' name='uploaddocumentform' >
+		<form enctype="multipart/form-data" action='<?php echo $dashboardPage ?>&tag=uploaddocs' method='POST' name='uploaddocumentform' >
 			<table align=center width="100%">
 				<tr><td>Document description:</td><td><textarea cols='50' rows='2' name='document_description' class="vform"></textarea></td></tr>
 				<tr><td>Document keywords:</td><td><textarea cols='50' rows='2' name='document_keywords' class="vform"></textarea></td></tr>
@@ -144,8 +139,7 @@
 											echo DropDownLookupFiltered('tbl_setup_files','file_id', "concat(file_id, ' - ', file)","status = 'Active'");
 										 ?>
 									</select>
-									</td></tr>	
-
+									</td></tr>
 				<tr><td>Document date:</td><td><select name="DocumentDay" size=1 class="vform">
 										<?php
 											echo DateDropDownDay(31);
@@ -164,7 +158,6 @@
 										 ?>
 									</select>
 									</td></tr>
-
 				<tr><td>Classification:</td><td><select name="document_classification_id" size=1 class="vform">
 										<?php
 											echo DropDownLookupFiltered('tbl_setup_document_classifications','document_classification_id','document_classification', "status = 'Active'");
@@ -196,7 +189,7 @@
 									</td></tr>	
 				<tr><td>Browse for file:</td><td><input type="file" name="upfile" class="vform"></td></tr>					
 				<tr><td colspan=2>
-					<input type='hidden' name="upload_document" value='command' />
+					<input type='hidden' name="command" value='upload_document' />
 					<input type='submit' value='Create' class="button" />
 				</td></tr>
 			</table>

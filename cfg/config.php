@@ -1,5 +1,6 @@
 <?php
 	$root_dir="/intranet/";
+	$http_dir="/var/www";
 	$tasksModule = $root_dir . "modules/tasks/";
 	$eventsModule = $root_dir . "modules/events/";
 

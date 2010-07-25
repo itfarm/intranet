@@ -7,7 +7,8 @@
 	@include_once('config_imported/functionsspecial.inc.php');
 	// initialize host and database
     @include_once('config_imported/settings.inc.php');
-	
+	global $docs_dir;
+	$uploaddirrel = $docs_dir;
 	# include the header
 	global $szSection, $szSubSection, $szTitle, $additionalStyleSheet,$szHeaderPath,$szFooterPath;
 
@@ -81,7 +82,7 @@ $qry_document_SQL = "SELECT tbl_documents.*, authuser.name, authuser.surname, tb
 				$filename = $qry_document_row['document_file_name'];
 				$extension =  substr($filename,strrpos($filename,"."));
 			
-				
+				echo "fullname:" . $uploaddirrel.$filename;
 				echo '<tr onClick="window.location=\''.$uploaddirrel.$filename.'\'">';
 				?>
 
