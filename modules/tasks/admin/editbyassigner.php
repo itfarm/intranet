@@ -75,7 +75,7 @@
 	echo domain('dfirst','concat(name, \' \', surname)','authuser',"id = '".$assigner_id."'");
 	echo '</p>';
 ?>
-
+<div class="scrolldown">
 		<form action='<?php echo $_SERVER['PHP_SELF'].'?page='.$page.'&assigner_id='.$assigner_id.'&command=update_assignments' ?>' method='POST' name='updateassignmentsform' >
 			
 				<p class="bigleft">This user can assign to (users):</p>
@@ -87,6 +87,6 @@
 	
 				<input type='submit' value='Save' class="button" /></td></tr>
 		</form>
-		
+</div>
 
 

@@ -70,14 +70,13 @@
 	}
 	echo '</p>';
 ?>
-
-		<form action='<?php echo $_SERVER['PHP_SELF'].'?page='.$page.'&assignee_id='.$assignee_id.'&command=update_assignments' ?>' method='POST' name='updateassignmentsform' >
-			
-				<?php echo TickBoxes("(".$qry_users_active_desc_SQL.") as qry_users_active_desc","id","user_desc", 6, true, 'tbl_assignment_privileges','user_id',"assignee_id = '".$assignee_id."'"); ?>
-				<br>
-	
-				<input type='submit' value='Save' class="button" /></td></tr>
-		</form>
+<div class="scrolldown">
+	<form action='<?php echo $_SERVER['PHP_SELF'].'?page='.$page.'&assignee_id='.$assignee_id.'&command=update_assignments' ?>' method='POST' name='updateassignmentsform' >
 		
+			<?php echo TickBoxes("(".$qry_users_active_desc_SQL.") as qry_users_active_desc","id","user_desc", 6, true, 'tbl_assignment_privileges','user_id',"assignee_id = '".$assignee_id."'"); ?>
+			<br>
 
+			<input type='submit' value='Save' class="button" /></td></tr>
+	</form>
+</div>
 
