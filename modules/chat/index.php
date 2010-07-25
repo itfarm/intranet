@@ -1,75 +1,71 @@
-<?
-/*
-##################################################################################
-#Christ CMS is the content management system for managing ministries,churches
-#Author:Jacob Kwizera Mtalitinya
-#
-##################################################################################
-*/
-require_once('root.php');
-$skinFolder='default';
-$page="index";
-require_once($root_path.'skins/'.$skinFolder.'/head.php');
-$LBSection=$LBTraining;
-$crumbs[0]['name'] = $LBHome;
-$crumbs[0]['url'] = $root_path.'index.php';
-$crumbs[1]['name'] = $LBTraining;
-$crumbs[1]['url'] = $root_path.'modules/training/index.php?menuid='.$menuid;
+<?php
+	@include('../../cfg/config.php');
+	$page = $_GET['page'];
+	$tag =  $_GET['tag'];
+	@session_start();
+	if(!isset($_SESSION['username']))
+	{
+		@header("location:$loginPage?");
+	}
+	else {
+		// Start of session
+		$current_module = "Chat";
 ?>
-<!--content starts here -->
 
-<div id="content">
-	<? //=$LBBreadScrumb.'&nbsp;:&nbsp;'?>
-    <?php 
-	     $cnum = count($crumbs);
-		 for($i = 0; $i < $cnum; $i++)
-		 {
-		 	//echo '&nbsp>><a href="'.$crumbs[$i]['url'].'">'.$crumbs[$i]['name'].'</a>';
-		 }
-				   
-	?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>PMO Intranet system</title>
+	<meta name="keywords" content="" />
+	<meta name="Adhesive" content="" />
+	<link href="/intranet/modules/tasks/stylesheets/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="default.css" rel="stylesheet" type="text/css" />
+	<script src="scripts.js" language="JavaScript" type="text/javascript"></script>
+</head>
+<body>
+<div id="wrapper">
+	<!-- start header -->
+	<div id="header">
+			<div id="login-session-name">   
+				Welcome
+				<strong> <?php echo $_SESSION['username'] ?> </strong> 
+				&nbsp;&nbsp;<a href="<?php echo $logoutPage ?>">Log out</a>
+			</div>
+		<div id="menu">
+			<?php main_menu($current_module) ?>
+		</div>
+	</div>
+	<!-- end header -->
+	<!-- start page -->
+	<div id="page">
+		  <div id="chatheader">
+			<form id="chatForm" name="chatForm" onsubmit="return false;" action="">
+			  <label for="name">Username:</label><input type="text" size="12" maxlength="30" name="name" value="<?php echo $_SESSION['username']?>"id="name" onblur="checkName();" />
+			  <label for="chatbarText">Your text message:</label> <input type="text" size="55" maxlength="500" name="chatbarText" id="chatbarText" onblur="checkStatus('');" onfocus="checkStatus('active');" /> <input onclick="sendComment();" type="submit" id="submit" name="submit" value="submit" />
+			</form>
+		  </div>
+		  <div id="chatcontent">
+
+			<div id="chatoutput">
+			  
+			  <ul id="outputList">
+						<li><span class="name">PMO Chat:</span>Hi! Welcome to Prime Minister's office intranet Chat session.</li>
+			  </ul>
+			</div>
+		  </div>
+	</div>
+	<!-- end page -->
 </div>
-<div id="content"><? //=$LBPageTitle.$LBSection?></div>
-
-<div id="content">
-<div>
-&nbsp;
+<div id="footer-wrapper">
+	<div id="footer">
+		<p class="copyright">&copy;&nbsp;&nbsp;2009 All Rights Reserved &nbsp;&bull;&nbsp; Copyright <a href="">IT Farm</a>.</p>
+	</div>
 </div>
-
-<?
-			                $sqls=$christCMS->get_training_items("en",$archive,"");
-							$results = $christDB->f_ExecuteSql($sqls);
-							$arrErrorEvents=$christDB->f_GetSqlError();
-							 if(!empty($arrErrorEvents['message'])){
-							   echo $arrErrorEvents['message'].$LBGetError.$arrErrorEvents['code'];
-							 }
-							$recordcountEvents = $christDB->f_GetSelectedRows();
-						    
-							if ($recordcountEvents!=0)
-							    {  
-								   echo'<table width="100%" border="0" cellpadding="2" cellspacing="2">
-                                                                          <tr><td><b>'.$LBcontTitle.'</b></td></tr>';
-								   
-								   while ($arrs = $christDB->f_GetRecord($results)) { 
-								            
-											echo'<tr><td valign="top"  >
-											          <a href="'.$root_path.'modules/training/view.php?menuid='.$menuid.'&tID='.$arrs['id'].'">'.$arrs['tTitle'].'</a></td>		
-									
-
-
-												';
-												
-												
-										 }
-								   echo'</tr></table>';
-								}
-							else{
-								echo  $LBcontNotFound;
-							}
-?>
-</div>
-<!--content ends here -->
-
-<?php					
-require_once($root_path.'skins/'.$skinFolder.'/tail.php');
+</body>
+</html>
+<?php
+	}
 ?>

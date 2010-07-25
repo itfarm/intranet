@@ -45,6 +45,7 @@
 	$projectPage = $root_dir . "modules/core/admin/projects/index.php?menuid=MM19";
 	$trainingPage = $root_dir . "modules/core/admin/training/index.php?menuid=MM11";
 	$faqPage = $root_dir ."modules/core/admin/faq/index.php?menuid=MM15";
+	$chatPage = $root_dir . "modules/chat/";
 	
 	//	Submenu URLs and their names
 	$main_url[0][0] = "Tasks";	$main_url[0][1] = $dashboardPage;
@@ -54,13 +55,13 @@
 	$main_url[4][0] = "Projects";		$main_url[4][1] = $projectPage;
 	$main_url[5][0] = "Training";		$main_url[5][1] = $trainingPage;
 	//$main_url[6][0] = "Remainders";		$main_url[6][1] = $root_dir . "";
-	$main_url[6][0] = "Chat";			$main_url[6][1] = $root_dir . "";
+	$main_url[6][0] = "Chat";			$main_url[6][1] = $chatPage;
 	$main_url[7][0] = "Polls";			$main_url[7][1] = $root_dir . "";
 	$main_url[8][0] = "FAQ";			$main_url[8][1] = $faqPage;
 
 	function main_menu($current_module) {
 		global 	$tasksModule, $dashboardPage, $eventsModule, $eventsPage;
-		global  $newsPage, $galleryPage, $projectPage, $trainingPage, $faqPage;
+		global  $newsPage, $galleryPage, $projectPage, $trainingPage, $faqPage, $chatPage;
 		global $main_url;
 		
 		echo '	<ul id="main">';
