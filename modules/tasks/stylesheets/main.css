@@ -390,6 +390,10 @@ img.right {
 	font-weight: bold;
 	background: #add8e6;
 }
+.important {
+	font-weight: bold;
+	font-size:1.1em;
+}
 /* Search */
 
 #searchform {

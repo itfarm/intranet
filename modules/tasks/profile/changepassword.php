@@ -32,36 +32,36 @@
     <!-- 	username	-->
   
   <tr valign="middle"> 
-          <td class="adminRow1 smalltext" valign=top>Username</td>
-          <td class="adminRow1 smalltext header3"><?=$_SESSION['username']?><br></td>
+          <td class="important" valign=top>Username</td>
+          <td class="important"><?=$_SESSION['username']?><br></td>
         </tr>
 
   
   <!-- 	oldpassword	-->
   
   <tr valign="middle"> 
-          <td class="adminRow2 smalltext" valign=top>Old Password*</td>
+          <td class="important" valign=top>Old Password*</td>
           <td class="adminRow2 smalltext"><input class=vform type="password" name="oldpasswd" size="20" maxlength="30" value="<?=$oldpasswd?>"><br></td>
         </tr>
   
   <!--	newpassword		-->
   
   <tr valign="middle"> 
-          <td class="adminRow1 smalltext" valign=top>New Password*</td>
+          <td class="important" valign=top>New Password*</td>
           <td class="adminRow1 smalltext"><input class=vform type="password" name="newpasswd" size="20" maxlength="30" value="<?=$newpasswd?>"><br></td>
         </tr>
 		
  <!--	newpassword		-->
   
   <tr valign="middle"> 
-          <td class="adminRow2 smalltext" valign=top>Confirm New Password*</td>
+          <td class="important" valign=top>Confirm New Password*</td>
           <td class="adminRow2 smalltext"><input class=vform type="password" name="confirmpwd" size="20" maxlength="30" value="<?=$confirmpwd?>"><br></td>
         </tr>
 		
   <!--	change button		-->
   
   <tr valign="middle"> 
-          <td class="authTableFooter" valign=top>&nbsp;</td>
+          <td class="important" valign=top>&nbsp;</td>
           <td class="authTableFooter"><input type="submit" name="change" value="Change Password" class="button" onClick="return checkChangepwdForm()"><br></td>
         </tr>
 

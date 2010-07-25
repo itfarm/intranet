@@ -31,7 +31,14 @@
 							$class = "";
 						}
 						// Display the submenu links
-						echo '<li class="' .$class . '"><a href="' . $url[$incr][1] . '">' . $url[$incr][0] . '</a></li>';
+						// except settings.
+						if( $url[$incr][0] != "settings" && $url[$incr][0] != "audit trail" && $url[$incr][0] != "admin") {
+							echo '<li class="' .$class . '"><a href="' . $url[$incr][1] . '">' . $url[$incr][0] . '</a></li>';
+						}
+						elseif( auth_checkgroup('User Admin') == 1 ) {
+							//For the case of settings url.
+							echo '<li class="' .$class . '"><a href="' . $url[$incr][1] . '">' . $url[$incr][0] . '</a></li>';
+						}
 					};
 		echo '		</ul>
 				</div>';
@@ -174,15 +181,17 @@
 								<li><a href="'. $profilePage .'&tag=location">Current Location</a></li>
 								<li><a href="'. $profilePage .'&tag=changepassword">Change password</a></li>
 							</ul>
-						</li>
-						<li>
+						</li>';
+			if( auth_checkgroup('User Admin') == 1 ) {
+			echo		'<li>
 							<h2>Manage</h2>
 							<ul>
 								<li><a href="'. $profilePage .'&tag=manageusers">User Profiles</a></li>
 								<li><a href="'. $profilePage.'&tag=managegroups">Groups</a></li>
 							</ul>
-						</li>
-					</ul>
+						</li>';
+			};
+			echo		'</ul>
 			';
 		}
 		elseif( $page == "admin" ) {

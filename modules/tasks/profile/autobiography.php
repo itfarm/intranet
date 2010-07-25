@@ -34,29 +34,29 @@
 	?>
 	<table>
 		<tr>
-			<td><label>Username</label></td>
+			<td><label class="important">Username</label></td>
 			<td><input type="text" name="username" value="<?php echo $row['uname']?>"></td>
 		</tr>
 		<tr>
-			<td><label>Firstname</label></td>
+			<td><label class="important">Firstname</label></td>
 			<td><input type="text" name="name" value="<?php echo $row['name']?>"></td>
 		</tr>
 		<tr>
-			<td><label>Surname</label></td>
+			<td><label class="important">Surname</label></td>
 			<td><input type="text" name="surname" value="<?php echo $row['surname']?>"></td>
 		</tr>
 		<tr>
-			<td><label>Phone</label></td>
+			<td><label class="important">Phone</label></td>
 			<td><input type="text" name="mobile" value="<?php echo $row['mobile']?>"></td>
 		</tr>
 		<tr>
-			<td><label>E-mail</label></td>
+			<td><label class="important">E-mail</label></td>
 			<td><input type="text" name="email" value="<?php echo $row['email']?>"></td>
 			<input type="hidden" name="id" value="<?php echo $id ?>">
 			<input type="hidden" name="changed" value="true">
 		</tr>
 		<tr>
-			<td><label>Department</label></td>
+			<td><label class="important">Department</label></td>
 			<td><input type="text" name="department" value="<?php echo $row['department']?>"></td>
 		</tr>
 		<tr>

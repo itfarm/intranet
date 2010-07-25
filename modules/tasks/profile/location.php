@@ -31,23 +31,23 @@
 	?>
 	<table>
 		<tr>
-			<td><label>Location</label></td>
+			<td><label class="important">Location</label></td>
 			<td><input type="text" name="location" value="<?php echo $row['location']?>"></td>
 		</tr>
 		<tr>
-			<td><label>Address</label></td>
+			<td><label class="important">Address</label></td>
 			<td><input type="text" name="address" value="<?php echo $row['address']?>"></td>
 		</tr>
 		<tr>
-			<td><label>City</label></td>
+			<td><label class="important">City</label></td>
 			<td><input type="text" name="city" value="<?php echo $row['city']?>"></td>
 		</tr>
 		<tr>
-			<td><label>Zip</label></td>
+			<td><label class="important">Zip</label></td>
 			<td><input type="text" name="zip" value="<?php echo $row['zip']?>"></td>
 		</tr>
 		<tr>
-			<td><label>Country</label></td>
+			<td><label class="important">Country</label></td>
 			<td><input type="text" name="country" value="<?php echo $row['country']?>"></td>
 			<input type="hidden" name="id" value="<?php echo $id ?>">
 			<input type="hidden" name="changed" value="true">
