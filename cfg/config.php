@@ -46,6 +46,7 @@
 	$trainingPage = $root_dir . "modules/core/admin/training/index.php?menuid=MM11";
 	$faqPage = $root_dir ."modules/core/admin/faq/index.php?menuid=MM15";
 	$chatPage = $root_dir . "modules/chat/";
+	$pollPage = $root_dir . "modules/polls/index.php";
 	
 	//	Submenu URLs and their names
 	$main_url[0][0] = "Tasks";	$main_url[0][1] = $dashboardPage;
@@ -56,7 +57,7 @@
 	$main_url[5][0] = "Training";		$main_url[5][1] = $trainingPage;
 	//$main_url[6][0] = "Remainders";		$main_url[6][1] = $root_dir . "";
 	$main_url[6][0] = "Chat";			$main_url[6][1] = $chatPage;
-	$main_url[7][0] = "Polls";			$main_url[7][1] = $root_dir . "";
+	$main_url[7][0] = "Polls";			$main_url[7][1] = $pollPage;
 	$main_url[8][0] = "FAQ";			$main_url[8][1] = $faqPage;
 
 	function main_menu($current_module) {
@@ -876,5 +877,18 @@ function utc_get_users($intRows,$szSortBy,$szWhereClause){
 	mysql_free_result($results);
 }
 
-
+function poll_contents($tag) {
+	if($tag == "vote" || empty($tag)) {
+		echo "<p>Vote page will be here</p>";
+	}
+	elseif( $tag == "create" ) {
+		echo "<p>Create page</p>";
+	}
+	elseif( $tag == "results" ) {
+		echo "<p>Results page stays here</p>";
+	}
+	elseif($tag=="help" ) {
+		echo "<p>Help page stays here</p>";
+	};
+};
 ?>

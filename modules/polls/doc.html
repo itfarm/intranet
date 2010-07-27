@@ -1,0 +1,208 @@
+<html>
+<head>
+<title>nabocorp - nabopoll</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"> <font size="+2"><b>nabopoll</b></font></p>
+<hr>
+<p>&nbsp;<br>
+<table width="750" border="0" align="center">
+  <tr>
+    <td>
+      <p><b><u>Installation</u></b></p>
+      <p>Start by <a href="download.html">downloading</a> nabopoll, and unzip
+        the files in a directory keeping the directory structure. Upload all the
+        files to your webserver. If you are performing an upgrade, it is recommended
+        to delete all the files on your webserver and of course make a backup
+        of your database.</p>
+       <p align="center"><b><font color="red">I can only recommend you to protect the admin directory
+        with a .htaccess file...</font></b></p>
+      <p>Once everything is uploaded go to http://.../nabopoll/admin/install.php.
+        You should see a screen asking you the parameters to access your database.
+        If one of these parameters is defined by an environment variable, click
+        the associated checkbox. nabopoll will do a getenv on the variable to
+        get the real value (for instance, my ISP requires me to connect to the
+        server defined by the environment variable MYSQL_HOST).</p>
+      <p>Fill all the fields and click on the <b>Next</b> button. If you are upgrading
+        you are then asked whether you want to upgrade your version or do a clean
+        install. If you never installed nabopoll before then clean install should
+        be the only option available. Make sure to have a backup of your database
+        in all cases before proceeding.</p>
+      <p>Select the appropriate option. The installation procedure should now
+        make all the necessary modifications in your database to have nabopoll
+        setup. Everything should run fine (I hope...) and you can now start using
+        nabopoll!</p>
+      <p><b><u>Your first survey</u></b></p>
+      <p>Now go to http://.../nabopoll/admin/index.php and now you can create
+        a new survey, add questions and answers and of course edit approximately
+        anything. Here is the meaning of the icons you'll see in the admin interface
+        (I'll use the term &quot;item&quot; to generically designate a survey,
+        a question or an answer - the current item is the item that is on the
+        line where you clicked the icon):</p>
+      <table border="0" width="100%">
+        <tr>
+          <td width="33%" valign="top" bgcolor="#666666">
+            <div align="center"><b><font color="#FFFFFF">icon</font></b></div>
+          </td>
+          <td bgcolor="#666666">
+            <div align="center"><b><font color="#FFFFFF">action</font></b></div>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/add.gif" width="16" height="16"></div>
+          </td>
+          <td>add an item in the database. before clicking edit the new item on
+            the left of this icon</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/alter.gif" width="16" height="16"></div>
+          </td>
+          <td>validate the changes you have made to the current item</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/delete.gif" width="16" height="16"></div>
+          </td>
+          <td>delete an item. <b>no confirmation asked!!</b></td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/insert.gif" width="16" height="16"></div>
+          </td>
+          <td>insert an empty item before the current one</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/up.gif" width="16" height="16"></div>
+          </td>
+          <td>move the current item up in the current list</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/down.gif" width="16" height="16"></div>
+          </td>
+          <td>move the current item down in the current list</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/inspect.gif" width="16" height="16"></div>
+          </td>
+          <td>go one level below: in survey view, this allows you to edit the
+            questions of the current survey ; in question view this lets you edit
+            the answers to the current question</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/reset.gif" width="16" height="16"></div>
+          </td>
+          <td>this lets you reset the results of the current survey</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/result.gif" width="16" height="16"></div>
+          </td>
+          <td>this lets you see the results of the current survey</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="middle">
+            <div align="center"><img src="images/history.gif" width="16" height="16"></div>
+          </td>
+          <td>this lets you see the history of answers made to the current survey</td>
+        </tr>
+      </table>
+      <p>You have several options for a survey:</p>
+      <ul>
+      <li><b>Single vote:</b> Allows or disallows a same person to vote multiple times to the survey. Check can be done using cookies or based on the IP address.<br>&nbsp;</li>
+      <li><b>Log:</b> Enables the save of <b>all</b> the answers made to the survey. You'll be able to check exactly what each voter answered to each question.<br>&nbsp;</li>
+      <li><b>Required:</b> If this is checked, then a voter must answer to all the questions of the survey.<br>&nbsp;</li>
+      <li><b>Closed:</b> No more votes can be taken for that survey.<br>&nbsp;</li>
+      </ul>
+      <p>Once your survey is ready you can access it with the following URL: http://.../nabopoll/vote.php?surv=1
+        (of course you should replace 1 by the number of your survey).</p>
+      <p>For a quick poll to include in your homepage for instance, include the
+        file quickpoll.php where you want in your page. See test/test.php for
+        an example on how to include it and set the various variables (you might
+        need to set the $path variable)...</p>
+      <p>If you want all the questions of your survey, use http://.../nabopoll/vote_1page.php?surv=1 instead.</p>
+      <p><b><u>Customization</u></b></p>
+      <p>You can customize the look of your surveys to match your design. nabopoll
+        uses templates to achieve this. A template is a set of html files defining
+        how nabopoll should display your surveys. Two templates are provided:
+        classic and compact (used for quick polls). You can modify them or create
+        new ones by creating a new subdirectory in the templates folder. Put all
+        the .tpl files listed below (you can copy the ones from classic and modify
+        them). Upload this new directory to your webserver and your template is
+        automatically detected by nabopoll and ready to use! You can have as many
+        as templates as you want. </p>
+      <p>Here is an explanation of how each file is used:</p>
+      <table border="0" width="100%">
+        <tr>
+          <td width="33%" valign="top" bgcolor="#666666">
+            <div align="center"><b><font color="#FFFFFF">file</font></b></div>
+          </td>
+          <td bgcolor="#666666">
+            <div align="center"><b><font color="#FFFFFF">usage</font></b></div>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="top">
+            <div align="center">header.tpl</div>
+          </td>
+          <td>common header of all the pages. generally opens the HTML tags and
+            sets the design.</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="top">
+            <div align="center">footer.tpl</div>
+          </td>
+          <td>common footer of all the pages. closes what header.tpl opened...</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="top">
+            <div align="center">vote.tpl</div>
+          </td>
+          <td>standard voting page displaying a question and its answers.<b></b></td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="top">
+            <div align="center">survey_end.tpl</div>
+          </td>
+          <td>message after the user answered the last question of the survey.</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="top">
+            <div align="center">result.tpl</div>
+          </td>
+          <td>to display the results of a survey.</td>
+        </tr>
+        <tr valign="top">
+          <td width="33%" align="center" valign="top">
+            <div align="center">error.tpl</div>
+          </td>
+          <td>error page.</td>
+        </tr>
+      </table>
+      <p>In all these files you just have to use simple tags (like {QUESTION_TEXT})
+        to display data of your survey. Please check the files of the classic
+        template to know which tags are available in each file and what they are
+        used for. For vote.tpl and result.tpl, everything between <i>&lt;!-- ANSWER
+        START --&gt;</i> and <i>&lt;!-- ANSWER END --&gt;</i> will be repeated
+        for each answer to the question.<br>
+      </p>
+      <p>You can also customize the images used in your templates in the administration
+        interface. The first image is the <b><i>VOTE</i></b> button displayed
+        after each question. The three last images are used to display the bars.
+        They generally are 1x1 images. You can make your own images if you want
+        to use another color scheme than the one provided.</p>
+      <p>Do not hesitate to <a href="mailto:info@nabocorp.com">send me a mail</a>
+        once you have a survey online :-)</p>
+      </td>
+  </tr>
+</table>
+<p align="right"><font size="-1">&copy; 2003, <a href="http://www.nabocorp.com">nabocorp</a>.</font></p>
+</body>
+</html>
+
