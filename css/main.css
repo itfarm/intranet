@@ -39,7 +39,6 @@ a {
 	text-decoration: none;
 	color: #2F2A1D;
 }
-
 a:hover {
 	border-bottom: none;
 }
@@ -338,10 +337,10 @@ img.right {
 }
 
 .sidebar a {
-	color: #FFFFFF;
+	color: #000000;
 }
 .sidebar a:hover {
-	color: #BFB28D;
+	color: #ffffff;
 }
 /* Search */
 
