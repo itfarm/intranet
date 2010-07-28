@@ -25,6 +25,7 @@ Website: http://bongolinux.webs.com/
 <meta name="keywords" content="" />
 <meta name="Adhesive" content="" />
 <link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/main.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/table_style.css" media="screen" />
 <script language="JavaScript" src="<?php echo $root_dir ?>javascripts/gen_validatorv2.js" type="text/javascript"></script>
 <script language="JavaScript" src="<?php echo $root_dir ?>javascripts/DocumentListAjax.js" type="text/javascript"></script>
 <script language="JavaScript" src="<?php echo $root_dir ?>javascripts/EntityListAjax.js" type="text/javascript"></script>

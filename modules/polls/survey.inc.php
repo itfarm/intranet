@@ -70,7 +70,7 @@ function closehtml($row_survey)
 	$footer = gettemplate($row_survey, 'footer');
 	$footer = surveytags($footer, $row_survey);
 	echo $footer;
-	exit();
+	
 }
 
 function error($row_survey, $error_msg)
@@ -82,7 +82,7 @@ function error($row_survey, $error_msg)
 	if ($error_msg != "")
 	{
 		echo '<p align="center">'.$error_msg.'</p>';
-		exit();
+		
 	}
 
 	if ($opened == false)
@@ -94,7 +94,7 @@ function error($row_survey, $error_msg)
 
 	echo $error;
 	closehtml();
-	exit();
+	
 }
 
 // $mode: SM_NORMAL, SM_QUICK...

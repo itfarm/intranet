@@ -1,8 +1,4 @@
 <?php
-include_once("admin.inc.php");
-
-connectdb();
-
 $res_survey = mysql_query("select * from nabopoll_surveys order by id");
 if ($res_survey == FALSE)
 	error("database error");

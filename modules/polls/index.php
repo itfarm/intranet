@@ -8,7 +8,7 @@
 	}
 	else {
 		// Start of session
-		$current_module = "Tasks";
+		$current_module = "Polls";
 		global $pollPage;
 ?>
 
@@ -22,16 +22,29 @@ Website: http://bongolinux.webs.com/
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>PMO Intranet system</title>
-<meta name="keywords" content="" />
-<meta name="Adhesive" content="" />
-<link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/main.css" media="screen" />
-<script language="JavaScript" src="<?php echo $root_dir ?>javascripts/gen_validatorv2.js" type="text/javascript"></script>
-<script language="JavaScript" src="<?php echo $root_dir ?>javascripts/DocumentListAjax.js" type="text/javascript"></script>
-<script language="JavaScript" src="<?php echo $root_dir ?>javascripts/EntityListAjax.js" type="text/javascript"></script>
-<script language="JavaScript" src="<?php echo $root_dir ?>javascripts/Event.js" type="text/javascript"></script>
-<script language="JavaScript" src="<?php echo $root_dir ?>javascripts/SortedTable.js" type="text/javascript"></script>
-<script language="JavaScript" src="<?php echo $root_dir ?>javascripts/UserGroupListAjax.js" type="text/javascript"></script>
-<script language="JavaScript" src="<?php echo $root_dir ?>javascripts/visibility.js" type="text/javascript"></script>
+	<meta name="keywords" content="" />
+	<meta name="Adhesive" content="" />
+	<link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/main.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/table_style.css" media="screen" />
+	<style type="text/css">
+			.table {
+				width:100%;
+				border: 1px #000000 none;
+				text-align:left;
+				font-size:1.3em;
+			}
+			tr th {
+				font-weight:bold;
+				text-size:3em;
+			}
+			tbody tr {
+				color:blue;
+			}
+			tbody tr:hover {
+				color:yellow;
+				cursor: pointer;
+			}
+	</style>
 </head>
 <body>
 <div id="wrapper">
@@ -59,22 +72,7 @@ Website: http://bongolinux.webs.com/
 		<!-- end content -->
 		<!-- start sidebar-right -->
 		<div id="sidebar-right" class="sidebar">
-			<ul>
-				<li>
-					<h2>Polls &amp; Surveys</h2>
-					<ul>
-						<li><a href="<?php echo $pollPage .'?tag=vote' ?>">Surveys to Vote</a></li>
-						<li><a href="<?php echo $pollPage .'?tag=create'?>">Create Poll List</a></li>
-						<li><a href="<?php echo $pollPage .'?tag=results'?>">View Results</a></li>
-					</ul>
-				</li>
-				<li>
-					<h2>Help</h2>
-					<ul>
-						<li><a href="<?php echo $pollPage. '?tag=help'?>">Help on Polls</a></li>
-					</ul>
-				</li>
-			</ul>
+			<?php poll_sidebar(); ?>
 		</div>
 		<!-- end sidebar-right -->
 		<div style="clear: both;">&nbsp;</div>

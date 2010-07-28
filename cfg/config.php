@@ -47,6 +47,9 @@
 	$faqPage = $root_dir ."modules/core/admin/faq/index.php?menuid=MM15";
 	$chatPage = $root_dir . "modules/chat/";
 	$pollPage = $root_dir . "modules/polls/index.php";
+	$votePage = $root_dir . "modules/polls/vote.php";
+	$resultPage = $root_dir . "modules/polls/result.php";
+	$createPollPage = $root_dir . "modules/polls/admin/survey_edit.php";
 	
 	//	Submenu URLs and their names
 	$main_url[0][0] = "Tasks";	$main_url[0][1] = $dashboardPage;
@@ -878,16 +881,64 @@ function utc_get_users($intRows,$szSortBy,$szWhereClause){
 }
 
 function poll_contents($tag) {
-	global $root_dir;
+	global $root_dir,$pollPage, $votePage, $resultsPage, $createPollPage;
+	@include_once ("config.inc.php");
+	@include_once ("admin/admin.inc.php");
 	
-	if($tag == "vote" || empty($tag)) {
-		echo "<p>Vote page will be here</p>";
+	$dbcnx = db_connection($server,$login,$passwd);
+	$db_selected=db_select($database,$dbcnx);
+	
+	if($tag == "survey" || empty($tag)) {
+		$query_str="SELECT * FROM  `nabopoll_surveys` ";
+		$query = mysql_query($query_str);
+		echo "<p class=\"bold important\">Choose a survey to poll</p>";
+		echo "<table class=\"table\">
+				<thead>
+				  <tr class=\"important\">
+					  <th>No.</th>
+					  <th>Survey[Poll lists]</th>
+				  </tr>
+				 </thead>
+				 <tbody>
+			  ";
+		for($incr=0;$incr< mysql_num_rows($query) ; $incr++) {
+			$row = mysql_fetch_array($query);
+			echo "<tr onClick=\"document.location.href='" . $votePage . "?surv=" .$row['id'] ."'\">
+					<td>". $row['id'] ."</td>
+					<td>". $row['title'] ."</td>
+				</tr>";
+		};
+		echo "	</tbody>
+				</table>";
 	}
 	elseif( $tag == "create" ) {
-		echo "<p>Create page</p>";
+		@include_once("admin/survey_edit.php");
 	}
 	elseif( $tag == "results" ) {
-		echo "<p>Results page stays here</p>";
+		$query_str="SELECT * FROM  `nabopoll_surveys` ";
+		$query = mysql_query($query_str);
+		echo "<p class=\"bold important\">Choose a survey to view its results</p>";
+		echo "<table class=\"table\">
+				<thead>
+				  <tr class=\"important\">
+					  <th>No.</th>
+					  <th>Survey[Poll lists]</th>
+				  </tr>
+				 </thead>
+				 <tbody>
+			  ";
+		for($incr=0;$incr< mysql_num_rows($query) ; $incr++) {
+			$row = mysql_fetch_array($query);
+			echo "<tr onClick=\"document.location.href='" . $resultPage . "?surv=" .$row['id'] ."'\">
+					<td>". $row['id'] ."</td>
+					<td>". $row['title'] ."</td>
+				</tr>";
+		};
+		echo "	</tbody>
+				</table>";
+	}
+	elseif( $tag == "vote" ) {
+		include("vote.php");
 	}
 	elseif($tag=="help" ) {
 		echo '
@@ -981,5 +1032,26 @@ function poll_contents($tag) {
       <p>With the above information you should be able to create a survey questionaire.</p>
       ';
 	};
+};
+
+function poll_sidebar() {
+	echo "
+				<ul>
+				<li>
+					<h2>Polls &amp; Surveys</h2>
+					<ul>
+						<li><a href=". $pollPage .'?tag=survey' .">Surveys to Vote</a></li>
+						<li><a href=". $pollPage .'?tag=create'.">Create Poll List</a></li>
+						<li><a href=". $pollPage .'?tag=results'.">View Results</a></li>
+					</ul>
+				</li>
+				<li>
+					<h2>Help</h2>
+					<ul>
+						<li><a href=", $pollPage. '?tag=help'.">Help on Polls</a></li>
+					</ul>
+				</li>
+			</ul>
+			";
 };
 ?>

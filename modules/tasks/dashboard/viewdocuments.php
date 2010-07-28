@@ -82,7 +82,6 @@ $qry_document_SQL = "SELECT tbl_documents.*, authuser.name, authuser.surname, tb
 				$filename = $qry_document_row['document_file_name'];
 				$extension =  substr($filename,strrpos($filename,"."));
 			
-				echo "fullname:" . $uploaddirrel.$filename;
 				echo '<tr onClick="window.location=\''.$uploaddirrel.$filename.'\'">';
 				?>
 
