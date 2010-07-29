@@ -1,5 +1,10 @@
 <?php
-
+@include_once('./header.php');
+echo '<!-- start page -->
+		<div id="page">
+		<!-- start content -->
+		<div id="content">
+			<div style="clear: both;">&nbsp;</div>';
 if (!isset($path)) $path = "./";
 include_once($path."survey.inc.php");
 include_once($path."includes/nabopoll.inc.php");
@@ -97,5 +102,14 @@ if (!isset($quickpoll) || $quickpoll!=1)
 
 if ($quickpoll!=1) redirect("vote.php?" . ((SID == "") ? "" : "&" . SID));
 else redirect(getenv("HTTP_REFERER"));
-
+echo '</div>
+		<!-- end content -->
+		<!-- start sidebar-right -->
+		<div id="sidebar-right" class="sidebar">
+			<?php poll_sidebar(); ?>
+		</div>
+		<!-- end sidebar-right -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<!-- end page -->';@include_once('./footer.php');
 ?>

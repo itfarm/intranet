@@ -7,33 +7,9 @@ $path="../";
 $nabopoll_version = "1.2";
 
 function openadmin()
-{
-	global $nabopoll_version;
-
-	header("Cache-Control: no-cache, must-revalidate");           // HTTP/1.1
-	header("Pragma: no-cache");                                   // HTTP/1.0
-
-	echo "<html>\n<head>\n";
-	echo "<link rel=\"stylesheet\" href=\"admin.css\" type=\"text/css\">\n";
-	echo "<title>nabopoll ".$nabopoll_version."</title>\n";
-
-	echo "<script language=\"JavaScript\">\n";
-	echo "<!--\n";
-	echo "// Nannette Thacker http://www.shiningstar.net\n";
-	echo "function confirmSubmit()\n";
-	echo "{\n";
-	echo "	var agree=confirm(\"Are you sure you wish to continue?\");\n";
-	echo "	if (agree) return true;\n";
-	echo "	else return false;\n";
-	echo "}\n";
-	echo "// -->\n";
-	echo "</script>\n";
-
-	echo "</head>\n<body>\n";
-	echo "<table align=\"center\"><tr height=100><td align=\"center\">\n";
-	echo "<a href=\"config_edit.php\">config</a> | <a href=\"template_edit.php\">templates</a> | <a href=\"survey_edit.php\">survey edit</a>\n";
-	echo "</td></tr><tr><td align=\"center\">\n";
-	echo "<font size=\"-1\">\n";
+{
+	global $nabopoll_version;	header("Cache-Control: no-cache, must-revalidate");           // HTTP/1.1	header("Pragma: no-cache");                                   // HTTP/1.0
+	echo "<html>\n<head>\n";	echo "<link rel=\"stylesheet\" href=\"admin.css\" type=\"text/css\">\n";	echo "<title>nabopoll ".$nabopoll_version."</title>\n";	echo "<script language=\"JavaScript\">\n";	echo "<!--\n";	echo "// Nannette Thacker http://www.shiningstar.net\n";	echo "function confirmSubmit()\n";	echo "{\n";	echo "	var agree=confirm(\"Are you sure you wish to continue?\");\n";	echo "	if (agree) return true;\n";	echo "	else return false;\n";	echo "}\n";	echo "// -->\n";	echo "</script>\n";	echo "</head>\n<body>\n";	echo "<table align=\"center\"><tr height=100><td align=\"center\">\n";	echo "<a href=\"config_edit.php\">config</a> | <a href=\"template_edit.php\">templates</a> | <a href=\"survey_edit.php\">survey edit</a>\n";	echo "</td></tr><tr><td align=\"center\">\n";	echo "<font size=\"-1\">\n";
 }
 
 function closeadmin()
@@ -48,8 +24,7 @@ function error($error_msg)
 {
 	openadmin();
 	echo $error_msg;
-	closeadmin();
-	exit();
+	closeadmin();
 }
 
 function formtemplates($tmpl)
