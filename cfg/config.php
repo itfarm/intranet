@@ -1035,7 +1035,7 @@ function poll_contents($tag) {
 };
 
 function poll_sidebar($tag) {
-	global $pollPage;
+	global $pollPage, $createPollPage;
 	// Don't show page is create
 	if( $tag != "create" ) {
 		echo "
