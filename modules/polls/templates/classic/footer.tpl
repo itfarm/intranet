@@ -13,9 +13,3 @@ Here are the tags valid here:
 {NABOPOLL_LOGO}: powered by nabopoll logo
 
 -->
-
-{NABOPOLL_LOGO}
-</td></tr></table>
-</font>
-</body>
-</html>
