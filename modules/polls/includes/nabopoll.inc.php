@@ -45,7 +45,7 @@ function redirect($url)
 	{
 		header("Location: $url");
 	}
-	exit();
+	//exit();
 }
 
 function getimage($value, $path, $template, $base)

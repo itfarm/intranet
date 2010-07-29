@@ -1,12 +1,6 @@
 <?php
-@include_once('./header.php');
-echo '<!-- start page -->
-		<div id="page">
-		<!-- start content -->
-		<div id="content">
-			<div style="clear: both;">&nbsp;</div>';
-if (!isset($path)) $path = "./";
-include_once($path."survey.inc.php");
+if (!isset($path)) $path = "./";include_once("../../cfg/config.php");
+include_once($path."survey.inc.php");global $pollPage;
 include_once($path."includes/nabopoll.inc.php");
 include_once($path."includes/tags.inc.php");
 
@@ -79,8 +73,27 @@ if ($res_question == FALSE || mysql_numrows($res_question) == 0)
 
 	recordvote($row_survey, $record);
 
-	if ($quickpoll!=1)
-		session_destroy();
+	/* if ($quickpoll!=1) {
+		$tmp_username = $_SESSION['username'];
+		$tmp_id = $_SESSION['id'];
+		$tmp_USERNAME = $_SESSION['USERNAME'];
+		$tmp_password = $_SESSION['PASSWORD'];
+		$tmp_userinfo = $_SESSION['userInfo']; 
+		$tmp_groupinfo = $_SESSION['groupInfo'];
+		$tmp_survey = $_SESSION['survey'];
+		$tmp_question = $_SESSION['question'];
+		session_destroy();
+		session_start();
+		$_SESSION['username'] = $tmp_username;
+		$_SESSION['id'] = $tmp_id;
+		$_SESSION['USERNAME'] = $tmp_USERNAME;
+		$_SESSION['PASSWORD'] = $tmp_password;
+		$_SESSION['userInfo'] = $tmp_userinfo;
+		$_SESSION['groupInfo'] = $tmp_groupinfo;
+		$_SESSION['survey'] = $tmp_survey;
+		$_SESSION['question'] = $tmp_question;
+	}; */
+		
 
 	if ($quickpoll!=1)
 	{
@@ -102,14 +115,4 @@ if (!isset($quickpoll) || $quickpoll!=1)
 
 if ($quickpoll!=1) redirect("vote.php?" . ((SID == "") ? "" : "&" . SID));
 else redirect(getenv("HTTP_REFERER"));
-echo '</div>
-		<!-- end content -->
-		<!-- start sidebar-right -->
-		<div id="sidebar-right" class="sidebar">
-			<?php poll_sidebar(); ?>
-		</div>
-		<!-- end sidebar-right -->
-		<div style="clear: both;">&nbsp;</div>
-	</div>
-	<!-- end page -->';@include_once('./footer.php');
 ?>
