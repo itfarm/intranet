@@ -881,7 +881,7 @@ function utc_get_users($intRows,$szSortBy,$szWhereClause){
 }
 
 function poll_contents($tag) {
-	global $root_dir,$pollPage, $votePage, $resultsPage, $createPollPage;
+	global $root_dir,$pollPage, $votePage, $resultPage, $createPollPage;
 	@include_once ("config.inc.php");
 	@include_once ("admin/admin.inc.php");
 	
@@ -1034,24 +1034,28 @@ function poll_contents($tag) {
 	};
 };
 
-function poll_sidebar() {
-	echo "
-				<ul>
-				<li>
-					<h2>Polls &amp; Surveys</h2>
+function poll_sidebar($tag) {
+	global $pollPage;
+	// Don't show page is create
+	if( $tag != "create" ) {
+		echo "
 					<ul>
-						<li><a href=". $pollPage .'?tag=survey' .">Surveys to Vote</a></li>
-						<li><a href=". $pollPage .'?tag=create'.">Create Poll List</a></li>
-						<li><a href=". $pollPage .'?tag=results'.">View Results</a></li>
-					</ul>
-				</li>
-				<li>
-					<h2>Help</h2>
-					<ul>
-						<li><a href=", $pollPage. '?tag=help'.">Help on Polls</a></li>
-					</ul>
-				</li>
-			</ul>
-			";
+					<li>
+						<h2>Polls &amp; Surveys</h2>
+						<ul>
+							<li><a href=". $pollPage .'?tag=survey' .">Surveys to Vote</a></li>
+							<li><a href=". $createPollPage .">Create Poll List</a></li>
+							<li><a href=". $pollPage .'?tag=results'.">View Results</a></li>
+						</ul>
+					</li>
+					<li>
+						<h2>Help</h2>
+						<ul>
+							<li><a href=", $pollPage. '?tag=help'.">Help on Polls</a></li>
+						</ul>
+					</li>
+				</ul>
+				";
+	};
 };
 ?>
