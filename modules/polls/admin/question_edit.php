@@ -42,7 +42,7 @@ Website: http://bongolinux.webs.com/
 				color:blue;
 			}
 			tbody tr:hover {
-				color:yellow;
+				color:#000000;
 				cursor: pointer;
 			}
 	</style>
