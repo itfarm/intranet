@@ -77,7 +77,7 @@ To update this photo, fill in the boxes below with the desired content and press
 </tr>
 <tr class="adminRow2">
 	<td class="adminContent" align=right valign=top>Description</td>
-	<td class="adminContent"><textarea class="vform" rows="5" cols="50" name="photo_description"><?=$arrPhoto['photo_description']?></textarea></td>
+	<td class="adminContent"><textarea class="vform" rows="10" cols="50" name="photo_description"><?=$arrPhoto['photo_description']?></textarea></td>
 </tr>
 <tr class="adminRow1">
 	<td class="adminContent" align=right valign=top>Date Created</td>

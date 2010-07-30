@@ -8,7 +8,7 @@
 	$db_host="localhost";
 	$db_user="root";
 	$db_password="root";
-	$db_name="taskdata";
+	$db_name="intranet";
 	
 	// Database related functions
 	function db_connection($db_host,$db_user,$db_password) {

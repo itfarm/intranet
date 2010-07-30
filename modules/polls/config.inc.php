@@ -1,15 +1,16 @@
 <?php
-
-$server = 'localhost';
+@include_once('../../cfg/config.php');
+global $db_host,$db_user,$db_password, $db_name;
+$server = $db_host;
 $server_var = '';
 
-$login = 'root';
+$login = $db_user;
 $login_var = '';
 
-$passwd = 'root';
+$passwd = $db_password;
 $passwd_var = '';
 
-$database = 'nabopoll';
+$database = $db_name;
 $database_var = '';
 
 ?>

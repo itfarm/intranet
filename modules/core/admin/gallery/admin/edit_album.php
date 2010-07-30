@@ -73,7 +73,7 @@ To update this album, fill in the boxes below with the desired content and press
 </tr>
 <tr class="adminRow2">
 	<td class="adminContent" align=right valign=top>Description</td>
-	<td class="adminContent"><textarea class="vform" rows="5" cols="50" name="album_description"><?=$arrAlbum['album_description']?></textarea></td>
+	<td class="adminContent"><textarea class="vform" rows="10" cols="50" name="album_description"><?=$arrAlbum['album_description']?></textarea></td>
 </tr>
 <tr class="adminRow1">
 	<td class="adminContent" align=right valign=top>Thumb</td>
