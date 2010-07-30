@@ -52,7 +52,7 @@
 	$createPollPage = $root_dir . "modules/polls/admin/survey_edit.php";
 	
 	//	Submenu URLs and their names
-	$main_url[0][0] = "Tasks";	$main_url[0][1] = $dashboardPage;
+	$main_url[0][0] = "Dashboard";	$main_url[0][1] = $dashboardPage;
 	$main_url[1][0] = "Events"; 	$main_url[1][1] = $eventsPage;
 	$main_url[2][0] = "News";	$main_url[2][1] = $newsPage;
 	$main_url[3][0] = "Gallery";		$main_url[3][1] = $galleryPage;

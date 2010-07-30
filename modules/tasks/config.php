@@ -10,20 +10,22 @@
 	$audittrailPage = $root_dir ."main.php?page=audittrail";
 	$clearLogPage = $root_dir . "main.php?page=clearlog";
 	$adminpage = $root_dir . "main.php?page=admin";
+	$staffroasterPage = $root_dir . "main.php?page=staffroaster";
 
 	// Re-used page contents functions
 	function submenu($current) {
 		//	Submenu URLs and their names
-		$url[0][0] = "dashboard";	$url[0][1] = $root_dir . "main.php?page=dashboard";
+		$url[0][0] = "Tasks";	$url[0][1] = $root_dir . "main.php?page=dashboard";
 		$url[1][0] = "profile"; 	$url[1][1] = $root_dir . "main.php?page=profile";
 		$url[2][0] = "settings";	$url[2][1] = $root_dir . "main.php?page=settings";
 		$url[3][0] = "admin";		$url[3][1] = $root_dir . "main.php?page=admin";
-		$url[4][0] = "audit trail";		$url[4][1] = $root_dir . "main.php?page=audittrail";
+		$url[4][0] = "staff roaster";		$url[4][1] = $root_dir . "main.php?page=staffroaster";
+		$url[5][0] = "audit trail";		$url[5][1] = $root_dir . "main.php?page=audittrail";
 
 		echo '	<div id="submenu">
 					<ul id="main">';
 					// Generate submenu links
-					for($incr = 0; $incr <5; $incr++ ) {
+					for($incr = 0; $incr <=5; $incr++ ) {
 						// Mark the current class
 						if( $current == $url[$incr][0] ) {
 							$class = "current_page_item";
@@ -46,7 +48,7 @@
 	};
 
 	function contents($page,$tag) {
-		global $profilePage,$dashboardPage, $settingsPage, $adminpage,$audittrailPage,$clearLogPage, $root_dir;
+		global $profilePage,$dashboardPage, $settingsPage, $adminpage,$audittrailPage,$clearLogPage, $staffroasterPage, $root_dir;
 		global $db_host, $db_user, $db_password, $db_name;
 		$dbcnx = db_connection($db_host,$db_user,$db_password);
 		$db_select = db_select($db_name,$dbcnx);
@@ -103,8 +105,13 @@
 			}
 			elseif( $tag == "uploaddocs" ) {
 				include_once("dashboard/uploaddocuments.php");
-			}
-			elseif( $tag == "viewstaffs" ) {
+			};
+		}
+		if($page == "audittrail") {
+			include("audittrail/audittrail.php");
+		}
+		if($page == "staffroaster") {
+			if( $tag == "viewstaffs" || empty($tag) ) {
 				include_once("dashboard/viewstaffs.php");
 			}
 			elseif( $tag == "viewteams" ) {
@@ -116,9 +123,6 @@
 			elseif( $tag == "viewroles" ) {
 				include_once("dashboard/viewroles.php");
 			};
-		}
-		if($page == "audittrail") {
-			include("audittrail/audittrail.php");
 		}
 		if($page == "clearlog") {
 			include("audittrail/clearlog.php");
@@ -142,7 +146,7 @@
 		}
 	}
 	function sidebar($page, $tag) {
-		global $dashboardPage, $profilePage, $settingsPage,$audittrailPage,$clearLogPage, $adminpage;
+		global $dashboardPage, $profilePage, $settingsPage,$audittrailPage,$clearLogPage,$staffroasterPage, $adminpage;
 		if( $page == "dashboard" || empty($page)) {
 			echo '
 					<ul>
@@ -158,15 +162,6 @@
 							<ul>
 								<li><a href="'. $dashboardPage. '&tag=viewdocs">View Documents</a></li>
 								<li><a href="'. $dashboardPage .'&tag=uploaddocs">Upload Documents</a></li>
-							</ul>
-						</li>
-						<li>
-							<h2>Staffs</h2>
-							<ul>
-								<li><a href="'. $dashboardPage .'&tag=viewstaffs">View Staffs</a></li>
-								<li><a href="'. $dashboardPage .'&tag=viewteams">View Teams</a></li>
-								<li><a href="'. $dashboardPage .'&tag=viewgroups">View Groups</a></li>
-								<li><a href="'. $dashboardPage .'&tag=viewroles">Roles in groups</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -240,6 +235,21 @@
 								</ul>
 							</li>
 						</ul>
+			';
+		}
+		elseif( $page == "staffroaster" ) {
+			echo '	<ul>
+						<li>
+							<h2>Staffs</h2>
+							<ul>
+								<li><a href="'. $staffroasterPage .'&tag=viewstaffs">View Staffs</a></li>
+								<li><a href="'. $staffroasterPage .'&tag=viewteams">View Teams</a></li>
+								<li><a href="'. $staffroasterPage .'&tag=viewgroups">View Groups</a></li>
+								<li><a href="'. $staffroasterPage .'&tag=viewroles">Roles in groups</a></li>
+							</ul>
+						</li>
+					</ul>
+			
 			';
 		};
 	};

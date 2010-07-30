@@ -12,7 +12,7 @@
 ?>
 
 <form name="filter_form" method="POST" action="<?php echo $homePage ?>">
-	<input type="text" name="page" value="dashboard" style="display:none" />
+	<input type="text" name="page" value="staffroaster" style="display:none" />
 	<input type="text" name="tag" value="viewteams" style="display:none" />
 	<input type="text" name="search_string"  value="<?php echo $search_string?>" class="vform"/>
 	<input type="submit" value="Filter" class="button" />

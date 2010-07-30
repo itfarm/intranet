@@ -39,7 +39,7 @@ $qry_user_SQL = "SELECT authuser.*, qry_users_with_groups_active_list.group_memb
 	
 
 	<form name="filter_form" method="Get" action="<?php echo $homePage ?>">
-		<input type="text" name="page" value="dashboard" style="display:none" />
+		<input type="text" name="page" value="staffroaster" style="display:none" />
 		<input type="text" name="tag" value="viewstaffs" style="display:none" />	
 		<input type="text" name="search_string"  value="<?php echo $search_string?>" class="vform"/>
 		<input type="submit" value="Filter" class="button" />
