@@ -27,6 +27,10 @@
 					// Generate submenu links
 					for($incr = 0; $incr <=5; $incr++ ) {
 						// Mark the current class
+						// Bug fix for color highlighting.
+						if( $current == "staffroaster" ) $current = "staff roaster";
+						if( $current == "dashboard" ) $current = "Tasks";
+						if( $current == "audittrail" ) $current = "audit trail";
 						if( $current == $url[$incr][0] ) {
 							$class = "current_page_item";
 						}
