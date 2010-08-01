@@ -1,11 +1,12 @@
 <?php
 //Connection Page
-define(HOST, 'localhost');
-define(USERNAME, 'root');
-define(PASSWORD, 'root');
+include_once("../../cfg/config.php");
+define(HOST, $db_host);
+define(USERNAME, $db_user);
+define(PASSWORD, $db_password);
 
    mysql_connect( HOST, USERNAME, PASSWORD) or die("Could not connect");
-   mysql_select_db ("chat2")or die('Cannot connect to the database because: ' . mysql_error());
+   mysql_select_db ($db_name)or die('Cannot connect to the database because: ' . mysql_error());
 
 //functions
 function checkVar($var)

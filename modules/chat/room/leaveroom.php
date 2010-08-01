@@ -21,7 +21,14 @@
  */
 session_start();
 if( isset($_SESSION['userid']) ) {
-	require_once("../dbcon.php");
+	include_once("../../../cfg/config.php");
+	define(HOST, $db_host);
+	define(USERNAME, $db_user);
+	define(PASSWORD, $db_password);
+
+   mysql_connect( HOST, USERNAME, PASSWORD) or die("Could not connect");
+   mysql_select_db ($db_name)or die('Cannot connect to the database because: ' . mysql_error());
+
 	$name= $_GET['name'];
 	$remove_user_from_group_str="DELETE FROM chat_users_rooms WHERE username='" . $_SESSION['userid'] . "' AND room='" . $name ."'";
 	$result = mysql_query($remove_user_from_group_str) or die( mysql_error() );
