@@ -31,6 +31,7 @@
 			$_SESSION['id'] = $row['id'];
 			$_SESSION['USERNAME'] = $username;
 			$_SESSION['PASSWORD'] = $password;
+			$_SESSION['userid'] = $username;
 			if ($detail['level'] == 1) {
 				$arrUserLog = array();
 				$arrUserLog['szAction'] = 'User logs in';
