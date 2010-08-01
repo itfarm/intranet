@@ -31,5 +31,10 @@ if( isset($_SESSION['username']) )
 		$message="Logged out Successfully!";
 		Header("location:$loginPage?message=$message");
 }
+else {
+		//add record user_log table
+		$message="You have already logged out!";
+		Header("location:$loginPage?message=$message");
+};
 ?>
 
