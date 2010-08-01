@@ -50,6 +50,8 @@
 	$votePage = $root_dir . "modules/polls/vote.php";
 	$resultPage = $root_dir . "modules/polls/result.php";
 	$createPollPage = $root_dir . "modules/polls/admin/survey_edit.php";
+	$pagesPage = $root_dir . "modules/core/admin/pages/index.php?menuid=MM1";
+	$linksPage = $root_dir . "modules/core/admin/links/index.php?menuid=MM10";
 	
 	//	Submenu URLs and their names
 	$main_url[0][0] = "Dashboard";	$main_url[0][1] = $dashboardPage;
@@ -61,16 +63,18 @@
 	//$main_url[6][0] = "Remainders";		$main_url[6][1] = $root_dir . "";
 	$main_url[6][0] = "Chat";			$main_url[6][1] = $chatPage;
 	$main_url[7][0] = "Polls";			$main_url[7][1] = $pollPage;
-	$main_url[8][0] = "FAQ";			$main_url[8][1] = $faqPage;
+	$main_url[8][0] = "Pages";			$main_url[8][1] = $pagesPage;
+	$main_url[9][0] = "FAQ";			$main_url[9][1] = $faqPage;
+	$main_url[10][0] = "Links";			$main_url[10][1] = $linksPage;
 
 	function main_menu($current_module) {
 		global 	$tasksModule, $dashboardPage, $eventsModule, $eventsPage;
 		global  $newsPage, $galleryPage, $projectPage, $trainingPage, $faqPage, $chatPage;
-		global $main_url;
+		global $main_url, $pagesPage,$linksPage;
 		
 		echo '	<ul id="main">';
 					// Generate submenu links
-					for($incr = 0; $incr <=8; $incr++ ) {
+					for($incr = 0; $incr <=10; $incr++ ) {
 						// Mark the current class
 						if( $current_module == $main_url[$incr][0] ) {
 							$class = "current_page";
