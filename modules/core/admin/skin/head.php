@@ -65,9 +65,6 @@ for($incr = 0; $incr <10; $incr++ ) {
 <html>
 <head>
 	<title><?=$LBSiteTitle?></title>
-	<!--
-	<link href="<?=$root_path.$cfgAdminStyleFilePath?>" rel="stylesheet" type="text/css" />
-	-->
 	<link rel="stylesheet" type="text/css" href="/intranet/modules/tasks/stylesheets/main.css" media="screen" />
      <script  src="<?=$root_path?>js/dtpicker.js"  language="JavaScript"></script>
 	 <script  src="<?=$root_path?>js/dtlib.js"  language="JavaScript"></script>
@@ -79,17 +76,18 @@ for($incr = 0; $incr <10; $incr++ ) {
 <div id="wrapper">
 	<!-- start header -->
 	<div id="header">
-		<div id="logo">
-			<h1><a href=""><span></span></a></h1>
-			<div id="login-session-name">   
+		<div id="login-session-name">   
 				Welcome
 				<strong> <?php echo $_SESSION['username'] ?> </strong> 
 				&nbsp;&nbsp;<a href="<?php echo $logoutPage ?>">Log out</a>
-			</div>
+		</div>
+		<div id="logo">
+			<h1><a href=""><span></span></a></h1>
 		</div>
 		<div id="menu">
 			<?php main_menu($current_module) ?>
 		</div>
+		
 	</div>
 	<!-- end header -->
 
