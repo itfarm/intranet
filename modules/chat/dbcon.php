@@ -23,7 +23,7 @@ function checkVar($var)
 	}
 }
 function hasData($query)
-{	$rows = mysql_query($query)or die("somthing is wrong");
+{	$rows = mysql_query($query)or die("somthing is wrong with the query. check your database connections.");
 	$results = mysql_num_rows($rows);
 	if($results == 0)
 	{

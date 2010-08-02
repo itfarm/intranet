@@ -14,6 +14,12 @@
 			<div id="status">
 				<?php if (isset($_GET['error'])): ?>
 					<!-- Display error when returning with error URL param? -->
+					<?php
+						if( $_GET['error'] == 1 ) {
+							echo "<p style=\"font-size:2em\">User's already logged in!</p>";
+						}
+					?>
+						
 				<?php endif;?>
 			</div>
 			

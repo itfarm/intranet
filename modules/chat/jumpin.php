@@ -67,8 +67,7 @@
     		    header('Location: ./chatrooms.php');
     	
     		} else {
-    			
-    		  header('Location: ./?error=1');
+				header('Location: ./chatrooms.php');
     			
     		}
     
