@@ -1,12 +1,12 @@
 <?php
 //Connection Page
 include_once("../../cfg/config.php");
-define(HOST, $db_host);
-define(USERNAME, $db_user);
-define(PASSWORD, $db_password);
+define(HOST, "localhost");
+define(USERNAME, "root");
+define(PASSWORD, "root");
 
    mysql_connect( HOST, USERNAME, PASSWORD) or die("Could not connect");
-   mysql_select_db ($db_name)or die('Cannot connect to the database because: ' . mysql_error());
+   mysql_select_db ("intranet")or die('Cannot connect to the database because: ' . mysql_error());
 
 //functions
 function checkVar($var)
