@@ -27,6 +27,12 @@ if( isset($_SESSION['username']) )
 		$arrUserLog = array();
 		$arrUserLog['szAction'] = 'User logs out';
 		utc_add_update_user_log($arrUserLog);
+		// Clear all login chat users on logout
+		require_once("../modules/chat/dbcon.php");
+		$remove_user_str="DELETE FROM chat_users WHERE username='" . $_SESSION['userid'] . "'";
+		$result = mysql_query($remove_user_str) or die( mysql_error() );
+		$remove_user_from_group_str="DELETE FROM chat_users_rooms WHERE username='" . $_SESSION['userid'] ."'";
+		$result = mysql_query($remove_user_from_group_str) or die( mysql_error() );
 		session_destroy();
 		$message="Logged out Successfully!";
 		Header("location:$loginPage?message=$message");
