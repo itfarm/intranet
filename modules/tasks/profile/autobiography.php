@@ -60,7 +60,7 @@
 			<td><input type="text" name="department" value="<?php echo $row['department']?>"></td>
 		</tr>
 		<tr>
-			<td> <input type="submit" name="change" value="Submit" class="button"> </td>
+			<td colspan="2"> <input type="submit" name="change" value="Submit" class="button"> </td>
 		</tr>
 	</table>
 </form>

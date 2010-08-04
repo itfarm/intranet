@@ -60,9 +60,8 @@
 		
   <!--	change button		-->
   
-  <tr valign="middle"> 
-          <td class="important" valign=top>&nbsp;</td>
-          <td class="authTableFooter"><input type="submit" name="change" value="Change Password" class="button" onClick="return checkChangepwdForm()"><br></td>
+  <tr valign="middle">
+          <td class="authTableFooter" colspan="2"><input type="submit" name="change" value="Change Password" class="button" onClick="return checkChangepwdForm()"><br></td>
         </tr>
 
 	</table>

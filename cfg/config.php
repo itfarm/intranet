@@ -52,6 +52,9 @@
 	$createPollPage = $root_dir . "modules/polls/admin/survey_edit.php";
 	$pagesPage = $root_dir . "modules/core/admin/pages/index.php?menuid=MM1";
 	$linksPage = $root_dir . "modules/core/admin/links/index.php?menuid=MM10";
+	$resourcePage = $root_dir . "modules/resources/index.php";
+	$resourceDetailPage = $root_dir . "modules/resources/index.php?tag=detail";
+	$resourceRemovePage = $root_dir . "modules/resources/remove.php";
 	
 	//	Submenu URLs and their names
 	$main_url[0][0] = "Dashboard";	$main_url[0][1] = $dashboardPage;
@@ -66,15 +69,16 @@
 	$main_url[8][0] = "Pages";			$main_url[8][1] = $pagesPage;
 	$main_url[9][0] = "FAQ";			$main_url[9][1] = $faqPage;
 	$main_url[10][0] = "Links";			$main_url[10][1] = $linksPage;
+	$main_url[11][0] = "Resources";		$main_url[11][1] = $resourcePage;
 
 	function main_menu($current_module) {
 		global 	$tasksModule, $dashboardPage, $eventsModule, $eventsPage;
 		global  $newsPage, $galleryPage, $projectPage, $trainingPage, $faqPage, $chatPage;
-		global $main_url, $pagesPage,$linksPage;
+		global $main_url, $pagesPage,$linksPage,$resourcePage;
 		
 		echo '	<ul id="main">';
 					// Generate submenu links
-					for($incr = 0; $incr <=10; $incr++ ) {
+					for($incr = 0; $incr <=11; $incr++ ) {
 						// Mark the current class
 						if( $current_module == $main_url[$incr][0] ) {
 							$class = "current_page";
@@ -1062,4 +1066,130 @@ function poll_sidebar($tag) {
 				";
 	};
 };
+
+function resources_contents($tag) {
+	global $root_dir,$db_host, $db_user, $db_password, $db_name;
+	global $resourcePage,$resourceDetailPage, $resourceRemovePage;
+	//tags  = 'view', 'register', 'remove', 'reserve', 'restore', ' reservers'
+	@include_once ("config.inc.php");
+	
+	$dbcnx = db_connection($db_host,$db_user,$db_password);
+	$db_selected=db_select($db_name,$dbcnx);
+	
+	if($tag == "view" || empty($tag)) {
+		$query_str="SELECT * FROM  `resource` ";
+		$query = mysql_query($query_str);
+		echo "<p>" . $_GET['message'] ."</p>";
+		echo "<p class=\"bold important\">LIST OF RESOURCES IN THE SYSTEM</p>";
+		//echo "<p>Click on a resource to view its details</p>";
+		echo "<table class=\"table\">
+				<thead>
+				  <tr class=\"important\">
+					  <th>No.</th>
+					  <th>Name</th>
+					  <th>Location</th>
+					  <th>Owner</th>
+					  <th>Status</th>
+				  </tr>
+				 </thead>
+				 <tbody>
+			  ";
+		for($incr=0;$incr< mysql_num_rows($query) ; $incr++) {
+			$row = mysql_fetch_array($query);
+			echo "<tr onClick=\"document.location.href='" . $resourceDetailPage ."'\">
+					<td>". $row['id'] ."</td>
+					<td>". $row['name'] ."</td>
+					<td>". $row['location'] ."</td>
+					<td>". $row['owner'] ."</td>
+					<td>";
+					if( $row['status'] ==1 ) {
+						echo 'Reserved';
+					}elseif ( $row['status'] == 0 ) {
+						echo '<b>Available</b>';
+					};
+					echo "</td>
+				</tr>";
+		};
+		echo "	</tbody>
+				</table>";
+	}
+	elseif( $tag == "register" ) {
+		@include_once("register.php");
+	}
+	elseif( $tag == "remove" ) {
+$query_str="SELECT * FROM  `resource` ";
+		$query = mysql_query($query_str);
+		echo "<p class=\"bold important\">LIST OF RESOURCES IN THE SYSTEM</p>";
+		echo "<p>Click on <b>REMOVE</b> to remove a resource</p>";
+		echo "<table class=\"table\">
+				<thead>
+				  <tr class=\"important\">
+					  <th>No.</th>
+					  <th>Name</th>
+					  <th>Location</th>
+					  <th>Owner</th>
+					  <th>Status</th>
+					  <th>Action</th>
+				  </tr>
+				 </thead>
+				 <tbody>
+			  ";
+		for($incr=0;$incr< mysql_num_rows($query) ; $incr++) {
+			$row = mysql_fetch_array($query);
+			echo "<tr>
+					<td>". $row['id'] ."</td>
+					<td>". $row['name'] ."</td>
+					<td>". $row['location'] ."</td>
+					<td>". $row['owner'] ."</td>
+					<td>";
+					if( $row['status'] ==1 ) {
+						echo 'Reserved';
+					}elseif ( $row['status'] == 0 ) {
+						echo '<b>Available</b>';
+					};
+					echo "</td>
+					<td class=\"red\" onClick=\"document.location.href='" . $resourceRemovePage ."?id=" . $row['id'] ."'\">REMOVE</td>
+				</tr>";
+		};
+		echo "	</tbody>
+				</table>";
+	}
+	elseif( $tag == "reservers" ) {
+		echo "<p>Reservers page contents</p>";
+		//include("vote.php");
+	}
+	elseif($tag=="reserve" ) {
+		echo "<p>Reserver resources in the system</p>";
+	}
+	elseif( $tag == "restore" ) {
+		echo "<p>Restore resources in the system</p>";
+	};
+};
+
+
+function resources_sidebar($tag) {
+	global $resourcePage;
+	// Don't show page is create
+		echo "
+					<ul>
+					<li>
+						<h2>Resources</h2>
+						<ul>
+							<li><a href=". $resourcePage .'?tag=view' .">View resources</a></li>
+							<li><a href=". $resourcePage . '?tag=register' .">Register resources</a></li>
+							<li><a href=". $resourcePage .'?tag=remove'.">Remove resources</a></li>
+						</ul>
+					</li>
+					<li>
+						<h2>Reservations</h2>
+						<ul>
+							<li><a href=", $resourcePage. '?tag=reserve'.">Reserve resource</a></li>
+							<li><a href=", $resourcePage. '?tag=restore'.">Restore resource</a></li>
+							<li><a href=", $resourcePage. '?tag=reservers'.">View reservers</a></li>
+						</ul>
+					</li>
+				</ul>
+				";
+};
+
 ?>
