@@ -55,6 +55,8 @@
 	$resourcePage = $root_dir . "modules/resources/index.php";
 	$resourceDetailPage = $root_dir . "modules/resources/index.php?tag=detail";
 	$resourceRemovePage = $root_dir . "modules/resources/remove.php";
+	$resourceReservePage = $root_dir . "modules/resources/reserve.php";
+	$resourceRestorePage = $root_dir . "modules/resources/restore.php";
 	
 	//	Submenu URLs and their names
 	$main_url[0][0] = "Dashboard";	$main_url[0][1] = $dashboardPage;
@@ -1070,6 +1072,7 @@ function poll_sidebar($tag) {
 function resources_contents($tag) {
 	global $root_dir,$db_host, $db_user, $db_password, $db_name;
 	global $resourcePage,$resourceDetailPage, $resourceRemovePage;
+	global $resourceRestorePage, $resourceReservePage;
 	//tags  = 'view', 'register', 'remove', 'reserve', 'restore', ' reservers'
 	@include_once ("config.inc.php");
 	
@@ -1155,14 +1158,110 @@ $query_str="SELECT * FROM  `resource` ";
 				</table>";
 	}
 	elseif( $tag == "reservers" ) {
-		echo "<p>Reservers page contents</p>";
-		//include("vote.php");
+				$query_str="SELECT * FROM  `resource_user`";
+		$query = mysql_query($query_str);
+		if( mysql_num_rows($query) < 1 ) {
+			echo "<p class=\"bold\">There are reservers in the system</p>";
+		};
+		echo "<p class=\"bold important\">LIST OF RESOURCES IN THE SYSTEM</p>";
+		echo "<table class=\"table\">
+				<thead>
+				  <tr class=\"important\">
+					  <th>Username</th>
+					  <th>Resource name</th>
+					  <th>Reserve date/th>
+					  <th>Return date</th>
+				  </tr>
+				 </thead>
+				 <tbody>
+			  ";
+		for($incr=0;$incr< mysql_num_rows($query) ; $incr++) {
+			$row = mysql_fetch_array($query);
+			echo "<tr>
+					<td>". $row['username'] ."</td>
+					<td>". $row['resource_id'] ."</td>
+					<td>". $row['reserve_date'] ."</td>
+					<td>". $row['return_date'] ."</td>
+				</tr>";
+		};
+		echo "	</tbody>
+				</table>";
 	}
 	elseif($tag=="reserve" ) {
-		echo "<p>Reserver resources in the system</p>";
+		$query_str="SELECT * FROM  `resource` WHERE status = '0'";
+		$query = mysql_query($query_str);
+		echo "<p class=\"bold important\">LIST OF RESOURCES IN THE SYSTEM</p>";
+		echo "<p>Click on <b>RESERVE</b> to reserve a resource</p>";
+		echo "<table class=\"table\">
+				<thead>
+				  <tr class=\"important\">
+					  <th>No.</th>
+					  <th>Name</th>
+					  <th>Location</th>
+					  <th>Owner</th>
+					  <th>Status</th>
+					  <th>Action</th>
+				  </tr>
+				 </thead>
+				 <tbody>
+			  ";
+		for($incr=0;$incr< mysql_num_rows($query) ; $incr++) {
+			$row = mysql_fetch_array($query);
+			echo "<tr>
+					<td>". $row['id'] ."</td>
+					<td>". $row['name'] ."</td>
+					<td>". $row['location'] ."</td>
+					<td>". $row['owner'] ."</td>
+					<td>";
+					if( $row['status'] ==1 ) {
+						echo 'Reserved';
+					}elseif ( $row['status'] == 0 ) {
+						echo '<b>Available</b>';
+					};
+					echo "</td>
+					<td class=\"green\" onClick=\"document.location.href='" . $resourceReservePage ."?id=" . $row['id'] ."'\">RESERVE</td>
+				</tr>";
+		};
+		echo "	</tbody>
+				</table>";
 	}
 	elseif( $tag == "restore" ) {
-		echo "<p>Restore resources in the system</p>";
+		$query_str="SELECT * FROM  `resource` WHERE status = '1'";
+		$query = mysql_query($query_str);
+		echo "<p class=\"bold important\">LIST OF RESOURCES IN THE SYSTEM</p>";
+		echo "<p>Click on <b>RESTORE</b> to restore a resource</p>";
+		echo "<table class=\"table\">
+				<thead>
+				  <tr class=\"important\">
+					  <th>No.</th>
+					  <th>Name</th>
+					  <th>Location</th>
+					  <th>Owner</th>
+					  <th>Status</th>
+					  <th>Action</th>
+				  </tr>
+				 </thead>
+				 <tbody>
+			  ";
+		for($incr=0;$incr< mysql_num_rows($query) ; $incr++) {
+			$row = mysql_fetch_array($query);
+			echo "<tr>
+					<td>". $row['id'] ."</td>
+					<td>". $row['name'] ."</td>
+					<td>". $row['location'] ."</td>
+					<td>". $row['owner'] ."</td>
+					<td>";
+					if( $row['status'] ==1 ) {
+						echo 'Reserved';
+					}elseif ( $row['status'] == 0 ) {
+						echo '<b>Available</b>';
+					};
+					echo "</td>
+					<td class=\"green\" onClick=\"document.location.href='" . $resourceRestorePage ."?id=" . $row['id'] ."'\">RESTORE</td>
+				</tr>";
+		};
+		echo "	</tbody>
+				</table>";
 	};
 };
 

@@ -6,9 +6,11 @@
 		<!-- start content -->
 		<div id="content">
 			<div style="clear: both;">&nbsp;</div>
+			<div class="scrolldown">
 			<?php
 				resources_contents($tag);
 			?>
+			</div>
 		</div>
 		<!-- end content -->
 		<!-- start sidebar-right -->
