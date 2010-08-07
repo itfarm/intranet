@@ -70,7 +70,7 @@
 			
 			$upload_file_name = 'doc_'.sprintf("%07s", $document_id).'_'.basename($_FILES['upfile']['name']);
 			$upload_path_and_file_name = $upload_dir . $upload_file_name;
-			echo "<p>Upfile:". $_FILES['upfile']['tmp_name'] . "Uploadpath:" . $upload_path_and_file_name ."</p>";
+			//echo "<p>Upfile:". $_FILES['upfile']['tmp_name'] . "Uploadpath:" . $upload_path_and_file_name ."</p>";
 			if (!move_uploaded_file($_FILES['upfile']['tmp_name'], $upload_path_and_file_name)) {
 				echo "File upload problem";
 			}

@@ -61,6 +61,18 @@
 			echo "<p>You cannot leave the task description blank</p>";
 			$HasError = True;
 		}
+		if  ($_POST['task_classification_id'] == "") {
+			echo "<p>You cannot leave the task classification blank</p>";
+			$HasError = True;
+		}
+		if  ($_POST['workload_classification_id'] == "") {
+			echo "<p>You cannot leave the workload classification blank</p>";
+			$HasError = True;
+		}
+		if  ($_POST['priority_classification_id'] == "") {
+			echo "<p>You cannot leave the priority classification blank</p>";
+			$HasError = True;
+		}
 		
 		if  (domain('dcount','task_description','tbl_tasks',"task_description = ".$task_description) > 0) {
 			echo "<p>A task with the same description (".$task_description.") has already been saved</p>";
@@ -152,7 +164,6 @@
 		<script language="JavaScript" type="text/javascript">
 		var frmvalidator = new Validator("createtaskform");
 		frmvalidator.addValidation("task_description","req","Please enter a task description");
-		frmvalidator.addValidation("task_classification_id","req","Please fill tasks classification, if no classes add classfication settings.");
-		frmvalidator.addValidation("workload_classification_id","req","Please fill workload classification, if no classes add classfication settings.");
-		frmvalidator.addValidation("priority_classification_id","req","Please fill priority classification, if no classes add classfication settings.");
+		frmvalidator.addValidation("workload_classification_id","req","Please enter a task classification");
+		frmvalidator.addValidation("priority_classification_id","req","Please enter a priority classification");
 		</script>
