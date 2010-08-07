@@ -152,4 +152,7 @@
 		<script language="JavaScript" type="text/javascript">
 		var frmvalidator = new Validator("createtaskform");
 		frmvalidator.addValidation("task_description","req","Please enter a task description");
+		frmvalidator.addValidation("task_classification_id","req","Please fill tasks classification, if no classes add classfication settings.");
+		frmvalidator.addValidation("workload_classification_id","req","Please fill workload classification, if no classes add classfication settings.");
+		frmvalidator.addValidation("priority_classification_id","req","Please fill priority classification, if no classes add classfication settings.");
 		</script>
