@@ -1,16 +1,16 @@
 <?php
 @include_once('../../cfg/config.php');
 global $db_host,$db_user,$db_password, $db_name;
-$server = $db_host;
+$server = "localhost";
 $server_var = '';
 
-$login = $db_user;
+$login = "root";
 $login_var = '';
 
-$passwd = $db_password;
+$passwd = "root";
 $passwd_var = '';
 
-$database = $db_name;
+$database = "intranet";
 $database_var = '';
 
 ?>
