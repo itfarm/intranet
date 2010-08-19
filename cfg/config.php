@@ -842,7 +842,7 @@ function utc_add_update_user_log($arrUserLog){
 			intUserID,szSessionID,szIPAddress,intDocumentID,intItemID,intTimeStamp,szAction,intTypeID,intVariationID)
 				VALUES ($intUserID,'$szSessionID','$szIPAddress',$intDocumentID,$intItemID,NOW(),'$szAction',$intTypeID,$intVariationID)";
 	utc_debug($sql,"to be executed");
-	$results=mysql_query($sql);
+	$results=@mysql_query($sql);
 	utc_debug(mysql_error(),"Query Error?");
 	utc_debug($arrUserLog,"updated row");
 	return $arrUserLog;

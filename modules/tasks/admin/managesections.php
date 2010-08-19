@@ -11,7 +11,7 @@
 	@include_once('config_imported/functions.inc.php');
 	// initialize host and database
     @include_once('config_imported/settings.inc.php');
-	$command=$_GET['command'];
+	$command=$_POST['command'];
 	
 	if ($command == "create_group") {
 	
@@ -125,6 +125,7 @@
 					<input type="text" name='group_name' size=50 class="vform"/>
 			</td>
 			<td>Active</td>
+			<input type="hidden" name="command" value="create_group"/>
 			<td colspan=2><input type='submit' value='Create section' class="button" /></td>
 			</tr>
 					</form>
